@@ -27,6 +27,7 @@
 		D3BFBEE2200DE2040065BE21 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BFBEE1200DE2040065BE21 /* TableViewController.m */; };
 		D3BFBEE6200DECE40065BE21 /* HightLevelLuminationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BFBEE5200DECE40065BE21 /* HightLevelLuminationVC.m */; };
 		D3BFBEE8200DF59F0065BE21 /* fragment1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3BFBEE7200DF59F0065BE21 /* fragment1.glsl */; };
+		E35C8F19200E6D4E007B183F /* WaveFrontOBJ2.m in Sources */ = {isa = PBXBuildFile; fileRef = E35C8F18200E6D4E007B183F /* WaveFrontOBJ2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		D3BFBEE4200DECE40065BE21 /* HightLevelLuminationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HightLevelLuminationVC.h; sourceTree = "<group>"; };
 		D3BFBEE5200DECE40065BE21 /* HightLevelLuminationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HightLevelLuminationVC.m; sourceTree = "<group>"; };
 		D3BFBEE7200DF59F0065BE21 /* fragment1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment1.glsl; sourceTree = "<group>"; };
+		E35C8F17200E6D4E007B183F /* WaveFrontOBJ2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaveFrontOBJ2.h; sourceTree = "<group>"; };
+		E35C8F18200E6D4E007B183F /* WaveFrontOBJ2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaveFrontOBJ2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				D33D5259200C541700061A44 /* GLContext.m */,
 				D33D5263200C726800061A44 /* WaveFrontOBJ.h */,
 				D33D5264200C726800061A44 /* WaveFrontOBJ.m */,
+				E35C8F17200E6D4E007B183F /* WaveFrontOBJ2.h */,
+				E35C8F18200E6D4E007B183F /* WaveFrontOBJ2.m */,
 			);
 			path = GL;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				D33D5265200C726800061A44 /* WaveFrontOBJ.m in Sources */,
 				D33D5227200C52A400061A44 /* LoadOBJViewController.m in Sources */,
 				D33D5232200C52A400061A44 /* main.m in Sources */,
+				E35C8F19200E6D4E007B183F /* WaveFrontOBJ2.m in Sources */,
 				D33D525A200C541700061A44 /* GLContext.m in Sources */,
 				D3BFBEE2200DE2040065BE21 /* TableViewController.m in Sources */,
 				D33D5260200C544B00061A44 /* GLGeometry.m in Sources */,
