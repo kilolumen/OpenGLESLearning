@@ -10,5 +10,5 @@
 
 @interface WaveFrontOBJ2 : GLObject
 - (id)initWithGLContext:(GLContext *)context objFile:(NSString *)filePath;
-
++ (id)objWithGLContext
 @end
