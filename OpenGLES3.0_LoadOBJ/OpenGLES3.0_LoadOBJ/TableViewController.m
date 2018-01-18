@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import "LoadOBJViewController.h"
 #import "HightLevelLuminationVC.h"
+#import "normalMapViewController.h"
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSArray *arrItems;
@@ -20,7 +21,8 @@
     [super viewDidLoad];
     
     _arrItems = @[@"loadOBJ",
-                  @"hightLevellumin"];
+                  @"hightLevellumin",
+                  @"normalMap"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,6 +70,9 @@
             break;
         case 1:
             vc = [[HightLevelLuminationVC alloc] init];
+            break;
+        case 2:
+            vc = [[normalMapViewController alloc] init];
     }
     
     [self.navigationController pushViewController:vc animated:YES];

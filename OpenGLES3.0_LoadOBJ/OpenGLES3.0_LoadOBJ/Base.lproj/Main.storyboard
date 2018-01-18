@@ -238,5 +238,58 @@
             </objects>
             <point key="canvasLocation" x="232.80000000000001" y="-626.53673163418296"/>
         </scene>
+        <!--Normal Map View Controller-->
+        <scene sceneID="4wq-kn-wu8">
+            <objects>
+                <viewController id="NLw-sW-WuJ" customClass="normalMapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kpu-s1-h0C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="abk-jE-Ihg">
+                                <rect key="frame" x="-2" y="477" width="379" height="31"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Goc-QC-wdu">
+                                <rect key="frame" x="-2" y="527" width="379" height="31"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-0m-Iak">
+                                <rect key="frame" x="-2" y="577" width="379" height="31"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="OGT-5L-7KQ">
+                                <rect key="frame" x="-2" y="627" width="379" height="31"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="CNp-ET-x9o">
+                                <rect key="frame" x="-2" y="299" width="379" height="31"/>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xPa-xf-CUL" firstAttribute="trailing" secondItem="OGT-5L-7KQ" secondAttribute="trailing" id="0D1-Rc-dsS"/>
+                            <constraint firstItem="CNp-ET-x9o" firstAttribute="width" secondItem="abk-jE-Ihg" secondAttribute="width" id="Als-Ff-sne"/>
+                            <constraint firstItem="Gur-0m-Iak" firstAttribute="centerX" secondItem="OGT-5L-7KQ" secondAttribute="centerX" id="B5C-Lt-H4n"/>
+                            <constraint firstItem="abk-jE-Ihg" firstAttribute="top" secondItem="CNp-ET-x9o" secondAttribute="bottom" constant="100" id="C85-gN-guX"/>
+                            <constraint firstItem="OGT-5L-7KQ" firstAttribute="leading" secondItem="xPa-xf-CUL" secondAttribute="leading" id="LHP-MQ-qhQ"/>
+                            <constraint firstItem="Gur-0m-Iak" firstAttribute="width" secondItem="OGT-5L-7KQ" secondAttribute="width" id="MGV-GR-APp"/>
+                            <constraint firstItem="Gur-0m-Iak" firstAttribute="top" secondItem="Goc-QC-wdu" secondAttribute="bottom" constant="20" id="Q8a-O0-Zt8"/>
+                            <constraint firstItem="CNp-ET-x9o" firstAttribute="centerX" secondItem="abk-jE-Ihg" secondAttribute="centerX" id="UWX-Fc-HPG"/>
+                            <constraint firstItem="abk-jE-Ihg" firstAttribute="leading" secondItem="xPa-xf-CUL" secondAttribute="leading" id="VQG-vz-dwo"/>
+                            <constraint firstItem="Goc-QC-wdu" firstAttribute="centerX" secondItem="Gur-0m-Iak" secondAttribute="centerX" id="Zl1-jd-xYo"/>
+                            <constraint firstItem="xPa-xf-CUL" firstAttribute="trailing" secondItem="abk-jE-Ihg" secondAttribute="trailing" id="du4-lQ-9Ks"/>
+                            <constraint firstItem="xPa-xf-CUL" firstAttribute="trailing" secondItem="Goc-QC-wdu" secondAttribute="trailing" id="gSc-6T-wHG"/>
+                            <constraint firstItem="xPa-xf-CUL" firstAttribute="bottom" secondItem="OGT-5L-7KQ" secondAttribute="bottom" constant="10" id="hcW-9s-1S3"/>
+                            <constraint firstItem="Gur-0m-Iak" firstAttribute="height" secondItem="OGT-5L-7KQ" secondAttribute="height" id="ij7-9R-WKc"/>
+                            <constraint firstItem="Goc-QC-wdu" firstAttribute="top" secondItem="abk-jE-Ihg" secondAttribute="bottom" constant="20" id="ogS-fb-fBW"/>
+                            <constraint firstItem="CNp-ET-x9o" firstAttribute="height" secondItem="abk-jE-Ihg" secondAttribute="height" id="pA2-WG-snm"/>
+                            <constraint firstItem="Goc-QC-wdu" firstAttribute="leading" secondItem="xPa-xf-CUL" secondAttribute="leading" id="qTX-9o-Sia"/>
+                            <constraint firstItem="abk-jE-Ihg" firstAttribute="centerX" secondItem="Goc-QC-wdu" secondAttribute="centerX" id="wUl-zj-ow5"/>
+                            <constraint firstItem="OGT-5L-7KQ" firstAttribute="top" secondItem="Gur-0m-Iak" secondAttribute="bottom" constant="20" id="wt3-Nz-19s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xPa-xf-CUL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlE-S6-E8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="-627.4362818590705"/>
+        </scene>
     </scenes>
 </document>

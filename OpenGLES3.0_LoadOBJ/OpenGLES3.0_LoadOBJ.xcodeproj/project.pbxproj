@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3013A1F200F1723009BF665 /* WaveFrountOBJ2.m in Sources */ = {isa = PBXBuildFile; fileRef = D3013A1E200F1723009BF665 /* WaveFrountOBJ2.m */; };
+		D3013A22200F2592009BF665 /* normalMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3013A21200F2592009BF665 /* normalMapViewController.m */; };
+		D3013A24200F280C009BF665 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3013A23200F280B009BF665 /* cube.obj */; };
+		D3013A26200F285A009BF665 /* fragment2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3013A25200F285A009BF665 /* fragment2.glsl */; };
+		D3013A29200F2899009BF665 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D3013A27200F2899009BF665 /* normal.png */; };
+		D3013A2A200F2899009BF665 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3013A28200F2899009BF665 /* texture.jpg */; };
+		D3013A2C200F28E9009BF665 /* vertex2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3013A2B200F28E9009BF665 /* vertex2.glsl */; };
 		D33D5224200C52A400061A44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5223200C52A400061A44 /* AppDelegate.m */; };
 		D33D5227200C52A400061A44 /* LoadOBJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5226200C52A400061A44 /* LoadOBJViewController.m */; };
 		D33D522A200C52A400061A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33D5228200C52A400061A44 /* Main.storyboard */; };
@@ -47,6 +54,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D3013A1D200F1723009BF665 /* WaveFrountOBJ2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaveFrountOBJ2.h; sourceTree = "<group>"; };
+		D3013A1E200F1723009BF665 /* WaveFrountOBJ2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaveFrountOBJ2.m; sourceTree = "<group>"; };
+		D3013A20200F2592009BF665 /* normalMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = normalMapViewController.h; sourceTree = "<group>"; };
+		D3013A21200F2592009BF665 /* normalMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = normalMapViewController.m; sourceTree = "<group>"; };
+		D3013A23200F280B009BF665 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
+		D3013A25200F285A009BF665 /* fragment2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment2.glsl; sourceTree = "<group>"; };
+		D3013A27200F2899009BF665 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
+		D3013A28200F2899009BF665 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+		D3013A2B200F28E9009BF665 /* vertex2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex2.glsl; sourceTree = "<group>"; };
 		D33D521F200C52A400061A44 /* OpenGLES3.0_LoadOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLES3.0_LoadOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33D5222200C52A400061A44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D33D5223200C52A400061A44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -142,6 +158,8 @@
 				D33D5226200C52A400061A44 /* LoadOBJViewController.m */,
 				D3BFBEE4200DECE40065BE21 /* HightLevelLuminationVC.h */,
 				D3BFBEE5200DECE40065BE21 /* HightLevelLuminationVC.m */,
+				D3013A20200F2592009BF665 /* normalMapViewController.h */,
+				D3013A21200F2592009BF665 /* normalMapViewController.m */,
 				D3BFBEE0200DE2040065BE21 /* TableViewController.h */,
 				D3BFBEE1200DE2040065BE21 /* TableViewController.m */,
 				D33D5228200C52A400061A44 /* Main.storyboard */,
@@ -182,6 +200,8 @@
 				D33D5259200C541700061A44 /* GLContext.m */,
 				D33D5263200C726800061A44 /* WaveFrontOBJ.h */,
 				D33D5264200C726800061A44 /* WaveFrontOBJ.m */,
+				D3013A1D200F1723009BF665 /* WaveFrountOBJ2.h */,
+				D3013A1E200F1723009BF665 /* WaveFrountOBJ2.m */,
 			);
 			path = GL;
 			sourceTree = "<group>";
@@ -189,6 +209,11 @@
 		D33D5266200C835200061A44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3013A2B200F28E9009BF665 /* vertex2.glsl */,
+				D3013A27200F2899009BF665 /* normal.png */,
+				D3013A28200F2899009BF665 /* texture.jpg */,
+				D3013A25200F285A009BF665 /* fragment2.glsl */,
+				D3013A23200F280B009BF665 /* cube.obj */,
 				D3BFBED5200C84EC0065BE21 /* car.obj */,
 				D3BFBEDB200C88F10065BE21 /* sphere.obj */,
 				D3BFBED6200C84EC0065BE21 /* fragment.glsl */,
@@ -307,11 +332,16 @@
 				D3BFBEDC200C88F20065BE21 /* sphere.obj in Resources */,
 				D3BFBED9200C84EC0065BE21 /* fragment.glsl in Resources */,
 				D33D522F200C52A400061A44 /* LaunchScreen.storyboard in Resources */,
+				D3013A2A200F2899009BF665 /* texture.jpg in Resources */,
 				D3BFBEE8200DF59F0065BE21 /* fragment1.glsl in Resources */,
 				D33D522C200C52A400061A44 /* Assets.xcassets in Resources */,
 				D3BFBEDA200C84EC0065BE21 /* vertex.glsl in Resources */,
+				D3013A24200F280C009BF665 /* cube.obj in Resources */,
 				D3BFBED8200C84EC0065BE21 /* car.obj in Resources */,
+				D3013A2C200F28E9009BF665 /* vertex2.glsl in Resources */,
+				D3013A26200F285A009BF665 /* fragment2.glsl in Resources */,
 				D33D522A200C52A400061A44 /* Main.storyboard in Resources */,
+				D3013A29200F2899009BF665 /* normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,10 +367,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D33D5265200C726800061A44 /* WaveFrontOBJ.m in Sources */,
+				D3013A1F200F1723009BF665 /* WaveFrountOBJ2.m in Sources */,
 				D33D5227200C52A400061A44 /* LoadOBJViewController.m in Sources */,
 				D33D5232200C52A400061A44 /* main.m in Sources */,
 				D33D525A200C541700061A44 /* GLContext.m in Sources */,
 				D3BFBEE2200DE2040065BE21 /* TableViewController.m in Sources */,
+				D3013A22200F2592009BF665 /* normalMapViewController.m in Sources */,
 				D33D5260200C544B00061A44 /* GLGeometry.m in Sources */,
 				D3BFBEE6200DECE40065BE21 /* HightLevelLuminationVC.m in Sources */,
 				D33D5256200C53C600061A44 /* GLBaseViewController.m in Sources */,
