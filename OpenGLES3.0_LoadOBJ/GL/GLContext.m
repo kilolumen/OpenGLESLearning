@@ -111,6 +111,14 @@
     [self setUniform1i:uniformName value:textureID];
 }
 
+- (void)bindTextureName:(GLuint)texture to:(GLenum)textureChannel uniformName:(NSString *)uniformName
+{
+    glActiveTexture(textureChannel);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    GLuint textureID = (GLuint)textureChannel - (GLuint)GL_TEXTURE0;
+    [self setUniform1i:uniformName value:textureID];
+}
+
 #pragma mark - Prepare Shader
 bool createProgram(const char *vertexShader, const char *fragmentShader, GLuint *pProgram) {
     GLuint program, vertShader, fragShader;
