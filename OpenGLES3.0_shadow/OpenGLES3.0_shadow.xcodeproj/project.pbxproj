@@ -15,6 +15,9 @@
 		D3465A3D2011E190003E3445 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A3C2011E190003E3445 /* main.m */; };
 		D3465A472011E190003E3445 /* OpenGLES3_0_shadowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A462011E190003E3445 /* OpenGLES3_0_shadowTests.m */; };
 		D3465A522011E190003E3445 /* OpenGLES3_0_shadowUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A512011E190003E3445 /* OpenGLES3_0_shadowUITests.m */; };
+		D3465A6820161D55003E3445 /* GLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A6720161D55003E3445 /* GLObject.m */; };
+		D3465A6B20161D84003E3445 /* GLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A6A20161D84003E3445 /* GLContext.m */; };
+		D3465A6E20161EE4003E3445 /* GLGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A6D20161EE4003E3445 /* GLGeometry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		D3465A4D2011E190003E3445 /* OpenGLES3.0_shadowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenGLES3.0_shadowUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3465A512011E190003E3445 /* OpenGLES3_0_shadowUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenGLES3_0_shadowUITests.m; sourceTree = "<group>"; };
 		D3465A532011E190003E3445 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3465A6620161D55003E3445 /* GLObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLObject.h; sourceTree = "<group>"; };
+		D3465A6720161D55003E3445 /* GLObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLObject.m; sourceTree = "<group>"; };
+		D3465A6920161D84003E3445 /* GLContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLContext.h; sourceTree = "<group>"; };
+		D3465A6A20161D84003E3445 /* GLContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLContext.m; sourceTree = "<group>"; };
+		D3465A6C20161EE4003E3445 /* GLGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLGeometry.h; sourceTree = "<group>"; };
+		D3465A6D20161EE4003E3445 /* GLGeometry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLGeometry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +110,7 @@
 		D3465A2C2011E190003E3445 /* OpenGLES3.0_shadow */ = {
 			isa = PBXGroup;
 			children = (
+				D3465A6520161C68003E3445 /* OpenGL */,
 				D3465A2D2011E190003E3445 /* AppDelegate.h */,
 				D3465A2E2011E190003E3445 /* AppDelegate.m */,
 				D3465A302011E190003E3445 /* ViewController.h */,
@@ -130,6 +140,19 @@
 				D3465A532011E190003E3445 /* Info.plist */,
 			);
 			path = OpenGLES3.0_shadowUITests;
+			sourceTree = "<group>";
+		};
+		D3465A6520161C68003E3445 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				D3465A6620161D55003E3445 /* GLObject.h */,
+				D3465A6720161D55003E3445 /* GLObject.m */,
+				D3465A6920161D84003E3445 /* GLContext.h */,
+				D3465A6A20161D84003E3445 /* GLContext.m */,
+				D3465A6C20161EE4003E3445 /* GLGeometry.h */,
+				D3465A6D20161EE4003E3445 /* GLGeometry.m */,
+			);
+			path = OpenGL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +290,10 @@
 			files = (
 				D3465A322011E190003E3445 /* ViewController.m in Sources */,
 				D3465A3D2011E190003E3445 /* main.m in Sources */,
+				D3465A6E20161EE4003E3445 /* GLGeometry.m in Sources */,
+				D3465A6B20161D84003E3445 /* GLContext.m in Sources */,
 				D3465A2F2011E190003E3445 /* AppDelegate.m in Sources */,
+				D3465A6820161D55003E3445 /* GLObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
