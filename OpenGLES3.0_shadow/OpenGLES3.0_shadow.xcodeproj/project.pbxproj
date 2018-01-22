@@ -18,6 +18,9 @@
 		D3465A6820161D55003E3445 /* GLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A6720161D55003E3445 /* GLObject.m */; };
 		D3465A6B20161D84003E3445 /* GLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A6A20161D84003E3445 /* GLContext.m */; };
 		D3465A6E20161EE4003E3445 /* GLGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A6D20161EE4003E3445 /* GLGeometry.m */; };
+		D3465A71201725FF003E3445 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A70201725FF003E3445 /* GLBaseViewController.m */; };
+		D3465A742017326E003E3445 /* vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3465A732017326E003E3445 /* vertex.glsl */; };
+		D3465A76201733C0003E3445 /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3465A75201733C0003E3445 /* fragment.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,10 @@
 		D3465A6A20161D84003E3445 /* GLContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLContext.m; sourceTree = "<group>"; };
 		D3465A6C20161EE4003E3445 /* GLGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLGeometry.h; sourceTree = "<group>"; };
 		D3465A6D20161EE4003E3445 /* GLGeometry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLGeometry.m; sourceTree = "<group>"; };
+		D3465A6F201725FF003E3445 /* GLBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBaseViewController.h; sourceTree = "<group>"; };
+		D3465A70201725FF003E3445 /* GLBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLBaseViewController.m; sourceTree = "<group>"; };
+		D3465A732017326E003E3445 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
+		D3465A75201733C0003E3445 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +117,12 @@
 		D3465A2C2011E190003E3445 /* OpenGLES3.0_shadow */ = {
 			isa = PBXGroup;
 			children = (
+				D3465A722017324A003E3445 /* resources */,
 				D3465A6520161C68003E3445 /* OpenGL */,
 				D3465A2D2011E190003E3445 /* AppDelegate.h */,
 				D3465A2E2011E190003E3445 /* AppDelegate.m */,
+				D3465A6F201725FF003E3445 /* GLBaseViewController.h */,
+				D3465A70201725FF003E3445 /* GLBaseViewController.m */,
 				D3465A302011E190003E3445 /* ViewController.h */,
 				D3465A312011E190003E3445 /* ViewController.m */,
 				D3465A332011E190003E3445 /* Main.storyboard */,
@@ -153,6 +163,15 @@
 				D3465A6D20161EE4003E3445 /* GLGeometry.m */,
 			);
 			path = OpenGL;
+			sourceTree = "<group>";
+		};
+		D3465A722017324A003E3445 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3465A732017326E003E3445 /* vertex.glsl */,
+				D3465A75201733C0003E3445 /* fragment.glsl */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +280,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3465A76201733C0003E3445 /* fragment.glsl in Resources */,
 				D3465A3A2011E190003E3445 /* LaunchScreen.storyboard in Resources */,
+				D3465A742017326E003E3445 /* vertex.glsl in Resources */,
 				D3465A372011E190003E3445 /* Assets.xcassets in Resources */,
 				D3465A352011E190003E3445 /* Main.storyboard in Resources */,
 			);
@@ -291,6 +312,7 @@
 				D3465A322011E190003E3445 /* ViewController.m in Sources */,
 				D3465A3D2011E190003E3445 /* main.m in Sources */,
 				D3465A6E20161EE4003E3445 /* GLGeometry.m in Sources */,
+				D3465A71201725FF003E3445 /* GLBaseViewController.m in Sources */,
 				D3465A6B20161D84003E3445 /* GLContext.m in Sources */,
 				D3465A2F2011E190003E3445 /* AppDelegate.m in Sources */,
 				D3465A6820161D55003E3445 /* GLObject.m in Sources */,
