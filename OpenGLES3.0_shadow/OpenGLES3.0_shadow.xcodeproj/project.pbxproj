@@ -21,6 +21,14 @@
 		D3465A71201725FF003E3445 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A70201725FF003E3445 /* GLBaseViewController.m */; };
 		D3465A742017326E003E3445 /* vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3465A732017326E003E3445 /* vertex.glsl */; };
 		D3465A76201733C0003E3445 /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3465A75201733C0003E3445 /* fragment.glsl */; };
+		D3465A7920182E67003E3445 /* WavefrontOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A7820182E66003E3445 /* WavefrontOBJ.m */; };
+		D3465A7F2018333C003E3445 /* squarepants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3465A7A2018333B003E3445 /* squarepants.jpg */; };
+		D3465A802018333C003E3445 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3465A7B2018333B003E3445 /* texture.jpg */; };
+		D3465A812018333C003E3445 /* stoneFloor_NRM.png in Resources */ = {isa = PBXBuildFile; fileRef = D3465A7C2018333B003E3445 /* stoneFloor_NRM.png */; };
+		D3465A822018333C003E3445 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D3465A7D2018333C003E3445 /* normal.png */; };
+		D3465A832018333C003E3445 /* stoneFloor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3465A7E2018333C003E3445 /* stoneFloor.jpg */; };
+		D3465A8620185C97003E3445 /* cube.mtl in Resources */ = {isa = PBXBuildFile; fileRef = D3465A8420185C97003E3445 /* cube.mtl */; };
+		D3465A8720185C97003E3445 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3465A8520185C97003E3445 /* cube.obj */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +75,15 @@
 		D3465A70201725FF003E3445 /* GLBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLBaseViewController.m; sourceTree = "<group>"; };
 		D3465A732017326E003E3445 /* vertex.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
 		D3465A75201733C0003E3445 /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
+		D3465A7720182E66003E3445 /* WavefrontOBJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WavefrontOBJ.h; sourceTree = "<group>"; };
+		D3465A7820182E66003E3445 /* WavefrontOBJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WavefrontOBJ.m; sourceTree = "<group>"; };
+		D3465A7A2018333B003E3445 /* squarepants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squarepants.jpg; sourceTree = "<group>"; };
+		D3465A7B2018333B003E3445 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+		D3465A7C2018333B003E3445 /* stoneFloor_NRM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoneFloor_NRM.png; sourceTree = "<group>"; };
+		D3465A7D2018333C003E3445 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
+		D3465A7E2018333C003E3445 /* stoneFloor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stoneFloor.jpg; sourceTree = "<group>"; };
+		D3465A8420185C97003E3445 /* cube.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cube.mtl; sourceTree = "<group>"; };
+		D3465A8520185C97003E3445 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +178,8 @@
 				D3465A6A20161D84003E3445 /* GLContext.m */,
 				D3465A6C20161EE4003E3445 /* GLGeometry.h */,
 				D3465A6D20161EE4003E3445 /* GLGeometry.m */,
+				D3465A7720182E66003E3445 /* WavefrontOBJ.h */,
+				D3465A7820182E66003E3445 /* WavefrontOBJ.m */,
 			);
 			path = OpenGL;
 			sourceTree = "<group>";
@@ -168,8 +187,15 @@
 		D3465A722017324A003E3445 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3465A8420185C97003E3445 /* cube.mtl */,
+				D3465A8520185C97003E3445 /* cube.obj */,
 				D3465A732017326E003E3445 /* vertex.glsl */,
 				D3465A75201733C0003E3445 /* fragment.glsl */,
+				D3465A7D2018333C003E3445 /* normal.png */,
+				D3465A7A2018333B003E3445 /* squarepants.jpg */,
+				D3465A7C2018333B003E3445 /* stoneFloor_NRM.png */,
+				D3465A7E2018333C003E3445 /* stoneFloor.jpg */,
+				D3465A7B2018333B003E3445 /* texture.jpg */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -280,9 +306,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3465A8720185C97003E3445 /* cube.obj in Resources */,
+				D3465A822018333C003E3445 /* normal.png in Resources */,
 				D3465A76201733C0003E3445 /* fragment.glsl in Resources */,
+				D3465A802018333C003E3445 /* texture.jpg in Resources */,
 				D3465A3A2011E190003E3445 /* LaunchScreen.storyboard in Resources */,
 				D3465A742017326E003E3445 /* vertex.glsl in Resources */,
+				D3465A812018333C003E3445 /* stoneFloor_NRM.png in Resources */,
+				D3465A832018333C003E3445 /* stoneFloor.jpg in Resources */,
+				D3465A7F2018333C003E3445 /* squarepants.jpg in Resources */,
+				D3465A8620185C97003E3445 /* cube.mtl in Resources */,
 				D3465A372011E190003E3445 /* Assets.xcassets in Resources */,
 				D3465A352011E190003E3445 /* Main.storyboard in Resources */,
 			);
@@ -309,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3465A7920182E67003E3445 /* WavefrontOBJ.m in Sources */,
 				D3465A322011E190003E3445 /* ViewController.m in Sources */,
 				D3465A3D2011E190003E3445 /* main.m in Sources */,
 				D3465A6E20161EE4003E3445 /* GLGeometry.m in Sources */,

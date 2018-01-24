@@ -6,9 +6,9 @@
 //  Copyright © 2018年 sensetimesj. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "GLBaseViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : GLBaseViewController
 
 
 @end

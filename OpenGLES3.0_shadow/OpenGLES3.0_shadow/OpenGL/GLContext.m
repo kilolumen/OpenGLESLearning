@@ -36,21 +36,21 @@
 
 - (void)active
 {
-    glUseProgram(program);
+    glUseProgram(self.program);
 }
 
 - (void)bindAttributes:(GLfloat *)triangleData
 {
     GLuint position = glGetAttribLocation(program, "position");
     glEnableVertexAttribArray(position);
-    GLuint color = glGetAttribLocation(program, "color");
+    GLuint color = glGetAttribLocation(program, "normal");
     glEnableVertexAttribArray(color);
     GLuint uv = glGetAttribLocation(program, "uv");
     glEnableVertexAttribArray(uv);
     
     
     glVertexAttribPointer(position, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (char *)triangleData);
-    glVertexAttribPointer(color, 3, GL_FLOAT, GL_FALSE, 8 & sizeof(GLfloat), (char *)triangleData + 3 * sizeof(GLfloat));
+    glVertexAttribPointer(color, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (char *)triangleData + 3 * sizeof(GLfloat));
     glVertexAttribPointer(uv, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (char *)triangleData + 6 * sizeof(GLfloat));
 }
 
@@ -96,10 +96,10 @@
     glUniform1i(location, value);
 }
 
-- (void)setUniform1f:(NSString *)uniformName value:(GLint)value
+- (void)setUniform1f:(NSString *)uniformName value:(GLfloat)value
 {
     GLuint location  = glGetUniformLocation(self.program, uniformName.UTF8String);
-    glUniform1i(location, value);
+    glUniform1f(location, value);
 }
 
 - (void)setUniform3fv:(NSString *)uniformName value:(GLKVector3)value

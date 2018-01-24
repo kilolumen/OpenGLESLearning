@@ -48,6 +48,23 @@
     self.glContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
 }
 
+#pragma mark - Update Delegate
+- (void)update
+{
+    NSTimeInterval deltaTime = self.timeSinceLastUpdate;
+    self.elapsedTime += deltaTime;
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+{
+    glClearColor(0.7, 0.7, 0.7, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    [self.glContext active];
+    
+    [self.glContext setUniform1f:@"elapsedTime" value:(GLfloat)self.elapsedTime];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

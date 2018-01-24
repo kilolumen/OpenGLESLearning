@@ -20,6 +20,7 @@ void main(void)
     mat4 mvp = projectionMatrix * cameraMatrix * modelMatrix;
     fragNormal = normal;
     fragUV = uv;
+    fragPosition = position.xyz;
     fragTangent = tangent;
     fragBitangent = bitangent;
     gl_Position = mvp * position;

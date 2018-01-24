@@ -44,13 +44,165 @@ typedef struct {
 
 @property (nonatomic, strong) NSMutableArray <GLObject *> * objects;
 @property (nonatomic, assign) BOOL useNormalMap;
+
+@property (nonatomic, strong) NSMutableArray *arrSliders;
 @end
 
 @implementation normalMapViewController
 
+- (void)setupUI
+{
+    
+    NSMutableArray *arrSlider = [NSMutableArray array];
+    NSMutableArray *arrLabel = [NSMutableArray array];
+    NSArray *arrTexts = @[@"光滑度",@"Ambient",@"Diffuse",@"Specular",@"LightColor",@"indensity"];
+    
+    for(int i = 0; i < 6; ++i){
+        
+        UISlider *slider = [[UISlider alloc] init];
+        [self.view addSubview:slider];
+        [arrSlider addObject:slider];
+        
+        UILabel *lable = [[UILabel alloc] init];
+        [self.view addSubview:lable];
+        [arrLabel addObject:lable];
+    }
+    
+    for(int j = 0; j < arrSlider.count; ++j){
+        
+        UISlider *slider = (UISlider *)arrSlider[j];
+        slider.frame = CGRectMake(100, self.view.frame.size.height - 54 - j * 30, self.view.frame.size.width - 100, 20);
+        [slider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
+        slider.tag = 200 + j;
+        
+        UILabel *label = (UILabel *)arrLabel[j];
+        label.frame = CGRectMake(5, self.view.frame.size.height - 54 - j * 30, 80, 20);
+        label.text = arrTexts[j];
+    }
+}
+
+- (void)valueChange:(UISlider *)sender
+{
+    switch (sender.tag) {
+        case 200:
+            [self smoothChanged:sender];
+            break;
+        
+        case 201:
+            [self lightColorChanged:sender];
+            break;
+            
+        case 202:
+            [self specularChanged:sender];
+            break;
+            
+        case 203:
+            [self diffuseChanged:sender];
+            break;
+            
+        case 204:
+            [self ambientChanged:sender];
+            break;
+            
+        case 205:
+            [self indensityChnaged:sender];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)indensityChnaged:(UISlider *)sender
+{
+    PointLight _light = self.light;
+    _light.indensity = sender.value;
+    self.light = _light;
+}
+
+- (void)lightColorChanged:(UISlider *)sender
+{
+    GLKVector3 yuv = GLKVector3Make(1.0, (cos(sender.value) + 1.0) / 2.0, (sin(sender.value) + 1.0) / 2.0);
+    PointLight _light = self.light;
+    _light.color = [self colorFormYUV:yuv];
+    if (sender.value == sender.maximumValue) {
+        _light.color = GLKVector3Make(1, 1, 1);
+    }
+    self.light = _light;
+    sender.backgroundColor = [UIColor colorWithRed:_light.color.r green:_light.color.g blue:_light.color.b alpha:1.0];
+}
+
+- (void)specularChanged:(UISlider *)sender
+{
+    GLKVector3 yuv = GLKVector3Make(1.0, (cos(sender.value) + 1.0) / 2.0, (sin(sender.value) + 1.0) / 2.0);
+    Material _material = self.material;
+    _material.specularColor = [self colorFormYUV:yuv];
+    if (sender.value == sender.maximumValue) {
+        _material.specularColor = GLKVector3Make(1, 1, 1);
+    }
+    self.material = _material;
+    sender.backgroundColor = [UIColor colorWithRed:_material.specularColor.r green:_material.specularColor.g blue:_material.specularColor.b alpha:1.0];
+}
+
+- (void)diffuseChanged:(UISlider *)sender
+{
+    GLKVector3 yuv = GLKVector3Make(1.0, (cos(sender.value) + 1.0) / 2.0, (sin(sender.value) + 1.0) / 2.0);
+    Material _material = self.material;
+    _material.diffuseColor = [self colorFormYUV:yuv];
+    if (sender.value == sender.maximumValue) {
+        _material.diffuseColor = GLKVector3Make(1, 1, 1);
+    }
+    if (sender.value == sender.minimumValue) {
+        _material.diffuseColor = GLKVector3Make(0.1, 0.1, 0.1);
+    }
+    self.material = _material;
+    sender.backgroundColor = [UIColor colorWithRed:_material.diffuseColor.r green:_material.diffuseColor.g blue:_material.diffuseColor.b alpha:1.0];
+}
+
+- (void)ambientChanged:(UISlider *)sender
+{
+    GLKVector3 yuv = GLKVector3Make(1.0, (cos(sender.value) + 1.0) / 2.0, (sin(sender.value) + 1.0) / 2.0);
+    Material material = self.material;
+    material.ambientColor = [self colorFormYUV:yuv];
+    
+    if (sender.value == sender.maximumValue) {
+        
+        material.ambientColor = GLKVector3Make(1, 1, 1);
+    }
+    
+    self.material = material;
+    sender.backgroundColor = [UIColor colorWithRed:material.ambientColor.r green:material.ambientColor.g blue:material.ambientColor.g alpha:1.0];
+}
+
+- (GLKVector3)colorFormYUV:(GLKVector3)yuv
+{
+    float Cb, Cr, Y;
+    float R, G, B;
+    Y = yuv.x * 255.0;
+    Cb = yuv.y * 255.0 - 128.0;
+    Cr = yuv.z * 255.0 - 128.0;
+    
+    R = 1.482 * Cr + Y;
+    G = -0.344 * Cb - 0.714 * Cr + Y;
+    B =1.772 * Cb + Y;
+    
+    return GLKVector3Make(MIN(1.0, R /255.0), MIN(1.0, G / 255.0), MIN(1.0, B / 255.0));
+}
+
+
+
+- (void)smoothChanged:(UISlider *)sender
+{
+    Material material = self.material;
+    material.smoothness = sender.value;
+    self.material = material;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupGLContext];
+    
+    [self setupUI];
+    
     // 使用透视投影矩阵
     float aspect = self.view.frame.size.width / self.view.frame.size.height;
     self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);

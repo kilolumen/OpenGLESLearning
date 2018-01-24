@@ -50,7 +50,7 @@
 
 - (GLuint)getVBO
 {
-    if (vboValid) {
+    if (vboValid == NO) {
         glGenBuffers(1, &vbo);
         vboValid = YES;
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
