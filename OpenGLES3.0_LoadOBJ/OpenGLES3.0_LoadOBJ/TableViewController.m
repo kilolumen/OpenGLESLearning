@@ -11,6 +11,7 @@
 #import "HightLevelLuminationVC.h"
 #import "normalMapViewController.h"
 #import "textureShadowViewController.h"
+#import "shadowViewController.h"
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSArray *arrItems;
@@ -24,7 +25,8 @@
     _arrItems = @[@"loadOBJ",
                   @"hightLevellumin",
                   @"normalMap",
-                  @"textureShadow"];
+                  @"textureShadow",
+                  @"shadow"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,6 +80,9 @@
             break;
         case 3:
             vc = [[textureShadowViewController alloc] init];
+            break;
+        case 4:
+            vc = [[shadowViewController alloc] init];
             break;
     }
     

@@ -14,6 +14,7 @@
 		D3013A29200F2899009BF665 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D3013A27200F2899009BF665 /* normal.png */; };
 		D3013A2A200F2899009BF665 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3013A28200F2899009BF665 /* texture.jpg */; };
 		D3013A2C200F28E9009BF665 /* vertex2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3013A2B200F28E9009BF665 /* vertex2.glsl */; };
+		D33054B82019B2B700C2FBFD /* frag_shadowmap.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */; };
 		D33D5224200C52A400061A44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5223200C52A400061A44 /* AppDelegate.m */; };
 		D33D5227200C52A400061A44 /* LoadOBJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5226200C52A400061A44 /* LoadOBJViewController.m */; };
 		D33D522A200C52A400061A44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D33D5228200C52A400061A44 /* Main.storyboard */; };
@@ -40,6 +41,9 @@
 		D3BFBEE2200DE2040065BE21 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BFBEE1200DE2040065BE21 /* TableViewController.m */; };
 		D3BFBEE6200DECE40065BE21 /* HightLevelLuminationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BFBEE5200DECE40065BE21 /* HightLevelLuminationVC.m */; };
 		D3BFBEE8200DF59F0065BE21 /* fragment1.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3BFBEE7200DF59F0065BE21 /* fragment1.glsl */; };
+		D3D206B7201983F70037FE1C /* shadowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D206B6201983F70037FE1C /* shadowViewController.m */; };
+		D3D206B920198BB20037FE1C /* vertexShadow.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3D206B820198BB20037FE1C /* vertexShadow.glsl */; };
+		D3D206BB20198BC40037FE1C /* fragmentShadow.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3D206BA20198BC40037FE1C /* fragmentShadow.glsl */; };
 		E3B702A82018F3BE00E43132 /* fragment3.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E3B702A72018F3BE00E43132 /* fragment3.glsl */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +74,7 @@
 		D3013A27200F2899009BF665 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
 		D3013A28200F2899009BF665 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
 		D3013A2B200F28E9009BF665 /* vertex2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex2.glsl; sourceTree = "<group>"; };
+		D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = frag_shadowmap.glsl; sourceTree = "<group>"; };
 		D33D521F200C52A400061A44 /* OpenGLES3.0_LoadOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLES3.0_LoadOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33D5222200C52A400061A44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D33D5223200C52A400061A44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -113,6 +118,10 @@
 		D3BFBEE4200DECE40065BE21 /* HightLevelLuminationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HightLevelLuminationVC.h; sourceTree = "<group>"; };
 		D3BFBEE5200DECE40065BE21 /* HightLevelLuminationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HightLevelLuminationVC.m; sourceTree = "<group>"; };
 		D3BFBEE7200DF59F0065BE21 /* fragment1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment1.glsl; sourceTree = "<group>"; };
+		D3D206B5201983F70037FE1C /* shadowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shadowViewController.h; sourceTree = "<group>"; };
+		D3D206B6201983F70037FE1C /* shadowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shadowViewController.m; sourceTree = "<group>"; };
+		D3D206B820198BB20037FE1C /* vertexShadow.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertexShadow.glsl; sourceTree = "<group>"; };
+		D3D206BA20198BC40037FE1C /* fragmentShadow.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragmentShadow.glsl; sourceTree = "<group>"; };
 		E3B702A72018F3BE00E43132 /* fragment3.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment3.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +187,8 @@
 				D3013A21200F2592009BF665 /* normalMapViewController.m */,
 				D35EFB692018C6A800F90FC7 /* textureShadowViewController.h */,
 				D35EFB6A2018C6A800F90FC7 /* textureShadowViewController.m */,
+				D3D206B5201983F70037FE1C /* shadowViewController.h */,
+				D3D206B6201983F70037FE1C /* shadowViewController.m */,
 				D3BFBEE0200DE2040065BE21 /* TableViewController.h */,
 				D3BFBEE1200DE2040065BE21 /* TableViewController.m */,
 				D33D5228200C52A400061A44 /* Main.storyboard */,
@@ -244,6 +255,9 @@
 				E3B702A72018F3BE00E43132 /* fragment3.glsl */,
 				D3BFBED7200C84EC0065BE21 /* vertex.glsl */,
 				D3465A1520108504003E3445 /* frag_framebuffer_plane.glsl */,
+				D3D206B820198BB20037FE1C /* vertexShadow.glsl */,
+				D3D206BA20198BC40037FE1C /* fragmentShadow.glsl */,
+				D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -360,9 +374,12 @@
 				D35EFB7020197DB800F90FC7 /* stoneFloor_NRM.png in Resources */,
 				D33D522F200C52A400061A44 /* LaunchScreen.storyboard in Resources */,
 				E3B702A82018F3BE00E43132 /* fragment3.glsl in Resources */,
+				D3D206B920198BB20037FE1C /* vertexShadow.glsl in Resources */,
 				D3013A2A200F2899009BF665 /* texture.jpg in Resources */,
+				D3D206BB20198BC40037FE1C /* fragmentShadow.glsl in Resources */,
 				D35EFB6F20197DB800F90FC7 /* squarepants.jpg in Resources */,
 				D3BFBEE8200DF59F0065BE21 /* fragment1.glsl in Resources */,
+				D33054B82019B2B700C2FBFD /* frag_shadowmap.glsl in Resources */,
 				D33D522C200C52A400061A44 /* Assets.xcassets in Resources */,
 				D3BFBEDA200C84EC0065BE21 /* vertex.glsl in Resources */,
 				D3013A24200F280C009BF665 /* cube.obj in Resources */,
@@ -406,6 +423,7 @@
 				D33D5260200C544B00061A44 /* GLGeometry.m in Sources */,
 				D3BFBEE6200DECE40065BE21 /* HightLevelLuminationVC.m in Sources */,
 				D33D5256200C53C600061A44 /* GLBaseViewController.m in Sources */,
+				D3D206B7201983F70037FE1C /* shadowViewController.m in Sources */,
 				D35EFB6B2018C6A800F90FC7 /* textureShadowViewController.m in Sources */,
 				D3465A1420107B7F003E3445 /* Plane.m in Sources */,
 				D33D5224200C52A400061A44 /* AppDelegate.m in Sources */,
