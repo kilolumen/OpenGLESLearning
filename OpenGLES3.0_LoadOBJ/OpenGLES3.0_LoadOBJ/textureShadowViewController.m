@@ -86,7 +86,15 @@ typedef struct {
 
 - (void)createBox:(GLKVector3)location
 {
+    UIImage *normalImage = [UIImage imageNamed:@"normal.png"];
+    GLKTextureInfo *normalMap = [GLKTextureLoader textureWithCGImage:normalImage.CGImage options:nil error:nil];
+    UIImage *diffuseImage = [UIImage imageNamed:@"texture.jpg"];
+    GLKTextureInfo *diffuseMap = [GLKTextureLoader textureWithCGImage:diffuseImage.CGImage options:nil error:nil];
     
+    NSString *cubeObjFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
+    WaveFrountOBJ2 *cube = [WaveFrountOBJ2 objWithGLContext:self.glContext objFile:cubeObjFile diffuseMap:diffuseMap normalMap:normalMap];
+    cube.modelMatrix = GLKMatrix4MakeTranslation(location.x, location.y, location.z);
+    [self.objects addObject:cube];
 }
 
 - (void)createFloor
@@ -97,7 +105,9 @@ typedef struct {
     GLKTextureInfo *diffuseMap = [GLKTextureLoader textureWithCGImage:diffuseImage.CGImage options:nil error:nil];
     
     NSString *cubeObjFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
-    
+    WaveFrountOBJ2 *cube = [WaveFrountOBJ2 objWithGLContext:self.glContext objFile:cubeObjFile diffuseMap:diffuseMap normalMap:normalMap];
+    cube.modelMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(0, -0.1, 0), GLKMatrix4MakeScale(3, 0.2, 3));//模型矩阵，沿y轴负方向移动0.1
+    [self.objects addObject:cube];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,14 +115,44 @@ typedef struct {
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Update Delegate
+- (void)update
+{
+    [super  update];
+    self.eyePosition = GLKVector3Make(1, 4, 4);
+    GLKVector3 lookAtPosition = GLKVector3Make(0, 0, 0);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
+    [self.objects enumerateObjectsUsingBlock:^(GLObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj update:self.timeSinceLastUpdate];
+    }];
 }
-*/
+
+- (void)drawObjects
+{
+    [self.objects enumerateObjectsUsingBlock:^(GLObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj.context active];
+        [obj.context setUniform1f:@"elapsedTime" value:(GLfloat)self.elapsedTime];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        [obj.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+        [obj.context setUniform3fv:@"light.direction" value:self.light.direction];
+        [obj.context setUniform3fv:@"light.color" value:self.light.color];
+        [obj.context setUniform1f:@"light.ambientIndensity" value:self.light.ambientIndensity];
+        [obj.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
+        [obj.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+        [obj.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
+        [obj.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
+        [obj.context setUniformMatrix4fv:@"projectorMatrix" value:self.projectionMatrix];
+        [obj.context bindTexture:self.projectorMap to:GL_TEXTURE2 uniformName:@"projectionMap"];
+        [obj.context setUniform1i:@"useProjector" value:self.usePorjector];
+        [obj draw:obj.context];
+    }];
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+    glClearColor(0.7, 0.7, 0.7, 1);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    [self drawObjects];
+}
 
 @end
