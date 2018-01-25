@@ -40,13 +40,14 @@ typedef struct {
 //投影矩阵
 @property (nonatomic, assign) GLKMatrix4 projectorMatrix;//投影矩阵
 @property (nonatomic, strong) GLKTextureInfo *projectorMap;//投影纹理
-@property (nonatomic, assign) BOOL usePorjector;//是否使用投影纹理
+@property (nonatomic, assign) BOOL useProjector;//是否使用投影纹理
 @end
 
 @implementation textureShadowViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupGLContext];
     //使用透视投影矩阵
     float aspect = self.view.frame.size.width / self.view.frame.size.height;
     self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
@@ -81,7 +82,7 @@ typedef struct {
     UIImage *projectorImage = [UIImage imageNamed:@"squarepants.jpg"];//投影纹理
     self.projectorMap = [GLKTextureLoader textureWithCGImage:projectorImage.CGImage options:nil error:nil];
     
-    self.usePorjector = YES;
+    self.useProjector = YES;
 }
 
 - (void)createBox:(GLKVector3)location
@@ -110,6 +111,13 @@ typedef struct {
     [self.objects addObject:cube];
 }
 
+- (void)setupGLContext
+{
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"vertex2" ofType:@".glsl"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"fragment3" ofType:@".glsl"];
+    self.glContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -125,6 +133,11 @@ typedef struct {
     [self.objects enumerateObjectsUsingBlock:^(GLObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj update:self.timeSinceLastUpdate];
     }];
+    
+    // update projector matrix
+    GLKMatrix4 projectorProjectionMatrix = GLKMatrix4MakeOrtho(-2, 2, -2, 2, -100, 100);
+    GLKMatrix4 projectorCameraMatrix = GLKMatrix4MakeLookAt(0, 4, 0, 0, 0, 0, cos(self.elapsedTime), 0, sin(self.elapsedTime));
+    self.projectorMatrix = GLKMatrix4Multiply(projectorProjectionMatrix, projectorCameraMatrix);
 }
 
 - (void)drawObjects
@@ -137,14 +150,16 @@ typedef struct {
         [obj.context setUniform3fv:@"eyePosition" value:self.eyePosition];
         [obj.context setUniform3fv:@"light.direction" value:self.light.direction];
         [obj.context setUniform3fv:@"light.color" value:self.light.color];
+        [obj.context setUniform1f:@"light.indensity" value:self.light.indensity];
         [obj.context setUniform1f:@"light.ambientIndensity" value:self.light.ambientIndensity];
         [obj.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
         [obj.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+        [obj.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
         [obj.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
         [obj.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
-        [obj.context setUniformMatrix4fv:@"projectorMatrix" value:self.projectionMatrix];
-        [obj.context bindTexture:self.projectorMap to:GL_TEXTURE2 uniformName:@"projectionMap"];
-        [obj.context setUniform1i:@"useProjector" value:self.usePorjector];
+        [obj.context setUniformMatrix4fv:@"projectorMatrix" value:self.projectorMatrix];
+        [obj.context bindTexture:self.projectorMap to:GL_TEXTURE2 uniformName:@"projectorMap"];
+        [obj.context setUniform1i:@"useProjector" value:self.useProjector];
         [obj draw:obj.context];
     }];
 }

@@ -10,6 +10,7 @@
 #import "LoadOBJViewController.h"
 #import "HightLevelLuminationVC.h"
 #import "normalMapViewController.h"
+#import "textureShadowViewController.h"
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSArray *arrItems;
@@ -22,7 +23,8 @@
     
     _arrItems = @[@"loadOBJ",
                   @"hightLevellumin",
-                  @"normalMap"];
+                  @"normalMap",
+                  @"textureShadow"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,6 +75,10 @@
             break;
         case 2:
             vc = [[normalMapViewController alloc] init];
+            break;
+        case 3:
+            vc = [[textureShadowViewController alloc] init];
+            break;
     }
     
     [self.navigationController pushViewController:vc animated:YES];

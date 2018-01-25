@@ -30,6 +30,9 @@
 		D3465A1420107B7F003E3445 /* Plane.m in Sources */ = {isa = PBXBuildFile; fileRef = D3465A1320107B7F003E3445 /* Plane.m */; };
 		D3465A1620108504003E3445 /* frag_framebuffer_plane.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3465A1520108504003E3445 /* frag_framebuffer_plane.glsl */; };
 		D35EFB6B2018C6A800F90FC7 /* textureShadowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D35EFB6A2018C6A800F90FC7 /* textureShadowViewController.m */; };
+		D35EFB6F20197DB800F90FC7 /* squarepants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D35EFB6C20197DB800F90FC7 /* squarepants.jpg */; };
+		D35EFB7020197DB800F90FC7 /* stoneFloor_NRM.png in Resources */ = {isa = PBXBuildFile; fileRef = D35EFB6D20197DB800F90FC7 /* stoneFloor_NRM.png */; };
+		D35EFB7120197DB800F90FC7 /* stoneFloor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D35EFB6E20197DB800F90FC7 /* stoneFloor.jpg */; };
 		D3BFBED8200C84EC0065BE21 /* car.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3BFBED5200C84EC0065BE21 /* car.obj */; };
 		D3BFBED9200C84EC0065BE21 /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3BFBED6200C84EC0065BE21 /* fragment.glsl */; };
 		D3BFBEDA200C84EC0065BE21 /* vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3BFBED7200C84EC0065BE21 /* vertex.glsl */; };
@@ -98,6 +101,9 @@
 		D3465A1520108504003E3445 /* frag_framebuffer_plane.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = frag_framebuffer_plane.glsl; sourceTree = "<group>"; };
 		D35EFB692018C6A800F90FC7 /* textureShadowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textureShadowViewController.h; sourceTree = "<group>"; };
 		D35EFB6A2018C6A800F90FC7 /* textureShadowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = textureShadowViewController.m; sourceTree = "<group>"; };
+		D35EFB6C20197DB800F90FC7 /* squarepants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squarepants.jpg; sourceTree = "<group>"; };
+		D35EFB6D20197DB800F90FC7 /* stoneFloor_NRM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoneFloor_NRM.png; sourceTree = "<group>"; };
+		D35EFB6E20197DB800F90FC7 /* stoneFloor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stoneFloor.jpg; sourceTree = "<group>"; };
 		D3BFBED5200C84EC0065BE21 /* car.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = car.obj; sourceTree = "<group>"; };
 		D3BFBED6200C84EC0065BE21 /* fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
 		D3BFBED7200C84EC0065BE21 /* vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex.glsl; sourceTree = "<group>"; };
@@ -223,6 +229,9 @@
 		D33D5266200C835200061A44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D35EFB6C20197DB800F90FC7 /* squarepants.jpg */,
+				D35EFB6D20197DB800F90FC7 /* stoneFloor_NRM.png */,
+				D35EFB6E20197DB800F90FC7 /* stoneFloor.jpg */,
 				D3013A2B200F28E9009BF665 /* vertex2.glsl */,
 				D3013A27200F2899009BF665 /* normal.png */,
 				D3013A28200F2899009BF665 /* texture.jpg */,
@@ -347,9 +356,12 @@
 			files = (
 				D3BFBEDC200C88F20065BE21 /* sphere.obj in Resources */,
 				D3BFBED9200C84EC0065BE21 /* fragment.glsl in Resources */,
+				D35EFB7120197DB800F90FC7 /* stoneFloor.jpg in Resources */,
+				D35EFB7020197DB800F90FC7 /* stoneFloor_NRM.png in Resources */,
 				D33D522F200C52A400061A44 /* LaunchScreen.storyboard in Resources */,
 				E3B702A82018F3BE00E43132 /* fragment3.glsl in Resources */,
 				D3013A2A200F2899009BF665 /* texture.jpg in Resources */,
+				D35EFB6F20197DB800F90FC7 /* squarepants.jpg in Resources */,
 				D3BFBEE8200DF59F0065BE21 /* fragment1.glsl in Resources */,
 				D33D522C200C52A400061A44 /* Assets.xcassets in Resources */,
 				D3BFBEDA200C84EC0065BE21 /* vertex.glsl in Resources */,

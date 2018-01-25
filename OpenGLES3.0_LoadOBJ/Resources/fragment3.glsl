@@ -37,16 +37,16 @@ uniform bool useProjector;
 
 void main(void)
 {
-    vec4 worldVectexPosition = modelMatrix * vec4(fragPosition, 1.0);
+    vec4 worldVertexPosition = modelMatrix * vec4(fragPosition, 1.0);
     vec3 normalizedLightDirection = normalize(-light.direction);
     vec3 transformedNormal = normalize((normalMatrix * vec4(fragNormal, 1.0)).xyz);
-    vec3 transformedTangent = normalize((normalMatrix * vec4(fragTangen, 1.0)).xyz);
+    vec3 transformedTangent = normalize((normalMatrix * vec4(fragTangent, 1.0)).xyz);
     vec3 transformedBitangent = normalize((normalMatrix * vec4(fragBitangent, 1.0)).xyz);
-    vec3 TBN = mat3(transformedTangent,
+    mat3 TBN = mat3(transformedTangent,
                     transformedBitangent,
                     transformedNormal);
     if (useNormalMap) {
-        vec3 normalFromMap = (texture2D(normalMap, fragUV).rgb * 2/0  - 1.0);
+        vec3 normalFromMap = (texture2D(normalMap, fragUV).rgb * 2.0  - 1.0);
         transformedNormal = TBN * normalFromMap;
     }
     
