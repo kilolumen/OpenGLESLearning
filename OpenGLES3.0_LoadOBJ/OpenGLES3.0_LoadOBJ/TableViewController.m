@@ -12,6 +12,7 @@
 #import "normalMapViewController.h"
 #import "textureShadowViewController.h"
 #import "shadowViewController.h"
+#import "CubeMapViewController.h"
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSArray *arrItems;
@@ -26,7 +27,8 @@
                   @"hightLevellumin",
                   @"normalMap",
                   @"textureShadow",
-                  @"shadow"];
+                  @"shadow",
+                  @"CubeMap"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,6 +85,9 @@
             break;
         case 4:
             vc = [[shadowViewController alloc] init];
+            break;
+        case 5:
+            vc = [[CubeMapViewController alloc] init];
             break;
     }
     

@@ -14,6 +14,16 @@
 		D3013A29200F2899009BF665 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = D3013A27200F2899009BF665 /* normal.png */; };
 		D3013A2A200F2899009BF665 /* texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3013A28200F2899009BF665 /* texture.jpg */; };
 		D3013A2C200F28E9009BF665 /* vertex2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3013A2B200F28E9009BF665 /* vertex2.glsl */; };
+		D3119FA92021A98F00FDE0C2 /* CubeMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3119FA82021A98F00FDE0C2 /* CubeMapViewController.m */; };
+		D3119FB02021B75A00FDE0C2 /* cube-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3119FAA2021B75900FDE0C2 /* cube-2.jpg */; };
+		D3119FB12021B75A00FDE0C2 /* cube-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3119FAB2021B75900FDE0C2 /* cube-5.jpg */; };
+		D3119FB22021B75A00FDE0C2 /* cube-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3119FAC2021B75900FDE0C2 /* cube-1.jpg */; };
+		D3119FB32021B75A00FDE0C2 /* cube-6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3119FAD2021B75A00FDE0C2 /* cube-6.jpg */; };
+		D3119FB42021B75A00FDE0C2 /* cube-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3119FAE2021B75A00FDE0C2 /* cube-3.jpg */; };
+		D3119FB52021B75A00FDE0C2 /* cube-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3119FAF2021B75A00FDE0C2 /* cube-4.jpg */; };
+		D3119FB72021B78E00FDE0C2 /* smoothMonkey.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3119FB62021B78E00FDE0C2 /* smoothMonkey.obj */; };
+		D3119FB92021C37500FDE0C2 /* fragment4.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3119FB82021C37500FDE0C2 /* fragment4.glsl */; };
+		D3119FBB2021CE2900FDE0C2 /* smoothMonkey.mtl in Resources */ = {isa = PBXBuildFile; fileRef = D3119FBA2021CE2800FDE0C2 /* smoothMonkey.mtl */; };
 		D33054B82019B2B700C2FBFD /* frag_shadowmap.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */; };
 		D33D5224200C52A400061A44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5223200C52A400061A44 /* AppDelegate.m */; };
 		D33D5227200C52A400061A44 /* LoadOBJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5226200C52A400061A44 /* LoadOBJViewController.m */; };
@@ -74,6 +84,17 @@
 		D3013A27200F2899009BF665 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
 		D3013A28200F2899009BF665 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
 		D3013A2B200F28E9009BF665 /* vertex2.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex2.glsl; sourceTree = "<group>"; };
+		D3119FA72021A98F00FDE0C2 /* CubeMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CubeMapViewController.h; sourceTree = "<group>"; };
+		D3119FA82021A98F00FDE0C2 /* CubeMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CubeMapViewController.m; sourceTree = "<group>"; };
+		D3119FAA2021B75900FDE0C2 /* cube-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cube-2.jpg"; sourceTree = "<group>"; };
+		D3119FAB2021B75900FDE0C2 /* cube-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cube-5.jpg"; sourceTree = "<group>"; };
+		D3119FAC2021B75900FDE0C2 /* cube-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cube-1.jpg"; sourceTree = "<group>"; };
+		D3119FAD2021B75A00FDE0C2 /* cube-6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cube-6.jpg"; sourceTree = "<group>"; };
+		D3119FAE2021B75A00FDE0C2 /* cube-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cube-3.jpg"; sourceTree = "<group>"; };
+		D3119FAF2021B75A00FDE0C2 /* cube-4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cube-4.jpg"; sourceTree = "<group>"; };
+		D3119FB62021B78E00FDE0C2 /* smoothMonkey.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smoothMonkey.obj; sourceTree = "<group>"; };
+		D3119FB82021C37500FDE0C2 /* fragment4.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment4.glsl; sourceTree = "<group>"; };
+		D3119FBA2021CE2800FDE0C2 /* smoothMonkey.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smoothMonkey.mtl; sourceTree = "<group>"; };
 		D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = frag_shadowmap.glsl; sourceTree = "<group>"; };
 		D33D521F200C52A400061A44 /* OpenGLES3.0_LoadOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLES3.0_LoadOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33D5222200C52A400061A44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -189,6 +210,8 @@
 				D35EFB6A2018C6A800F90FC7 /* textureShadowViewController.m */,
 				D3D206B5201983F70037FE1C /* shadowViewController.h */,
 				D3D206B6201983F70037FE1C /* shadowViewController.m */,
+				D3119FA72021A98F00FDE0C2 /* CubeMapViewController.h */,
+				D3119FA82021A98F00FDE0C2 /* CubeMapViewController.m */,
 				D3BFBEE0200DE2040065BE21 /* TableViewController.h */,
 				D3BFBEE1200DE2040065BE21 /* TableViewController.m */,
 				D33D5228200C52A400061A44 /* Main.storyboard */,
@@ -240,6 +263,14 @@
 		D33D5266200C835200061A44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3119FBA2021CE2800FDE0C2 /* smoothMonkey.mtl */,
+				D3119FB62021B78E00FDE0C2 /* smoothMonkey.obj */,
+				D3119FAC2021B75900FDE0C2 /* cube-1.jpg */,
+				D3119FAA2021B75900FDE0C2 /* cube-2.jpg */,
+				D3119FAE2021B75A00FDE0C2 /* cube-3.jpg */,
+				D3119FAF2021B75A00FDE0C2 /* cube-4.jpg */,
+				D3119FAB2021B75900FDE0C2 /* cube-5.jpg */,
+				D3119FAD2021B75A00FDE0C2 /* cube-6.jpg */,
 				D35EFB6C20197DB800F90FC7 /* squarepants.jpg */,
 				D35EFB6D20197DB800F90FC7 /* stoneFloor_NRM.png */,
 				D35EFB6E20197DB800F90FC7 /* stoneFloor.jpg */,
@@ -253,6 +284,7 @@
 				D3BFBED6200C84EC0065BE21 /* fragment.glsl */,
 				D3BFBEE7200DF59F0065BE21 /* fragment1.glsl */,
 				E3B702A72018F3BE00E43132 /* fragment3.glsl */,
+				D3119FB82021C37500FDE0C2 /* fragment4.glsl */,
 				D3BFBED7200C84EC0065BE21 /* vertex.glsl */,
 				D3465A1520108504003E3445 /* frag_framebuffer_plane.glsl */,
 				D3D206B820198BB20037FE1C /* vertexShadow.glsl */,
@@ -371,14 +403,23 @@
 				D3BFBEDC200C88F20065BE21 /* sphere.obj in Resources */,
 				D3BFBED9200C84EC0065BE21 /* fragment.glsl in Resources */,
 				D35EFB7120197DB800F90FC7 /* stoneFloor.jpg in Resources */,
+				D3119FB02021B75A00FDE0C2 /* cube-2.jpg in Resources */,
 				D35EFB7020197DB800F90FC7 /* stoneFloor_NRM.png in Resources */,
 				D33D522F200C52A400061A44 /* LaunchScreen.storyboard in Resources */,
+				D3119FBB2021CE2900FDE0C2 /* smoothMonkey.mtl in Resources */,
+				D3119FB72021B78E00FDE0C2 /* smoothMonkey.obj in Resources */,
+				D3119FB42021B75A00FDE0C2 /* cube-3.jpg in Resources */,
+				D3119FB22021B75A00FDE0C2 /* cube-1.jpg in Resources */,
+				D3119FB92021C37500FDE0C2 /* fragment4.glsl in Resources */,
+				D3119FB32021B75A00FDE0C2 /* cube-6.jpg in Resources */,
+				D3119FB52021B75A00FDE0C2 /* cube-4.jpg in Resources */,
 				E3B702A82018F3BE00E43132 /* fragment3.glsl in Resources */,
 				D3D206B920198BB20037FE1C /* vertexShadow.glsl in Resources */,
 				D3013A2A200F2899009BF665 /* texture.jpg in Resources */,
 				D3D206BB20198BC40037FE1C /* fragmentShadow.glsl in Resources */,
 				D35EFB6F20197DB800F90FC7 /* squarepants.jpg in Resources */,
 				D3BFBEE8200DF59F0065BE21 /* fragment1.glsl in Resources */,
+				D3119FB12021B75A00FDE0C2 /* cube-5.jpg in Resources */,
 				D33054B82019B2B700C2FBFD /* frag_shadowmap.glsl in Resources */,
 				D33D522C200C52A400061A44 /* Assets.xcassets in Resources */,
 				D3BFBEDA200C84EC0065BE21 /* vertex.glsl in Resources */,
@@ -427,6 +468,7 @@
 				D35EFB6B2018C6A800F90FC7 /* textureShadowViewController.m in Sources */,
 				D3465A1420107B7F003E3445 /* Plane.m in Sources */,
 				D33D5224200C52A400061A44 /* AppDelegate.m in Sources */,
+				D3119FA92021A98F00FDE0C2 /* CubeMapViewController.m in Sources */,
 				D33D525D200C542600061A44 /* GLObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
