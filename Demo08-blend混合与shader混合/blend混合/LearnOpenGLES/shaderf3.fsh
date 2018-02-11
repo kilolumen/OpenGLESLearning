@@ -1,5 +1,5 @@
 precision highp float;
-
+lowp
 uniform sampler2D Texture0;
 
 uniform vec2 texSize;
