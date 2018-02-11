@@ -24,6 +24,23 @@
 		D3119FB72021B78E00FDE0C2 /* smoothMonkey.obj in Resources */ = {isa = PBXBuildFile; fileRef = D3119FB62021B78E00FDE0C2 /* smoothMonkey.obj */; };
 		D3119FB92021C37500FDE0C2 /* fragment4.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3119FB82021C37500FDE0C2 /* fragment4.glsl */; };
 		D3119FBB2021CE2900FDE0C2 /* smoothMonkey.mtl in Resources */ = {isa = PBXBuildFile; fileRef = D3119FBA2021CE2800FDE0C2 /* smoothMonkey.mtl */; };
+		D3186206202C253300E608D5 /* SkyBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3186205202C253300E608D5 /* SkyBoxViewController.m */; };
+		D3186209202C259600E608D5 /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = D3186208202C259600E608D5 /* Cube.m */; };
+		D318620C202C2A5B00E608D5 /* SkyBox.m in Sources */ = {isa = PBXBuildFile; fileRef = D318620B202C2A5B00E608D5 /* SkyBox.m */; };
+		D318620F202C2BD200E608D5 /* Terrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D318620E202C2BD200E608D5 /* Terrain.m */; };
+		D3186211202C4CBC00E608D5 /* frag_skybox.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3186210202C4CBC00E608D5 /* frag_skybox.glsl */; };
+		D3186213202C4D5E00E608D5 /* frag_terrain.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3186212202C4D5E00E608D5 /* frag_terrain.glsl */; };
+		D3186217202C4E0300E608D5 /* terrain_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3186214202C4E0300E608D5 /* terrain_01.jpg */; };
+		D3186218202C4E0300E608D5 /* dirt_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3186215202C4E0300E608D5 /* dirt_01.jpg */; };
+		D3186219202C4E0300E608D5 /* grass_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3186216202C4E0300E608D5 /* grass_01.jpg */; };
+		D3186222202C4F7400E608D5 /* cube-1.tga in Resources */ = {isa = PBXBuildFile; fileRef = D318621C202C4F7300E608D5 /* cube-1.tga */; };
+		D3186223202C4F7400E608D5 /* cube-2.tga in Resources */ = {isa = PBXBuildFile; fileRef = D318621D202C4F7300E608D5 /* cube-2.tga */; };
+		D3186224202C4F7400E608D5 /* cube-3.tga in Resources */ = {isa = PBXBuildFile; fileRef = D318621E202C4F7300E608D5 /* cube-3.tga */; };
+		D3186225202C4F7400E608D5 /* cube-4.tga in Resources */ = {isa = PBXBuildFile; fileRef = D318621F202C4F7300E608D5 /* cube-4.tga */; };
+		D3186226202C4F7400E608D5 /* cube-6.tga in Resources */ = {isa = PBXBuildFile; fileRef = D3186220202C4F7300E608D5 /* cube-6.tga */; };
+		D3186227202C4F7400E608D5 /* cube-5.tga in Resources */ = {isa = PBXBuildFile; fileRef = D3186221202C4F7300E608D5 /* cube-5.tga */; };
+		D31A4CDF20273D3E0088AF2F /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = D31A4CDE20273D3E0088AF2F /* Camera.m */; };
+		D31A4CE220273D580088AF2F /* Mirror.m in Sources */ = {isa = PBXBuildFile; fileRef = D31A4CE120273D580088AF2F /* Mirror.m */; };
 		D33054B82019B2B700C2FBFD /* frag_shadowmap.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */; };
 		D33D5224200C52A400061A44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5223200C52A400061A44 /* AppDelegate.m */; };
 		D33D5227200C52A400061A44 /* LoadOBJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D5226200C52A400061A44 /* LoadOBJViewController.m */; };
@@ -95,6 +112,29 @@
 		D3119FB62021B78E00FDE0C2 /* smoothMonkey.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smoothMonkey.obj; sourceTree = "<group>"; };
 		D3119FB82021C37500FDE0C2 /* fragment4.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment4.glsl; sourceTree = "<group>"; };
 		D3119FBA2021CE2800FDE0C2 /* smoothMonkey.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = smoothMonkey.mtl; sourceTree = "<group>"; };
+		D3186204202C253300E608D5 /* SkyBoxViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyBoxViewController.h; sourceTree = "<group>"; };
+		D3186205202C253300E608D5 /* SkyBoxViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkyBoxViewController.m; sourceTree = "<group>"; };
+		D3186207202C259600E608D5 /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		D3186208202C259600E608D5 /* Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
+		D318620A202C2A5B00E608D5 /* SkyBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SkyBox.h; sourceTree = "<group>"; };
+		D318620B202C2A5B00E608D5 /* SkyBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkyBox.m; sourceTree = "<group>"; };
+		D318620D202C2BD200E608D5 /* Terrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Terrain.h; sourceTree = "<group>"; };
+		D318620E202C2BD200E608D5 /* Terrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Terrain.m; sourceTree = "<group>"; };
+		D3186210202C4CBC00E608D5 /* frag_skybox.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = frag_skybox.glsl; sourceTree = "<group>"; };
+		D3186212202C4D5E00E608D5 /* frag_terrain.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = frag_terrain.glsl; sourceTree = "<group>"; };
+		D3186214202C4E0300E608D5 /* terrain_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = terrain_01.jpg; sourceTree = "<group>"; };
+		D3186215202C4E0300E608D5 /* dirt_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dirt_01.jpg; sourceTree = "<group>"; };
+		D3186216202C4E0300E608D5 /* grass_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_01.jpg; sourceTree = "<group>"; };
+		D318621C202C4F7300E608D5 /* cube-1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-1.tga"; sourceTree = "<group>"; };
+		D318621D202C4F7300E608D5 /* cube-2.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-2.tga"; sourceTree = "<group>"; };
+		D318621E202C4F7300E608D5 /* cube-3.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-3.tga"; sourceTree = "<group>"; };
+		D318621F202C4F7300E608D5 /* cube-4.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-4.tga"; sourceTree = "<group>"; };
+		D3186220202C4F7300E608D5 /* cube-6.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-6.tga"; sourceTree = "<group>"; };
+		D3186221202C4F7300E608D5 /* cube-5.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-5.tga"; sourceTree = "<group>"; };
+		D31A4CDD20273D3E0088AF2F /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		D31A4CDE20273D3E0088AF2F /* Camera.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
+		D31A4CE020273D580088AF2F /* Mirror.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mirror.h; sourceTree = "<group>"; };
+		D31A4CE120273D580088AF2F /* Mirror.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mirror.m; sourceTree = "<group>"; };
 		D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = frag_shadowmap.glsl; sourceTree = "<group>"; };
 		D33D521F200C52A400061A44 /* OpenGLES3.0_LoadOBJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLES3.0_LoadOBJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33D5222200C52A400061A44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -212,6 +252,8 @@
 				D3D206B6201983F70037FE1C /* shadowViewController.m */,
 				D3119FA72021A98F00FDE0C2 /* CubeMapViewController.h */,
 				D3119FA82021A98F00FDE0C2 /* CubeMapViewController.m */,
+				D3186204202C253300E608D5 /* SkyBoxViewController.h */,
+				D3186205202C253300E608D5 /* SkyBoxViewController.m */,
 				D3BFBEE0200DE2040065BE21 /* TableViewController.h */,
 				D3BFBEE1200DE2040065BE21 /* TableViewController.m */,
 				D33D5228200C52A400061A44 /* Main.storyboard */,
@@ -256,6 +298,16 @@
 				D3013A1E200F1723009BF665 /* WaveFrountOBJ2.m */,
 				D3465A1220107B7F003E3445 /* Plane.h */,
 				D3465A1320107B7F003E3445 /* Plane.m */,
+				D31A4CDD20273D3E0088AF2F /* Camera.h */,
+				D31A4CDE20273D3E0088AF2F /* Camera.m */,
+				D31A4CE020273D580088AF2F /* Mirror.h */,
+				D31A4CE120273D580088AF2F /* Mirror.m */,
+				D3186207202C259600E608D5 /* Cube.h */,
+				D3186208202C259600E608D5 /* Cube.m */,
+				D318620A202C2A5B00E608D5 /* SkyBox.h */,
+				D318620B202C2A5B00E608D5 /* SkyBox.m */,
+				D318620D202C2BD200E608D5 /* Terrain.h */,
+				D318620E202C2BD200E608D5 /* Terrain.m */,
 			);
 			path = GL;
 			sourceTree = "<group>";
@@ -263,6 +315,15 @@
 		D33D5266200C835200061A44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D318621C202C4F7300E608D5 /* cube-1.tga */,
+				D318621D202C4F7300E608D5 /* cube-2.tga */,
+				D318621E202C4F7300E608D5 /* cube-3.tga */,
+				D318621F202C4F7300E608D5 /* cube-4.tga */,
+				D3186221202C4F7300E608D5 /* cube-5.tga */,
+				D3186220202C4F7300E608D5 /* cube-6.tga */,
+				D3186215202C4E0300E608D5 /* dirt_01.jpg */,
+				D3186216202C4E0300E608D5 /* grass_01.jpg */,
+				D3186214202C4E0300E608D5 /* terrain_01.jpg */,
 				D3119FBA2021CE2800FDE0C2 /* smoothMonkey.mtl */,
 				D3119FB62021B78E00FDE0C2 /* smoothMonkey.obj */,
 				D3119FAC2021B75900FDE0C2 /* cube-1.jpg */,
@@ -290,6 +351,8 @@
 				D3D206B820198BB20037FE1C /* vertexShadow.glsl */,
 				D3D206BA20198BC40037FE1C /* fragmentShadow.glsl */,
 				D33054B72019B2B700C2FBFD /* frag_shadowmap.glsl */,
+				D3186210202C4CBC00E608D5 /* frag_skybox.glsl */,
+				D3186212202C4D5E00E608D5 /* frag_terrain.glsl */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -405,31 +468,42 @@
 				D35EFB7120197DB800F90FC7 /* stoneFloor.jpg in Resources */,
 				D3119FB02021B75A00FDE0C2 /* cube-2.jpg in Resources */,
 				D35EFB7020197DB800F90FC7 /* stoneFloor_NRM.png in Resources */,
+				D3186213202C4D5E00E608D5 /* frag_terrain.glsl in Resources */,
 				D33D522F200C52A400061A44 /* LaunchScreen.storyboard in Resources */,
+				D3186223202C4F7400E608D5 /* cube-2.tga in Resources */,
 				D3119FBB2021CE2900FDE0C2 /* smoothMonkey.mtl in Resources */,
 				D3119FB72021B78E00FDE0C2 /* smoothMonkey.obj in Resources */,
 				D3119FB42021B75A00FDE0C2 /* cube-3.jpg in Resources */,
 				D3119FB22021B75A00FDE0C2 /* cube-1.jpg in Resources */,
+				D3186219202C4E0300E608D5 /* grass_01.jpg in Resources */,
 				D3119FB92021C37500FDE0C2 /* fragment4.glsl in Resources */,
 				D3119FB32021B75A00FDE0C2 /* cube-6.jpg in Resources */,
 				D3119FB52021B75A00FDE0C2 /* cube-4.jpg in Resources */,
 				E3B702A82018F3BE00E43132 /* fragment3.glsl in Resources */,
+				D3186218202C4E0300E608D5 /* dirt_01.jpg in Resources */,
 				D3D206B920198BB20037FE1C /* vertexShadow.glsl in Resources */,
 				D3013A2A200F2899009BF665 /* texture.jpg in Resources */,
 				D3D206BB20198BC40037FE1C /* fragmentShadow.glsl in Resources */,
 				D35EFB6F20197DB800F90FC7 /* squarepants.jpg in Resources */,
+				D3186226202C4F7400E608D5 /* cube-6.tga in Resources */,
 				D3BFBEE8200DF59F0065BE21 /* fragment1.glsl in Resources */,
 				D3119FB12021B75A00FDE0C2 /* cube-5.jpg in Resources */,
+				D3186217202C4E0300E608D5 /* terrain_01.jpg in Resources */,
 				D33054B82019B2B700C2FBFD /* frag_shadowmap.glsl in Resources */,
 				D33D522C200C52A400061A44 /* Assets.xcassets in Resources */,
+				D3186211202C4CBC00E608D5 /* frag_skybox.glsl in Resources */,
 				D3BFBEDA200C84EC0065BE21 /* vertex.glsl in Resources */,
+				D3186227202C4F7400E608D5 /* cube-5.tga in Resources */,
 				D3013A24200F280C009BF665 /* cube.obj in Resources */,
+				D3186222202C4F7400E608D5 /* cube-1.tga in Resources */,
+				D3186224202C4F7400E608D5 /* cube-3.tga in Resources */,
 				D3BFBED8200C84EC0065BE21 /* car.obj in Resources */,
 				D3013A2C200F28E9009BF665 /* vertex2.glsl in Resources */,
 				D3465A1620108504003E3445 /* frag_framebuffer_plane.glsl in Resources */,
 				D3013A26200F285A009BF665 /* fragment2.glsl in Resources */,
 				D33D522A200C52A400061A44 /* Main.storyboard in Resources */,
 				D3013A29200F2899009BF665 /* normal.png in Resources */,
+				D3186225202C4F7400E608D5 /* cube-4.tga in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,11 +528,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3186209202C259600E608D5 /* Cube.m in Sources */,
 				D33D5265200C726800061A44 /* WaveFrontOBJ.m in Sources */,
 				D3013A1F200F1723009BF665 /* WaveFrountOBJ2.m in Sources */,
+				D31A4CE220273D580088AF2F /* Mirror.m in Sources */,
 				D33D5227200C52A400061A44 /* LoadOBJViewController.m in Sources */,
 				D33D5232200C52A400061A44 /* main.m in Sources */,
 				D33D525A200C541700061A44 /* GLContext.m in Sources */,
+				D3186206202C253300E608D5 /* SkyBoxViewController.m in Sources */,
 				D3BFBEE2200DE2040065BE21 /* TableViewController.m in Sources */,
 				D3013A22200F2592009BF665 /* normalMapViewController.m in Sources */,
 				D33D5260200C544B00061A44 /* GLGeometry.m in Sources */,
@@ -468,8 +545,11 @@
 				D35EFB6B2018C6A800F90FC7 /* textureShadowViewController.m in Sources */,
 				D3465A1420107B7F003E3445 /* Plane.m in Sources */,
 				D33D5224200C52A400061A44 /* AppDelegate.m in Sources */,
+				D31A4CDF20273D3E0088AF2F /* Camera.m in Sources */,
 				D3119FA92021A98F00FDE0C2 /* CubeMapViewController.m in Sources */,
 				D33D525D200C542600061A44 /* GLObject.m in Sources */,
+				D318620C202C2A5B00E608D5 /* SkyBox.m in Sources */,
+				D318620F202C2BD200E608D5 /* Terrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

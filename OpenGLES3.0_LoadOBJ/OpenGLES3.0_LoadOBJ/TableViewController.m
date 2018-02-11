@@ -13,6 +13,7 @@
 #import "textureShadowViewController.h"
 #import "shadowViewController.h"
 #import "CubeMapViewController.h"
+#import "SkyBoxViewController.h"
 
 @interface TableViewController ()
 @property (nonatomic, strong) NSArray *arrItems;
@@ -28,7 +29,8 @@
                   @"normalMap",
                   @"textureShadow",
                   @"shadow",
-                  @"CubeMap"];
+                  @"CubeMap",
+                  @"sky"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,6 +90,9 @@
             break;
         case 5:
             vc = [[CubeMapViewController alloc] init];
+            break;
+        case 6:
+            vc = [[SkyBoxViewController alloc] init];
             break;
     }
     
