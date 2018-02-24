@@ -20,6 +20,7 @@
 		D349B95020402C8F00C24EB1 /* STLaunchAdConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B94F20402C8F00C24EB1 /* STLaunchAdConfiguration.m */; };
 		D349B95320402CA800C24EB1 /* STLaunchAdConst.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95220402CA800C24EB1 /* STLaunchAdConst.m */; };
 		D349B95620402CCF00C24EB1 /* STLaunchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95520402CCF00C24EB1 /* STLaunchImageView.m */; };
+		D349B95920410F7A00C24EB1 /* STLaunchAdDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95820410F7A00C24EB1 /* STLaunchAdDownloader.m */; };
 		E349AF3520407A5D005DFB76 /* STLaunchAdCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E349AF3420407A5D005DFB76 /* STLaunchAdCache.m */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,8 @@
 		D349B95220402CA800C24EB1 /* STLaunchAdConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdConst.m; sourceTree = "<group>"; };
 		D349B95420402CCF00C24EB1 /* STLaunchImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchImageView.h; sourceTree = "<group>"; };
 		D349B95520402CCF00C24EB1 /* STLaunchImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchImageView.m; sourceTree = "<group>"; };
+		D349B95720410F7A00C24EB1 /* STLaunchAdDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchAdDownloader.h; sourceTree = "<group>"; };
+		D349B95820410F7A00C24EB1 /* STLaunchAdDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdDownloader.m; sourceTree = "<group>"; };
 		E349AF3320407A5D005DFB76 /* STLaunchAdCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchAdCache.h; sourceTree = "<group>"; };
 		E349AF3420407A5D005DFB76 /* STLaunchAdCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +170,8 @@
 				D349B95520402CCF00C24EB1 /* STLaunchImageView.m */,
 				E349AF3320407A5D005DFB76 /* STLaunchAdCache.h */,
 				E349AF3420407A5D005DFB76 /* STLaunchAdCache.m */,
+				D349B95720410F7A00C24EB1 /* STLaunchAdDownloader.h */,
+				D349B95820410F7A00C24EB1 /* STLaunchAdDownloader.m */,
 			);
 			path = STLaunchAd;
 			sourceTree = "<group>";
@@ -316,6 +321,7 @@
 				D349B95020402C8F00C24EB1 /* STLaunchAdConfiguration.m in Sources */,
 				D349B94D20402C6B00C24EB1 /* STLaunchAd.m in Sources */,
 				D349B91920402B2300C24EB1 /* ViewController.m in Sources */,
+				D349B95920410F7A00C24EB1 /* STLaunchAdDownloader.m in Sources */,
 				D349B92420402B2400C24EB1 /* main.m in Sources */,
 				E349AF3520407A5D005DFB76 /* STLaunchAdCache.m in Sources */,
 				D349B95620402CCF00C24EB1 /* STLaunchImageView.m in Sources */,

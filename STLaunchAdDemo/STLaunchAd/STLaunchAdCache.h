@@ -37,7 +37,7 @@ typedef void(^SaveCompletionBlock) (BOOL result, NSURL *URL);
                         completed:(nullable SaveCompletionBlock)completedBlock;
 + (NSString *)videoPathWithURL:(NSURL *)url;
 + (NSString *)videoPathWithFileName:(NSString *)videoFileName;
-+ (void)async_saveImageURL:(NSURL *)url;
++ (void)async_saveImageURL:(NSString *)url;
 + (NSString *)getCacheImageUrl;
 + (void)async_saveVideoUrl:(NSString *)url;
 + (NSString *)stLaunchAdCachePath;
@@ -46,7 +46,7 @@ typedef void(^SaveCompletionBlock) (BOOL result, NSURL *URL);
 + (void)clearDiskCacheWithExceptImageUrlArray:(NSArray<NSURL *>*)exceptImageUrlArray;
 + (void)clearDiskCacheWithVideoUrlArray:(NSArray<NSURL *>*)videoArray;
 + (void)clearDiskCacheWithExceptVideoUrlArray:(NSArray<NSURL *>*)exceptVideoArray;
-+ (void)diskCacheSize;
++ (float)diskCacheSize;
 + (NSString *)md5String:(NSString *)string;
 @end
 NS_ASSUME_NONNULL_END
