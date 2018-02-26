@@ -151,6 +151,11 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:STCacheImageUrlStringKey];
 }
 
++ (NSString *)getCacheVideoUrl
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:STCacheVideoUrlStringkey];
+}
+
 + (void)async_saveVideoUrl:(NSString *)url
 {
     if (nil == url) return;

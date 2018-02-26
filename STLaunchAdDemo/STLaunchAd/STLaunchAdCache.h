@@ -39,6 +39,7 @@ typedef void(^SaveCompletionBlock) (BOOL result, NSURL *URL);
 + (NSString *)videoPathWithFileName:(NSString *)videoFileName;
 + (void)async_saveImageURL:(NSString *)url;
 + (NSString *)getCacheImageUrl;
++ (NSString *)getCacheVideoUrl;
 + (void)async_saveVideoUrl:(NSString *)url;
 + (NSString *)stLaunchAdCachePath;
 + (void)clearDiskCache;

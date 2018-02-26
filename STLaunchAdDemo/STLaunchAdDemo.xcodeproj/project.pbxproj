@@ -21,6 +21,13 @@
 		D349B95320402CA800C24EB1 /* STLaunchAdConst.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95220402CA800C24EB1 /* STLaunchAdConst.m */; };
 		D349B95620402CCF00C24EB1 /* STLaunchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95520402CCF00C24EB1 /* STLaunchImageView.m */; };
 		D349B95920410F7A00C24EB1 /* STLaunchAdDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95820410F7A00C24EB1 /* STLaunchAdDownloader.m */; };
+		D349B95F204133A800C24EB1 /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95D204133A800C24EB1 /* FLAnimatedImageView.m */; };
+		D349B960204133A800C24EB1 /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B95E204133A800C24EB1 /* FLAnimatedImage.m */; };
+		D349B9632041342F00C24EB1 /* STLaunchAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B9622041342F00C24EB1 /* STLaunchAdView.m */; };
+		D349B9662041564D00C24EB1 /* STLaunchAdImageView+STLaunchAdCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B9652041564D00C24EB1 /* STLaunchAdImageView+STLaunchAdCache.m */; };
+		D349B9692041568400C24EB1 /* STLaunchAdImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B9682041568400C24EB1 /* STLaunchAdImageManager.m */; };
+		D349B96C2041692100C24EB1 /* STLaunchAdController.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B96B2041692100C24EB1 /* STLaunchAdController.m */; };
+		D349B96F20416A2D00C24EB1 /* XHLaunchAdButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D349B96D20416A2C00C24EB1 /* XHLaunchAdButton.m */; };
 		E349AF3520407A5D005DFB76 /* STLaunchAdCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E349AF3420407A5D005DFB76 /* STLaunchAdCache.m */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +77,20 @@
 		D349B95520402CCF00C24EB1 /* STLaunchImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchImageView.m; sourceTree = "<group>"; };
 		D349B95720410F7A00C24EB1 /* STLaunchAdDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchAdDownloader.h; sourceTree = "<group>"; };
 		D349B95820410F7A00C24EB1 /* STLaunchAdDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdDownloader.m; sourceTree = "<group>"; };
+		D349B95B204133A800C24EB1 /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
+		D349B95C204133A800C24EB1 /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
+		D349B95D204133A800C24EB1 /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
+		D349B95E204133A800C24EB1 /* FLAnimatedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImage.m; sourceTree = "<group>"; };
+		D349B9612041342F00C24EB1 /* STLaunchAdView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchAdView.h; sourceTree = "<group>"; };
+		D349B9622041342F00C24EB1 /* STLaunchAdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdView.m; sourceTree = "<group>"; };
+		D349B9642041564D00C24EB1 /* STLaunchAdImageView+STLaunchAdCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "STLaunchAdImageView+STLaunchAdCache.h"; sourceTree = "<group>"; };
+		D349B9652041564D00C24EB1 /* STLaunchAdImageView+STLaunchAdCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "STLaunchAdImageView+STLaunchAdCache.m"; sourceTree = "<group>"; };
+		D349B9672041568400C24EB1 /* STLaunchAdImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchAdImageManager.h; sourceTree = "<group>"; };
+		D349B9682041568400C24EB1 /* STLaunchAdImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdImageManager.m; sourceTree = "<group>"; };
+		D349B96A2041692100C24EB1 /* STLaunchAdController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchAdController.h; sourceTree = "<group>"; };
+		D349B96B2041692100C24EB1 /* STLaunchAdController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdController.m; sourceTree = "<group>"; };
+		D349B96D20416A2C00C24EB1 /* XHLaunchAdButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHLaunchAdButton.m; sourceTree = "<group>"; };
+		D349B96E20416A2C00C24EB1 /* XHLaunchAdButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHLaunchAdButton.h; sourceTree = "<group>"; };
 		E349AF3320407A5D005DFB76 /* STLaunchAdCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLaunchAdCache.h; sourceTree = "<group>"; };
 		E349AF3420407A5D005DFB76 /* STLaunchAdCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLaunchAdCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +181,7 @@
 		D349B94920402C0B00C24EB1 /* STLaunchAd */ = {
 			isa = PBXGroup;
 			children = (
+				D349B95A2041337800C24EB1 /* FLAnimationImage */,
 				D349B94B20402C6B00C24EB1 /* STLaunchAd.h */,
 				D349B94C20402C6B00C24EB1 /* STLaunchAd.m */,
 				D349B94E20402C8F00C24EB1 /* STLaunchAdConfiguration.h */,
@@ -172,6 +194,16 @@
 				E349AF3420407A5D005DFB76 /* STLaunchAdCache.m */,
 				D349B95720410F7A00C24EB1 /* STLaunchAdDownloader.h */,
 				D349B95820410F7A00C24EB1 /* STLaunchAdDownloader.m */,
+				D349B9612041342F00C24EB1 /* STLaunchAdView.h */,
+				D349B9622041342F00C24EB1 /* STLaunchAdView.m */,
+				D349B9642041564D00C24EB1 /* STLaunchAdImageView+STLaunchAdCache.h */,
+				D349B9652041564D00C24EB1 /* STLaunchAdImageView+STLaunchAdCache.m */,
+				D349B9672041568400C24EB1 /* STLaunchAdImageManager.h */,
+				D349B9682041568400C24EB1 /* STLaunchAdImageManager.m */,
+				D349B96A2041692100C24EB1 /* STLaunchAdController.h */,
+				D349B96B2041692100C24EB1 /* STLaunchAdController.m */,
+				D349B96E20416A2C00C24EB1 /* XHLaunchAdButton.h */,
+				D349B96D20416A2C00C24EB1 /* XHLaunchAdButton.m */,
 			);
 			path = STLaunchAd;
 			sourceTree = "<group>";
@@ -181,6 +213,17 @@
 			children = (
 			);
 			path = Class;
+			sourceTree = "<group>";
+		};
+		D349B95A2041337800C24EB1 /* FLAnimationImage */ = {
+			isa = PBXGroup;
+			children = (
+				D349B95B204133A800C24EB1 /* FLAnimatedImage.h */,
+				D349B95E204133A800C24EB1 /* FLAnimatedImage.m */,
+				D349B95C204133A800C24EB1 /* FLAnimatedImageView.h */,
+				D349B95D204133A800C24EB1 /* FLAnimatedImageView.m */,
+			);
+			path = FLAnimationImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +359,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D349B9692041568400C24EB1 /* STLaunchAdImageManager.m in Sources */,
 				D349B94820402BFA00C24EB1 /* STLaunchAdManager.m in Sources */,
+				D349B9662041564D00C24EB1 /* STLaunchAdImageView+STLaunchAdCache.m in Sources */,
 				D349B95320402CA800C24EB1 /* STLaunchAdConst.m in Sources */,
 				D349B95020402C8F00C24EB1 /* STLaunchAdConfiguration.m in Sources */,
 				D349B94D20402C6B00C24EB1 /* STLaunchAd.m in Sources */,
@@ -324,6 +369,11 @@
 				D349B95920410F7A00C24EB1 /* STLaunchAdDownloader.m in Sources */,
 				D349B92420402B2400C24EB1 /* main.m in Sources */,
 				E349AF3520407A5D005DFB76 /* STLaunchAdCache.m in Sources */,
+				D349B960204133A800C24EB1 /* FLAnimatedImage.m in Sources */,
+				D349B9632041342F00C24EB1 /* STLaunchAdView.m in Sources */,
+				D349B96C2041692100C24EB1 /* STLaunchAdController.m in Sources */,
+				D349B95F204133A800C24EB1 /* FLAnimatedImageView.m in Sources */,
+				D349B96F20416A2D00C24EB1 /* XHLaunchAdButton.m in Sources */,
 				D349B95620402CCF00C24EB1 /* STLaunchImageView.m in Sources */,
 				D349B91620402B2300C24EB1 /* AppDelegate.m in Sources */,
 			);
@@ -491,6 +541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G426QE9Z25;
 				INFOPLIST_FILE = STLaunchAdDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.beijing.STLaunchAdDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -505,6 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G426QE9Z25;
 				INFOPLIST_FILE = STLaunchAdDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.beijing.STLaunchAdDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

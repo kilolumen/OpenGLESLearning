@@ -17,3 +17,5 @@ NSString *const STLaunchAdDetailPageShowFinishNotification = @"STLaunchAdDetailP
 NSString *const STLaunchAdGIFImageCycleOnceFinishNotification = @"STLaunchAdGIFImageCycleOnceFinishNotification";
 NSString *const STLaunchAdVideoCyclyOnceFinishNotification = @"STLaunchAdVideoCyclyOnceFinishNotification";
 NSString *const STLaunchAdVideoPlayFailedNotification = @"STLaunchAdVideoPlayFailedNotification";
+
+BOOL STLaunchAdPrefersHomeIndicatorAutoHidden = NO;
