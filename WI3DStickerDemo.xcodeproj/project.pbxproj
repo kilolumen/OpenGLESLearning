@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		23F76CE239E5095A8C16FDCE /* libPods-WI3DStickerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D4520258035134227B8597 /* libPods-WI3DStickerDemo.a */; };
+		BA4189211FBBFFEC00AE040F /* GPUImageFramebuffer+Depth.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4189201FBBFFEC00AE040F /* GPUImageFramebuffer+Depth.m */; };
+		BA520FD31F5D1F9C009618C9 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BA520FD21F5D1F9C009618C9 /* libstdc++.tbd */; };
+		BACE2A6B1F5CF90400C232D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BACE2A6A1F5CF90400C232D1 /* LaunchScreen.storyboard */; };
+		BAE66A6A1F5CEF7200D1E249 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE66A691F5CEF7200D1E249 /* AppDelegate.m */; };
+		BAE66A6D1F5CEF7200D1E249 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE66A6C1F5CEF7200D1E249 /* ViewController.m */; };
+		BAE66A721F5CEF7200D1E249 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAE66A711F5CEF7200D1E249 /* Assets.xcassets */; };
+		BAE66A781F5CEF7200D1E249 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAE66A771F5CEF7200D1E249 /* main.m */; };
+		BAED6B631FB2AAF10099338F /* 3d_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAED6AD51FB2AAF10099338F /* 3d_sticker.bundle */; };
+		BAED6B641FB2AAF10099338F /* WISenseTime3DRender.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED6AD61FB2AAF10099338F /* WISenseTime3DRender.m */; };
+		BAED6B651FB2AAF10099338F /* WISenseTimeFaceDetectionAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED6ADA1FB2AAF10099338F /* WISenseTimeFaceDetectionAdaptor.m */; };
+		BAED6B661FB2AAF10099338F /* WISenseTimeFaceGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED6ADB1FB2AAF10099338F /* WISenseTimeFaceGroup.m */; };
+		BAED6B671FB2AAF10099338F /* WISenseTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BAED6ADE1FB2AAF10099338F /* WISenseTimeHelper.m */; };
+		D3A0A3071FBECFA200D7B71F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A0A3061FBECF8E00D7B71F /* Accelerate.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		69D4520258035134227B8597 /* libPods-WI3DStickerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WI3DStickerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8115B263777584D39CFB0B1A /* Pods-WI3DStickerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WI3DStickerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WI3DStickerDemo/Pods-WI3DStickerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		A980ED27B20B7F1C5187B57B /* Pods-WI3DStickerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WI3DStickerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WI3DStickerDemo/Pods-WI3DStickerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		BA41891F1FBBFFEC00AE040F /* GPUImageFramebuffer+Depth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GPUImageFramebuffer+Depth.h"; sourceTree = "<group>"; };
+		BA4189201FBBFFEC00AE040F /* GPUImageFramebuffer+Depth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GPUImageFramebuffer+Depth.m"; sourceTree = "<group>"; };
+		BA520FD21F5D1F9C009618C9 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		BACE2A6A1F5CF90400C232D1 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BAE66A651F5CEF7200D1E249 /* WI3DStickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WI3DStickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAE66A681F5CEF7200D1E249 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BAE66A691F5CEF7200D1E249 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BAE66A6B1F5CEF7200D1E249 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BAE66A6C1F5CEF7200D1E249 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BAE66A711F5CEF7200D1E249 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BAE66A761F5CEF7200D1E249 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAE66A771F5CEF7200D1E249 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BAED6AD41FB2AAF10099338F /* WISenseTime3DRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WISenseTime3DRender.h; sourceTree = "<group>"; };
+		BAED6AD51FB2AAF10099338F /* 3d_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = 3d_sticker.bundle; sourceTree = "<group>"; };
+		BAED6AD61FB2AAF10099338F /* WISenseTime3DRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WISenseTime3DRender.m; sourceTree = "<group>"; };
+		BAED6AD81FB2AAF10099338F /* WISenseTimeFaceConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WISenseTimeFaceConst.h; sourceTree = "<group>"; };
+		BAED6AD91FB2AAF10099338F /* WISenseTimeFaceGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WISenseTimeFaceGroup.h; sourceTree = "<group>"; };
+		BAED6ADA1FB2AAF10099338F /* WISenseTimeFaceDetectionAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WISenseTimeFaceDetectionAdaptor.m; sourceTree = "<group>"; };
+		BAED6ADB1FB2AAF10099338F /* WISenseTimeFaceGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WISenseTimeFaceGroup.m; sourceTree = "<group>"; };
+		BAED6ADC1FB2AAF10099338F /* WISenseTimeFaceDetectionAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WISenseTimeFaceDetectionAdaptor.h; sourceTree = "<group>"; };
+		BAED6ADE1FB2AAF10099338F /* WISenseTimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WISenseTimeHelper.m; sourceTree = "<group>"; };
+		BAED6ADF1FB2AAF10099338F /* WISenseTimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WISenseTimeHelper.h; sourceTree = "<group>"; };
+		D3A0A3061FBECF8E00D7B71F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BAE66A621F5CEF7200D1E249 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A0A3071FBECFA200D7B71F /* Accelerate.framework in Frameworks */,
+				BA520FD31F5D1F9C009618C9 /* libstdc++.tbd in Frameworks */,
+				23F76CE239E5095A8C16FDCE /* libPods-WI3DStickerDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6833C2F6512ED46CB3BCD1F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3A0A3061FBECF8E00D7B71F /* Accelerate.framework */,
+				BA520FD21F5D1F9C009618C9 /* libstdc++.tbd */,
+				69D4520258035134227B8597 /* libPods-WI3DStickerDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A832822392A8CBEE5C65D57C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A980ED27B20B7F1C5187B57B /* Pods-WI3DStickerDemo.debug.xcconfig */,
+				8115B263777584D39CFB0B1A /* Pods-WI3DStickerDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BA41891E1FBBFFEC00AE040F /* GPUImageHook */ = {
+			isa = PBXGroup;
+			children = (
+				BA41891F1FBBFFEC00AE040F /* GPUImageFramebuffer+Depth.h */,
+				BA4189201FBBFFEC00AE040F /* GPUImageFramebuffer+Depth.m */,
+			);
+			path = GPUImageHook;
+			sourceTree = "<group>";
+		};
+		BAE66A5C1F5CEF7200D1E249 = {
+			isa = PBXGroup;
+			children = (
+				BAE66A671F5CEF7200D1E249 /* WI3DStickerDemo */,
+				BAE66A661F5CEF7200D1E249 /* Products */,
+				A832822392A8CBEE5C65D57C /* Pods */,
+				6833C2F6512ED46CB3BCD1F5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BAE66A661F5CEF7200D1E249 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAE66A651F5CEF7200D1E249 /* WI3DStickerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAE66A671F5CEF7200D1E249 /* WI3DStickerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BAED6A011FB2AAF10099338F /* ImageSDK */,
+				BAE66A681F5CEF7200D1E249 /* AppDelegate.h */,
+				BAE66A691F5CEF7200D1E249 /* AppDelegate.m */,
+				BAE66A6B1F5CEF7200D1E249 /* ViewController.h */,
+				BAE66A6C1F5CEF7200D1E249 /* ViewController.m */,
+				BACE2A6A1F5CF90400C232D1 /* LaunchScreen.storyboard */,
+				BAE66A711F5CEF7200D1E249 /* Assets.xcassets */,
+				BAE66A761F5CEF7200D1E249 /* Info.plist */,
+				BAE66A771F5CEF7200D1E249 /* main.m */,
+			);
+			path = WI3DStickerDemo;
+			sourceTree = "<group>";
+		};
+		BAED6A011FB2AAF10099338F /* ImageSDK */ = {
+			isa = PBXGroup;
+			children = (
+				BA41891E1FBBFFEC00AE040F /* GPUImageHook */,
+				BAED6AD31FB2AAF10099338F /* Filter */,
+				BAED6AD71FB2AAF10099338F /* Face */,
+				BAED6ADD1FB2AAF10099338F /* Helper */,
+			);
+			path = ImageSDK;
+			sourceTree = "<group>";
+		};
+		BAED6AD31FB2AAF10099338F /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				BAED6AD51FB2AAF10099338F /* 3d_sticker.bundle */,
+				BAED6AD41FB2AAF10099338F /* WISenseTime3DRender.h */,
+				BAED6AD61FB2AAF10099338F /* WISenseTime3DRender.m */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		BAED6AD71FB2AAF10099338F /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				BAED6AD81FB2AAF10099338F /* WISenseTimeFaceConst.h */,
+				BAED6ADC1FB2AAF10099338F /* WISenseTimeFaceDetectionAdaptor.h */,
+				BAED6ADA1FB2AAF10099338F /* WISenseTimeFaceDetectionAdaptor.m */,
+				BAED6AD91FB2AAF10099338F /* WISenseTimeFaceGroup.h */,
+				BAED6ADB1FB2AAF10099338F /* WISenseTimeFaceGroup.m */,
+			);
+			path = Face;
+			sourceTree = "<group>";
+		};
+		BAED6ADD1FB2AAF10099338F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BAED6ADF1FB2AAF10099338F /* WISenseTimeHelper.h */,
+				BAED6ADE1FB2AAF10099338F /* WISenseTimeHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BAE66A641F5CEF7200D1E249 /* WI3DStickerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAE66A7B1F5CEF7200D1E249 /* Build configuration list for PBXNativeTarget "WI3DStickerDemo" */;
+			buildPhases = (
+				D85DBC3731851B3CC568C41C /* [CP] Check Pods Manifest.lock */,
+				BAE66A611F5CEF7200D1E249 /* Sources */,
+				BAE66A621F5CEF7200D1E249 /* Frameworks */,
+				BAE66A631F5CEF7200D1E249 /* Resources */,
+				9D2FDDCE545E6D4BE90D74BE /* [CP] Embed Pods Frameworks */,
+				F4684CBA3825912E328A62F7 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WI3DStickerDemo;
+			productName = WI3DStickerDemo;
+			productReference = BAE66A651F5CEF7200D1E249 /* WI3DStickerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BAE66A5D1F5CEF7200D1E249 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = ycpeng;
+				TargetAttributes = {
+					BAE66A641F5CEF7200D1E249 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BAE66A601F5CEF7200D1E249 /* Build configuration list for PBXProject "WI3DStickerDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BAE66A5C1F5CEF7200D1E249;
+			productRefGroup = BAE66A661F5CEF7200D1E249 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BAE66A641F5CEF7200D1E249 /* WI3DStickerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BAE66A631F5CEF7200D1E249 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAED6B631FB2AAF10099338F /* 3d_sticker.bundle in Resources */,
+				BACE2A6B1F5CF90400C232D1 /* LaunchScreen.storyboard in Resources */,
+				BAE66A721F5CEF7200D1E249 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D2FDDCE545E6D4BE90D74BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WI3DStickerDemo/Pods-WI3DStickerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D85DBC3731851B3CC568C41C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WI3DStickerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4684CBA3825912E328A62F7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WI3DStickerDemo/Pods-WI3DStickerDemo-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+				"${PODS_ROOT}/SenseTimeSDK/SenseTimeSDK/Classes/SenseTimeSDK/WeiboImageSDK.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WI3DStickerDemo/Pods-WI3DStickerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BAE66A611F5CEF7200D1E249 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAED6B651FB2AAF10099338F /* WISenseTimeFaceDetectionAdaptor.m in Sources */,
+				BAE66A6D1F5CEF7200D1E249 /* ViewController.m in Sources */,
+				BA4189211FBBFFEC00AE040F /* GPUImageFramebuffer+Depth.m in Sources */,
+				BAED6B671FB2AAF10099338F /* WISenseTimeHelper.m in Sources */,
+				BAED6B661FB2AAF10099338F /* WISenseTimeFaceGroup.m in Sources */,
+				BAE66A781F5CEF7200D1E249 /* main.m in Sources */,
+				BAED6B641FB2AAF10099338F /* WISenseTime3DRender.m in Sources */,
+				BAE66A6A1F5CEF7200D1E249 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BAE66A791F5CEF7200D1E249 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BAE66A7A1F5CEF7200D1E249 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BAE66A7C1F5CEF7200D1E249 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A980ED27B20B7F1C5187B57B /* Pods-WI3DStickerDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G426QE9Z25;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WI3DStickerDemo/RM3DRender/libs",
+					"$(PROJECT_DIR)/WI3DStickerDemo/ImageSDK/Classes/3D/Libs",
+				);
+				INFOPLIST_FILE = WI3DStickerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WI3DStickerDemo/Sina/SenseTimeSDK/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BAE66A7D1F5CEF7200D1E249 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8115B263777584D39CFB0B1A /* Pods-WI3DStickerDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G426QE9Z25;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WI3DStickerDemo/RM3DRender/libs",
+					"$(PROJECT_DIR)/WI3DStickerDemo/ImageSDK/Classes/3D/Libs",
+				);
+				INFOPLIST_FILE = WI3DStickerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WI3DStickerDemo/Sina/SenseTimeSDK/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.sensetime.senseme.effects;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BAE66A601F5CEF7200D1E249 /* Build configuration list for PBXProject "WI3DStickerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAE66A791F5CEF7200D1E249 /* Debug */,
+				BAE66A7A1F5CEF7200D1E249 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAE66A7B1F5CEF7200D1E249 /* Build configuration list for PBXNativeTarget "WI3DStickerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BAE66A7C1F5CEF7200D1E249 /* Debug */,
+				BAE66A7D1F5CEF7200D1E249 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BAE66A5D1F5CEF7200D1E249 /* Project object */;
+}

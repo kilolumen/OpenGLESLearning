@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/src/BeautifyFilter/SRTSenseTimeSDKWrapper.m"
+            timestampString = "539233244.206233"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "-checkActiveCode"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/lib/GPUImage/framework/Source/iOS/GPUImageView.m"
+            timestampString = "539096536.168081"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
+            landmarkName = "-newFrameReadyAtTime:atIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/ViewController.m"
+            timestampString = "541337843.9470299"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-takePicture"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[ViewController takePicture]_block_invoke"
+                  moduleName = "STFilterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yangtsing/Desktop/bt_repo/proj/iOS/STFilterDemo/STFilterDemo/ViewController.m"
+                  timestampString = "539774228.1027859"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[ViewController takePicture]_block_invoke_2"
+                  moduleName = "STFilterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yangtsing/Desktop/bt_repo/proj/iOS/STFilterDemo/STFilterDemo/ViewController.m"
+                  timestampString = "539774228.106227"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "120"
+                  endingLineNumber = "120"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/lib/GPUImage/framework/Source/GPUImageStillCamera.m"
+            timestampString = "539840926.621828"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "-capturePhotoAsImageProcessedUpToFilter:withCompletionHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/lib/GPUImage/framework/Source/GPUImageStillCamera.m"
+            timestampString = "539840926.621876"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "-capturePhotoProcessedUpToFilter:withImageOnGPUHandler:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/src/BeautifyFilter/SRTBeautifyFilter.m"
+            timestampString = "541337843.947505"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-renderToTextureWithVertices:textureCoordinates:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/ViewController.m"
+            timestampString = "541337843.947574"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-takePicture"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController takePicture]"
+                  moduleName = "STFilterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yangtsing/Desktop/bt_repo/proj/iOS/STFilterDemo/STFilterDemo/ViewController.m"
+                  timestampString = "541337778.31602"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[ViewController takePicture]_block_invoke"
+                  moduleName = "STFilterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yangtsing/Desktop/bt_repo/proj/iOS/STFilterDemo/STFilterDemo/ViewController.m"
+                  timestampString = "541337778.318171"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/lib/GPUImage/framework/Source/GPUImageStillCamera.m"
+            timestampString = "539840957.545719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
+            landmarkName = "-capturePhotoProcessedUpToFilter:withImageOnGPUHandler:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GPUImageStillCamera capturePhotoProcessedUpToFilter:withImageOnGPUHandler:]"
+                  moduleName = "STFilterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yangtsing/Desktop/bt_repo/proj/iOS/STFilterDemo/STFilterDemo/lib/GPUImage/framework/Source/GPUImageStillCamera.m"
+                  timestampString = "541337778.326653"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "308">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__77-[GPUImageStillCamera capturePhotoProcessedUpToFilter:withImageOnGPUHandler:]_block_invoke"
+                  moduleName = "STFilterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Yangtsing/Desktop/bt_repo/proj/iOS/STFilterDemo/STFilterDemo/lib/GPUImage/framework/Source/GPUImageStillCamera.m"
+                  timestampString = "541337778.328447"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "284"
+                  endingLineNumber = "284"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
