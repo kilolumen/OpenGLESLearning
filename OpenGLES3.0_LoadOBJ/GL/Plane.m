@@ -58,7 +58,7 @@
 {
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, 36 * 8 * sizeof(GLfloat), [self planeData], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 6 * 8 * sizeof(GLfloat), [self planeData], GL_STATIC_DRAW);
 }
 
 - (void)genVAO

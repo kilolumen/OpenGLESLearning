@@ -350,7 +350,7 @@ typedef struct {
     self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), self.frameBufferSize.width / self.frameBufferSize.height, 0.1, 1000.0);
     self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, sin(self.elapsedTime) * 5.0 + 9.0, 0, 0, 0, 0, 1, 0);
     [self drawObjects];
-    
+    NSLog(@"sunjian %.2f", self.elapsedTime);
    
     [view bindDrawable];
     glClearColor(0.2, 0.2, 0.2, 1.0);
