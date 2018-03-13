@@ -13,7 +13,9 @@
 #import "GPUImageStillCamera.h"
 #import "SRTSenseTimeSDKWrapper.h"
 #import <AVFoundation/AVFoundation.h>
-
+#import "STMirrorFilter.h"
+#import "STSudokuFilter.h"
+#import "STFlashFilter.h"
 #define USING_BEAUTY_FILTER 1
 
 @interface ViewController ()
@@ -25,7 +27,9 @@
 @property (nonatomic, strong) GPUImageSketchFilter *sketchF;
 @property (nonatomic, strong) UIButton *shootPicBtn;
 @property (nonatomic, strong) UIImageView *previewImgView;
-
+@property (nonatomic, strong) STMirrorFilter *mirrorFilter;
+@property (nonatomic, strong) STSudokuFilter *sudokuFilter;
+@property (nonatomic, strong) STFlashFilter *flashFilter;
 @end
 
 @implementation ViewController
@@ -86,9 +90,12 @@
     
     //相机->裁剪->美颜  ， 预览效果正常，但点击拍摄，取出来的图是黑屏
 #ifdef USING_BEAUTY_FILTER
-    [_camera addTarget: _cropF];
-    [_cropF addTarget: _beautyF];
-    [_beautyF addTarget: _displayView];
+//    [_camera addTarget: _cropF];
+//    [_cropF addTarget: _beautyF];
+//    [_beautyF addTarget: _displayView];
+    
+    [_camera addTarget:_flashFilter];
+    [_flashFilter addTarget: _displayView];
 #else
     //相机->裁剪->素描  ， 预览效果正常，点击拍摄，取出来的图也是正常的
     [_camera addTarget: _cropF];
@@ -100,6 +107,12 @@
 - (void)initFilter{
     [SRTSenseTimeSDKWrapper_Instance createHandlesOfType: ST_INPUT_TYPE_VIDEO];
     _beautyF = [[SRTBeautifyFilter alloc] init];
+    
+    _mirrorFilter = [[STMirrorFilter alloc] init];
+    
+    _sudokuFilter = [[STSudokuFilter alloc] init];
+    
+    _flashFilter = [[STFlashFilter alloc] init];
 }
 
 #pragma mark - Action

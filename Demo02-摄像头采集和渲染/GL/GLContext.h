@@ -17,11 +17,13 @@
 - (id)initWithVertexShader:(NSString *)vertexShader fragmentShader:(NSString *)fragmentShader;
 - (void)active;
 - (void)bindAttribs:(GLfloat *)trangleData;
+- (void)bindGeometryAttribs:(GLfloat *)trangleData;
 
 //draw function
 - (void)drawTriangles:(GLfloat *)triangleData vertexCount:(GLuint)vertexCount;
 - (void)drawTrianglesWithVBO:(GLuint)vbo vertexCount:(GLuint)vertexCount;
 - (void)drawTrianglesWithVAO:(GLuint)vao vertexCount:(GLuint)vertexCount;
+- (void)drawTrianglesWithIndicedVAO:(GLuint)vao vertexCount:(GLuint)vertexCount;
 - (void)drawGeometry:(GLGeometry *)geometry;
 
 //uniform setters

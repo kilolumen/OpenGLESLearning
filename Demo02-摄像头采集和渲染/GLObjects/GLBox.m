@@ -88,7 +88,9 @@
     glBindVertexArrayOES(0);
 }
 - (void)update:(NSTimeInterval)timeSinceLastUpdate
-{}
+{
+    
+}
 
 - (void)draw:(GLContext *)glContext
 {

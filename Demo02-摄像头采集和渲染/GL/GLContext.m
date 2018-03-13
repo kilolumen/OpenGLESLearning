@@ -57,6 +57,30 @@
     glVertexAttribPointer(texCoordAttribLocation, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (char *)trangleData + 2 * sizeof(GLfloat));
 }
 
+- (void)bindGeometryAttribs:(GLfloat *)triangleData {
+    // 启用Shader中的两个属性
+    // attribute vec4 position;
+    // attribute vec4 color;
+    GLuint positionAttribLocation = glGetAttribLocation(program, "position");
+    glEnableVertexAttribArray(positionAttribLocation);
+    GLuint colorAttribLocation = glGetAttribLocation(program, "normal");
+    glEnableVertexAttribArray(colorAttribLocation);
+    GLuint uvAttribLocation = glGetAttribLocation(program, "uv");
+    glEnableVertexAttribArray(uvAttribLocation);
+    
+    // 为shader中的position和color赋值
+    // glVertexAttribPointer (GLuint indx, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid* ptr)
+    // indx: 上面Get到的Location
+    // size: 有几个类型为type的数据，比如位置有x,y,z三个GLfloat元素，值就为3
+    // type: 一般就是数组里元素数据的类型
+    // normalized: 暂时用不上
+    // stride: 每一个点包含几个byte，本例中就是6个GLfloat，x,y,z,r,g,b
+    // ptr: 数据开始的指针，位置就是从头开始，颜色则跳过3个GLFloat的大小
+    glVertexAttribPointer(positionAttribLocation, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (char *)triangleData);
+    glVertexAttribPointer(colorAttribLocation, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (char *)triangleData + 3 * sizeof(GLfloat));
+    glVertexAttribPointer(uvAttribLocation, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (char *)triangleData + 6 * sizeof(GLfloat));
+}
+
 - (void)drawTriangles:(GLfloat *)triangleData vertexCount:(GLuint)vertexCount
 {
     [self bindAttribs:triangleData];
@@ -77,12 +101,17 @@
     glBindVertexArrayOES(0);
 }
 
+- (void)drawTrianglesWithIndicedVAO:(GLuint)vao vertexCount:(GLuint)vertexCount {
+    glBindVertexArrayOES(vao);
+    glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_SHORT, (void *)0);
+    glBindVertexArrayOES(0);
+}
+
 - (void)drawGeometry:(GLGeometry *)geometry
 {
     glBindBuffer(GL_ARRAY_BUFFER, [geometry getVBO]);
-    [self bindAttribs:NULL];
-    glBindBuffer(GL_ARRAY_BUFFER, [geometry getVBO]);
-    [self bindAttribs:NULL];
+    [self bindGeometryAttribs:NULL];
+
     if (geometry.geometryType == GLGeometryTypeTriangleFan) {
         glDrawArrays(GL_TRIANGLE_FAN, 0, [geometry vertexCount]);
     } else if (geometry.geometryType == GLGeometryTypeTriangles) {

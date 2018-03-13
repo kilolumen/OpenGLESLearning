@@ -12,7 +12,7 @@ typedef enum : NSUInteger
 {
     GLGeometryTypeTriangles,
     GLGeometryTypeTriangleStrip,
-    GLGeometryTypeTriangleFan
+    GLGeometryTypeTriangleFan,
 }GLGeometryType;
 
 typedef struct {
@@ -44,7 +44,7 @@ static inline GLVertex GLVertexMake(GLfloat x, GLfloat y, GLfloat z,
 
 @interface GLGeometry : GLObject
 @property (nonatomic, assign) GLGeometryType geometryType;
-- (id)initWithGeometryType:(GLGeometryType)geomertryType;
+- (instancetype)initWithGeometryType:(GLGeometryType)geomertryType;
 - (void)appendVertex:(GLVertex)vertex;
 - (GLuint)getVBO;
 - (int)vertexCount;

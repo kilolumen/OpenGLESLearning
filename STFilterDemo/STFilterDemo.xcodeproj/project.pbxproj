@@ -197,6 +197,9 @@
 		5669CAEF202012B400821FA6 /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = 5669CAEA202012B400821FA6 /* VERSION */; };
 		5669CAF0202012B400821FA6 /* M_SenseME_Action_5.2.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 5669CAEB202012B400821FA6 /* M_SenseME_Action_5.2.0.model */; };
 		5669CAF1202012B400821FA6 /* libst_mobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5669CAEC202012B400821FA6 /* libst_mobile.a */; };
+		D342553C2056AB5300DFE2DA /* STMirrorFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D342553B2056AB5300DFE2DA /* STMirrorFilter.m */; };
+		D342553F2057985B00DFE2DA /* STSudokuFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D342553E2057985B00DFE2DA /* STSudokuFilter.m */; };
+		D342554220579FE600DFE2DA /* STFlashFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D342554120579FE600DFE2DA /* STFlashFilter.m */; };
 		D3B34FBE2048264C0091780A /* A6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3B34FBD2048264C0091780A /* A6.jpg */; };
 		D3B34FC0204827470091780A /* IMG_0666.JPG in Resources */ = {isa = PBXBuildFile; fileRef = D3B34FBF204827460091780A /* IMG_0666.JPG */; };
 		D3B34FC2204827AC0091780A /* IMG_470437EB7D70-1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D3B34FC1204827AC0091780A /* IMG_470437EB7D70-1.jpeg */; };
@@ -589,6 +592,12 @@
 		5669CAEB202012B400821FA6 /* M_SenseME_Action_5.2.0.model */ = {isa = PBXFileReference; lastKnownFileType = file; path = M_SenseME_Action_5.2.0.model; sourceTree = "<group>"; };
 		5669CAEC202012B400821FA6 /* libst_mobile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libst_mobile.a; sourceTree = "<group>"; };
 		5669CAED202012B400821FA6 /* st_mobile_sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker.h; sourceTree = "<group>"; };
+		D342553A2056AB5300DFE2DA /* STMirrorFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STMirrorFilter.h; sourceTree = "<group>"; };
+		D342553B2056AB5300DFE2DA /* STMirrorFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STMirrorFilter.m; sourceTree = "<group>"; };
+		D342553D2057985B00DFE2DA /* STSudokuFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STSudokuFilter.h; sourceTree = "<group>"; };
+		D342553E2057985B00DFE2DA /* STSudokuFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STSudokuFilter.m; sourceTree = "<group>"; };
+		D342554020579FE600DFE2DA /* STFlashFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFlashFilter.h; sourceTree = "<group>"; };
+		D342554120579FE600DFE2DA /* STFlashFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFlashFilter.m; sourceTree = "<group>"; };
 		D3B34FBD2048264C0091780A /* A6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = A6.jpg; sourceTree = "<group>"; };
 		D3B34FBF204827460091780A /* IMG_0666.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0666.JPG; sourceTree = "<group>"; };
 		D3B34FC1204827AC0091780A /* IMG_470437EB7D70-1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IMG_470437EB7D70-1.jpeg"; sourceTree = "<group>"; };
@@ -1018,6 +1027,12 @@
 				5640728F202018D40018A194 /* SRTSenseTimeSDKWrapper.m */,
 				56407290202018D40018A194 /* SRTBeautifyFilter.h */,
 				5640728E202018D40018A194 /* SRTBeautifyFilter.m */,
+				D342553A2056AB5300DFE2DA /* STMirrorFilter.h */,
+				D342553B2056AB5300DFE2DA /* STMirrorFilter.m */,
+				D342553D2057985B00DFE2DA /* STSudokuFilter.h */,
+				D342553E2057985B00DFE2DA /* STSudokuFilter.m */,
+				D342554020579FE600DFE2DA /* STFlashFilter.h */,
+				D342554120579FE600DFE2DA /* STFlashFilter.m */,
 			);
 			path = BeautifyFilter;
 			sourceTree = "<group>";
@@ -1291,6 +1306,7 @@
 				56407200202016FE0018A194 /* GPUImagePixellatePositionFilter.m in Sources */,
 				5640723B202016FE0018A194 /* GPUImageContext.m in Sources */,
 				5640720F202016FE0018A194 /* GPUImageExclusionBlendFilter.m in Sources */,
+				D342553F2057985B00DFE2DA /* STSudokuFilter.m in Sources */,
 				564071F7202016FE0018A194 /* GPUImageEmbossFilter.m in Sources */,
 				5640724A202016FE0018A194 /* GPUImageSubtractBlendFilter.m in Sources */,
 				56407265202016FE0018A194 /* GPUImageMedianFilter.m in Sources */,
@@ -1321,6 +1337,7 @@
 				5640725F202016FE0018A194 /* GPUImageMonochromeFilter.m in Sources */,
 				56407202202016FE0018A194 /* GPUImageHistogramEqualizationFilter.m in Sources */,
 				5640722D202016FE0018A194 /* GPUImageDirectionalSobelEdgeDetectionFilter.m in Sources */,
+				D342554220579FE600DFE2DA /* STFlashFilter.m in Sources */,
 				5640720A202016FE0018A194 /* GPUImageThresholdedNonMaximumSuppressionFilter.m in Sources */,
 				56407278202016FE0018A194 /* GPUImageHighlightShadowFilter.m in Sources */,
 				564071E6202016FE0018A194 /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
@@ -1376,6 +1393,7 @@
 				56407228202016FE0018A194 /* GPUImageBrightnessFilter.m in Sources */,
 				56407237202016FE0018A194 /* GPUImageSourceOverBlendFilter.m in Sources */,
 				564071EF202016FE0018A194 /* GPUImageSoftEleganceFilter.m in Sources */,
+				D342553C2056AB5300DFE2DA /* STMirrorFilter.m in Sources */,
 				5640720C202016FE0018A194 /* GPUImageHistogramGenerator.m in Sources */,
 				5640724C202016FE0018A194 /* GPUImageColorBlendFilter.m in Sources */,
 				56407268202016FE0018A194 /* GPUImageScreenBlendFilter.m in Sources */,

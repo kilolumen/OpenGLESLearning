@@ -13,6 +13,9 @@
 #import <GLKit/GLKit.h>
 #import "Plane.h"
 #import "GLBox.h"
+#import "GLCylinder.h"
+#import "Cube.h"
+#import "GLTerrain.h"
 // Uniform index.
 
 typedef struct {
@@ -88,8 +91,13 @@ const GLfloat kColorConversion601FullRange[] = {
 
 @property GLuint program;
 @property GLuint rgbaProgram;
+@property (nonatomic, strong) NSMutableArray<GLObject *> *objects;
 @property (nonatomic, strong) Plane *previewPlane;
 @property (nonatomic, strong) GLBox *box;
+@property (nonatomic, strong) Cube *cube;
+@property (nonatomic, strong) NSMutableArray <Cube *> *cubes;
+@property (nonatomic, strong) GLCylinder *cylinder;
+@property (nonatomic, strong) GLTerrain *terrain;
 @property (nonatomic, assign) GLKMatrix4 projectionMatrix;
 @property (nonatomic, assign) GLKMatrix4 cameraMatrix;
 @property (nonatomic, assign) PointLight light;
@@ -97,18 +105,11 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, assign) GLKVector3 eyePosition;
 @property (nonatomic, assign) CGSize frameBufferSize;
 @property (nonatomic, assign) GLKMatrix4 planeProjectionMatrix;
-
-@property (nonatomic, strong) NSMutableArray <GLObject *> * objects;
 @property (nonatomic, assign) BOOL useNormalMap;
 
 
 - (void)setupBuffers;
 - (void)cleanUpTextures;
-
-- (BOOL)loadShaders;
-- (BOOL)compileShader:(GLuint *)shader type:(GLenum)type URL:(NSURL *)URL;
-- (BOOL)linkProgram:(GLuint)prog;
-- (BOOL)validateProgram:(GLuint)prog;
 
 @end
 
@@ -207,6 +208,33 @@ const GLfloat kColorConversion601FullRange[] = {
     
     self.box = [GLBox objWithGLContext:boxContext objFile:objFilePath diffuseMap:diffuseMap normalMap:normalMap];
     self.box.modelMatrix = GLKMatrix4MakeRotation(- M_PI / 2.0, 0, 1, 0);
+}
+
+- (void)createCylinder
+{
+    
+    
+    GLKTextureInfo *metal1 = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"metal_01.png"].CGImage options:nil error:nil];
+    GLKTextureInfo *metal2 = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"metal_02.jpg"].CGImage options:nil error:nil];
+    GLKTextureInfo *metal3 = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"metal_03.png"].CGImage options:nil error:nil];
+    
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"cylinder" ofType:@"vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"cylinder" ofType:@"fsh"];
+    
+    GLContext *cylinderContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    
+//    // 四边的圆柱体就是一个正方体
+//    GLCylinder * cylinder3 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:4 radius:0.41 height:0.3 texture:metal2];
+//    cylinder3.modelMatrix = GLKMatrix4MakeTranslation(0, -2.0, 0);
+//    [self.objects addObject:cylinder3];
+    
+    GLCylinder * cylinder2 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:16 radius:0.2 height:4.0 texture:metal3];
+    [self.objects addObject:cylinder2];
+    
+//    //4边的圆柱体就是一个正方体
+//    GLCylinder * cylinder1 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:4 radius:0.9 height:1.2 texture:metal1];
+//    cylinder1.modelMatrix = GLKMatrix4MakeTranslation(0, 2.0, 0);
+//    [self.objects addObject:cylinder1];
 }
 
 #pragma mark - Utilities
@@ -395,11 +423,12 @@ const GLfloat kColorConversion601FullRange[] = {
     }
     
     [self drawPreviewPlane];
+//    [self drawBox];
+//    [self drawCylinder];
+    [self drawCube];
+//    [self drawTerrain];
     
-    [self drawBox];
-
 	glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferHandle);
-    
     if ([EAGLContext currentContext] == _context) {
         [_context presentRenderbuffer:GL_RENDERBUFFER];
     }
@@ -411,10 +440,9 @@ const GLfloat kColorConversion601FullRange[] = {
         
         [self createPlaneTexture:CVOpenGLESTextureGetName(_lumaTexture) textureUV:CVOpenGLESTextureGetName(_chromaTexture) matrix3:_preferredConversion];
     }
-    
     [_previewPlane.context active];
-    
     [_previewPlane draw:_previewPlane.context];
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 - (void)drawBox
 {
@@ -427,7 +455,7 @@ const GLfloat kColorConversion601FullRange[] = {
     self.eyePosition = GLKVector3Make(0, 2, 6);
     GLKVector3 lookAtPosition = GLKVector3Make(0, 0, 0);
     self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
-    self.box.modelMatrix = GLKMatrix4MakeRotation(- M_PI / 2.0 * elapsedTime / 4.0, 1, 1, 1);
+    self.box.modelMatrix = GLKMatrix4MakeRotation(M_PI / 2.0 * elapsedTime / 4.0, 0, 1, 0);
     [self.box.context active];
     [self.box.context setUniform1f:@"elapsedTime" value:(GLfloat)elapsedTime];
     [self.box.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
@@ -446,5 +474,137 @@ const GLfloat kColorConversion601FullRange[] = {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+- (void)drawCylinder
+{
+    
+    if (!_objects) {
+        self.objects = [NSMutableArray array];
+        [self createCylinder];
+    }
+    
+    static float elapsedTime = 0.0;
+    elapsedTime += 0.05;
+    // 设置平行光方向
+    GLKVector3 lightDirection = GLKVector3Make(1, -1, 0);
+    GLKVector3 eyePosition = GLKVector3Make(4 * sin(elapsedTime), 4 * sin(elapsedTime), 4 * cos(elapsedTime));
+    // 使用透视投影矩阵
+    float aspect = self.frame.size.width / self.frame.size.height;
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(eyePosition.x, eyePosition.y, eyePosition.z, 0, 0, 0, 0, 1, 0);
+   [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
+        [obj.context active];
+        [obj.context setUniform1f:@"elapsedTime" value:(GLfloat)elapsedTime];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        [obj.context setUniform3fv:@"lightDirection" value:lightDirection];
+        [obj draw:obj.context];
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }];
+}
+
+- (void)createCube
+{
+    
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@".vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@".fsh"];
+    GLContext *cubeContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    self.cubes = [NSMutableArray array];
+    
+    for(int j = -4; j <= 4; j++){
+        for(int i = -4; i <= 4; i++){
+            Cube *cube = [[Cube alloc] initWithGLContext:cubeContext];
+            cube.modelMatrix = GLKMatrix4MakeTranslation(j * 2, 0, i * 2);
+            [self.cubes addObject:cube];
+        }
+    }
+}
+
+- (void)drawCube
+{
+    if (!_cubes) {
+        
+        [self createCube];
+    }
+    // 使用透视投影矩阵
+    float aspect = self.frame.size.width / self.frame.size.height;
+    
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
+    
+    self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 3,//观察位置
+                                             0, 0, 0,//看向原点
+                                             0, 1, 0);//摄像机方向
+    
+    // 设置平行光方向
+    GLKVector3 lightDirection = GLKVector3Make(1, -1, 0);
+    
+    static float elapsedTime = 0.0;
+    elapsedTime += 0.05;
+    GLKVector3 eyePosition = GLKVector3Make(2 * sin(elapsedTime), 2, 2 * cos(elapsedTime));
+    self.cameraMatrix = GLKMatrix4MakeLookAt(eyePosition.x, eyePosition.y, eyePosition.z, 0, 0, 0, 0, 1, 0);
+    [self.cubes enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
+        [obj.context active];
+        [obj.context setUniform1f:@"elapsedTime" value:(GLfloat)elapsedTime];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        
+        [obj.context setUniform3fv:@"lightDirection" value:lightDirection];
+        [obj draw:obj.context];
+    }];
+}
+- (void)createTerrain
+{
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"terrain" ofType:@".vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"terrain" ofType:@".fsh"];
+    GLContext *terrainContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    
+    GLKTextureInfo *grass = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"grass_01.jpg"].CGImage options:nil error:nil];
+    NSError *error;
+    GLKTextureInfo *dirt = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"dirt_01.jpg"].CGImage options:nil error:&error];
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, grass.name);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glBindTexture(GL_TEXTURE_2D, dirt.name);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    
+    
+    UIImage *heightMap = [UIImage imageNamed:@"terrain_01.jpg"];
+    _terrain = [[GLTerrain alloc] initWithGLContext:terrainContext heightMap:heightMap size:CGSizeMake(100, 100) height:50 grass:grass dirt:dirt];
+    _terrain.modelMatrix = GLKMatrix4MakeTranslation(-50, -50, -50);
+}
+
+- (void)drawTerrain
+{
+    if (!_terrain) {
+        [self createTerrain];
+    }
+    // 使用透视投影矩阵
+    float aspect = self.frame.size.width / self.frame.size.height;
+    
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
+    
+    self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 3,//观察位置
+                                             0, 0, 0,//看向原点
+                                             0, 1, 0);//摄像机方向
+    
+    // 设置平行光方向
+    GLKVector3 lightDirection = GLKVector3Make(1, -1, 0);
+    
+    static float elapsedTime = 0.0;
+    elapsedTime += 0.01;
+    
+    GLKVector3 eyePosition = GLKVector3Make(30 * sin(elapsedTime), 30, 30 * cos(elapsedTime));
+    self.cameraMatrix = GLKMatrix4MakeLookAt(eyePosition.x, eyePosition.y, eyePosition.z, 0, 0, 0, 0, 1, 0);
+    
+    [_terrain.context active];
+    [_terrain.context setUniform1f:@"elapsedTime" value:(GLfloat)elapsedTime];
+    [_terrain.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+    [_terrain.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+    
+    [_terrain.context setUniform3fv:@"lightDirection" value:lightDirection];
+    [_terrain draw:_terrain.context];
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
 @end
 

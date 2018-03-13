@@ -20,6 +20,21 @@
 		D33A92E3204E9661001D6749 /* cube.obj in Resources */ = {isa = PBXBuildFile; fileRef = D33A92E0204E9661001D6749 /* cube.obj */; };
 		D33A92E5204E9671001D6749 /* vertex2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D33A92E4204E9671001D6749 /* vertex2.glsl */; };
 		D33A92E7204E967F001D6749 /* fragment2.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D33A92E6204E967F001D6749 /* fragment2.glsl */; };
+		D33A92F920523200001D6749 /* GLCylinder.m in Sources */ = {isa = PBXBuildFile; fileRef = D33A92F820523200001D6749 /* GLCylinder.m */; };
+		D33A92FD20524F89001D6749 /* metal_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D33A92FA20524F89001D6749 /* metal_02.jpg */; };
+		D33A92FE20524F89001D6749 /* metal_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D33A92FB20524F89001D6749 /* metal_01.png */; };
+		D33A92FF20524F89001D6749 /* metal_03.png in Resources */ = {isa = PBXBuildFile; fileRef = D33A92FC20524F89001D6749 /* metal_03.png */; };
+		D33A930120524FC6001D6749 /* cylinder.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D33A930020524FC6001D6749 /* cylinder.vsh */; };
+		D33A930320524FEA001D6749 /* cylinder.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D33A930220524FEA001D6749 /* cylinder.fsh */; };
+		D34255272054BB9C00DFE2DA /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = D34255262054BB9C00DFE2DA /* Cube.m */; };
+		D34255292054D09500DFE2DA /* cube.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D34255282054D09500DFE2DA /* cube.vsh */; };
+		D342552B2054D09F00DFE2DA /* cube.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D342552A2054D09F00DFE2DA /* cube.fsh */; };
+		D342552E2054F84000DFE2DA /* GLTerrain.m in Sources */ = {isa = PBXBuildFile; fileRef = D342552D2054F84000DFE2DA /* GLTerrain.m */; };
+		D342553020567A5C00DFE2DA /* terrain.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D342552F20567A5B00DFE2DA /* terrain.vsh */; };
+		D342553220567A6800DFE2DA /* terrain.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D342553120567A6800DFE2DA /* terrain.fsh */; };
+		D342553520567EE400DFE2DA /* grass_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D342553320567EE400DFE2DA /* grass_01.jpg */; };
+		D342553620567EE400DFE2DA /* dirt_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D342553420567EE400DFE2DA /* dirt_01.jpg */; };
+		D342553820567F0200DFE2DA /* terrain_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D342553720567F0200DFE2DA /* terrain_01.jpg */; };
 		FD6BA4521D12CE440080EB2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6BA4501D12CE440080EB2D /* Main.storyboard */; };
 		FD93DF7D1D4A29CC00E90AFB /* LYOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */; };
 		FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FD93DF801D4A2B0A00E90AFB /* Shader.fsh */; };
@@ -61,6 +76,24 @@
 		D33A92E0204E9661001D6749 /* cube.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cube.obj; sourceTree = "<group>"; };
 		D33A92E4204E9671001D6749 /* vertex2.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = vertex2.glsl; sourceTree = "<group>"; };
 		D33A92E6204E967F001D6749 /* fragment2.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment2.glsl; sourceTree = "<group>"; };
+		D33A92F720523200001D6749 /* GLCylinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLCylinder.h; sourceTree = "<group>"; };
+		D33A92F820523200001D6749 /* GLCylinder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLCylinder.m; sourceTree = "<group>"; };
+		D33A92FA20524F89001D6749 /* metal_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = metal_02.jpg; sourceTree = "<group>"; };
+		D33A92FB20524F89001D6749 /* metal_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal_01.png; sourceTree = "<group>"; };
+		D33A92FC20524F89001D6749 /* metal_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal_03.png; sourceTree = "<group>"; };
+		D33A930020524FC6001D6749 /* cylinder.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.vsh; sourceTree = "<group>"; };
+		D33A930220524FEA001D6749 /* cylinder.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.fsh; sourceTree = "<group>"; };
+		D34255252054BB9C00DFE2DA /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
+		D34255262054BB9C00DFE2DA /* Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
+		D34255282054D09500DFE2DA /* cube.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vsh; sourceTree = "<group>"; };
+		D342552A2054D09F00DFE2DA /* cube.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.fsh; sourceTree = "<group>"; };
+		D342552C2054F84000DFE2DA /* GLTerrain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTerrain.h; sourceTree = "<group>"; };
+		D342552D2054F84000DFE2DA /* GLTerrain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLTerrain.m; sourceTree = "<group>"; };
+		D342552F20567A5B00DFE2DA /* terrain.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = terrain.vsh; sourceTree = "<group>"; };
+		D342553120567A6800DFE2DA /* terrain.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = terrain.fsh; sourceTree = "<group>"; };
+		D342553320567EE400DFE2DA /* grass_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grass_01.jpg; sourceTree = "<group>"; };
+		D342553420567EE400DFE2DA /* dirt_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dirt_01.jpg; sourceTree = "<group>"; };
+		D342553720567F0200DFE2DA /* terrain_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = terrain_01.jpg; sourceTree = "<group>"; };
 		FD6BA4511D12CE440080EB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD93DF7B1D4A29CC00E90AFB /* LYOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYOpenGLView.h; sourceTree = "<group>"; };
 		FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYOpenGLView.m; sourceTree = "<group>"; };
@@ -118,6 +151,12 @@
 				D33A92D8204E6279001D6749 /* Plane.m */,
 				D33A92DA204E90BA001D6749 /* GLBox.h */,
 				D33A92DB204E90BA001D6749 /* GLBox.m */,
+				D33A92F720523200001D6749 /* GLCylinder.h */,
+				D33A92F820523200001D6749 /* GLCylinder.m */,
+				D34255252054BB9C00DFE2DA /* Cube.h */,
+				D34255262054BB9C00DFE2DA /* Cube.m */,
+				D342552C2054F84000DFE2DA /* GLTerrain.h */,
+				D342552D2054F84000DFE2DA /* GLTerrain.m */,
 			);
 			path = GLObjects;
 			sourceTree = "<group>";
@@ -125,11 +164,23 @@
 		D33A92DD204E95D9001D6749 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D342553720567F0200DFE2DA /* terrain_01.jpg */,
+				D342553420567EE400DFE2DA /* dirt_01.jpg */,
+				D342553320567EE400DFE2DA /* grass_01.jpg */,
+				D33A92FB20524F89001D6749 /* metal_01.png */,
+				D33A92FA20524F89001D6749 /* metal_02.jpg */,
+				D33A92FC20524F89001D6749 /* metal_03.png */,
 				D33A92E0204E9661001D6749 /* cube.obj */,
 				D33A92DF204E9661001D6749 /* normal.png */,
 				D33A92DE204E9661001D6749 /* texture.jpg */,
 				D33A92E4204E9671001D6749 /* vertex2.glsl */,
 				D33A92E6204E967F001D6749 /* fragment2.glsl */,
+				D33A930020524FC6001D6749 /* cylinder.vsh */,
+				D33A930220524FEA001D6749 /* cylinder.fsh */,
+				D34255282054D09500DFE2DA /* cube.vsh */,
+				D342552A2054D09F00DFE2DA /* cube.fsh */,
+				D342552F20567A5B00DFE2DA /* terrain.vsh */,
+				D342553120567A6800DFE2DA /* terrain.fsh */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -287,16 +338,28 @@
 				D33A92E1204E9661001D6749 /* texture.jpg in Resources */,
 				D33A92D5204E6149001D6749 /* rgbaShader.vsh in Resources */,
 				D31D33471FFBBC9F001CF731 /* 1.MOV in Resources */,
+				D33A92FE20524F89001D6749 /* metal_01.png in Resources */,
+				D33A92FF20524F89001D6749 /* metal_03.png in Resources */,
+				D342553620567EE400DFE2DA /* dirt_01.jpg in Resources */,
+				D342553020567A5C00DFE2DA /* terrain.vsh in Resources */,
+				D34255292054D09500DFE2DA /* cube.vsh in Resources */,
 				FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */,
 				FDAAD2611CE1CD7A00C7B6AC /* LaunchScreen.storyboard in Resources */,
 				D33A92E3204E9661001D6749 /* cube.obj in Resources */,
 				D33A92E7204E967F001D6749 /* fragment2.glsl in Resources */,
 				D33A92D3204E613C001D6749 /* rgbaShader.fsh in Resources */,
 				D33A92E2204E9661001D6749 /* normal.png in Resources */,
+				D33A930120524FC6001D6749 /* cylinder.vsh in Resources */,
 				D33A92E5204E9671001D6749 /* vertex2.glsl in Resources */,
 				FDAAD25E1CE1CD7A00C7B6AC /* Assets.xcassets in Resources */,
 				FD6BA4521D12CE440080EB2D /* Main.storyboard in Resources */,
+				D342553220567A6800DFE2DA /* terrain.fsh in Resources */,
 				FD93DF831D4A2B0A00E90AFB /* Shader.vsh in Resources */,
+				D342553820567F0200DFE2DA /* terrain_01.jpg in Resources */,
+				D33A92FD20524F89001D6749 /* metal_02.jpg in Resources */,
+				D342552B2054D09F00DFE2DA /* cube.fsh in Resources */,
+				D33A930320524FEA001D6749 /* cylinder.fsh in Resources */,
+				D342553520567EE400DFE2DA /* grass_01.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +377,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D34255272054BB9C00DFE2DA /* Cube.m in Sources */,
 				FDAAD2591CE1CD7A00C7B6AC /* ViewController.m in Sources */,
+				D342552E2054F84000DFE2DA /* GLTerrain.m in Sources */,
 				FD93DF7D1D4A29CC00E90AFB /* LYOpenGLView.m in Sources */,
 				D33A92D9204E6279001D6749 /* Plane.m in Sources */,
 				D33A92DC204E90BA001D6749 /* GLBox.m in Sources */,
@@ -322,6 +387,7 @@
 				D33A92D1204E3866001D6749 /* GLGeometry.m in Sources */,
 				FDAAD2561CE1CD7A00C7B6AC /* AppDelegate.m in Sources */,
 				FDAAD2531CE1CD7A00C7B6AC /* main.m in Sources */,
+				D33A92F920523200001D6749 /* GLCylinder.m in Sources */,
 				D33A92CE204E3858001D6749 /* GLObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
