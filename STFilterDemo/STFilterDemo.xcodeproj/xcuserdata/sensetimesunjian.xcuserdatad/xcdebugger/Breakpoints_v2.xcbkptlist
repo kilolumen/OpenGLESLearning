@@ -9,13 +9,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "STFilterDemo/src/BeautifyFilter/STSudokuFilter.m"
-            timestampString = "542613947.0111639"
+            filePath = "STFilterDemo/lib/GPUImage/framework/Source/GPUImageFramebuffer.m"
+            timestampString = "542628869.996001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-renderToTextureWithVertices:textureCoordinates:"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-generateFramebuffer"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/lib/GPUImage/framework/Source/GPUImageFramebuffer.m"
+            timestampString = "542628869.996398"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-initWithSize:textureOptions:onlyTexture:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "STFilterDemo/lib/GPUImage/framework/Source/GPUImageFramebufferCache.m"
+            timestampString = "542628869.996703"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-fetchFramebufferForSize:textureOptions:onlyTexture:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -16,6 +16,7 @@
 #import "GLCylinder.h"
 #import "Cube.h"
 #import "GLTerrain.h"
+#import "GLCar.h"
 // Uniform index.
 
 typedef struct {
@@ -26,11 +27,19 @@ typedef struct {
 }PointLight;
 
 typedef struct {
+    GLKVector3 direction;
+    GLKVector3 color;
+    GLfloat indensity;
+    GLfloat ambientIndensity;
+}Directionlight;
+
+typedef struct {
     GLKVector3 diffuseColor;
     GLKVector3 ambientColor;
     GLKVector3 specularColor;
     GLfloat smoothness;
 }Material;
+
 
 
 enum
@@ -98,9 +107,11 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, strong) NSMutableArray <Cube *> *cubes;
 @property (nonatomic, strong) GLCylinder *cylinder;
 @property (nonatomic, strong) GLTerrain *terrain;
+@property (nonatomic, strong) GLCar *car;
 @property (nonatomic, assign) GLKMatrix4 projectionMatrix;
 @property (nonatomic, assign) GLKMatrix4 cameraMatrix;
 @property (nonatomic, assign) PointLight light;
+@property (nonatomic, assign) Directionlight directionLight;
 @property (nonatomic, assign) Material material;
 @property (nonatomic, assign) GLKVector3 eyePosition;
 @property (nonatomic, assign) CGSize frameBufferSize;
@@ -304,7 +315,7 @@ const GLfloat kColorConversion601FullRange[] = {
     // Set the view port to the entire view.
     glViewport(0, 0, _backingWidth, _backingHeight);
     
-    glClearColor(0.1f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.7, 0.7, 0.7, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
 	if (pixelBuffer != NULL) {
@@ -425,8 +436,10 @@ const GLfloat kColorConversion601FullRange[] = {
     [self drawPreviewPlane];
 //    [self drawBox];
 //    [self drawCylinder];
-    [self drawCube];
+//    [self drawCube];
 //    [self drawTerrain];
+    
+    [self drawCar];
     
 	glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferHandle);
     if ([EAGLContext currentContext] == _context) {
@@ -605,6 +618,65 @@ const GLfloat kColorConversion601FullRange[] = {
     [_terrain.context setUniform3fv:@"lightDirection" value:lightDirection];
     [_terrain draw:_terrain.context];
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+- (void)createGLCar
+{
+    //使用透视投影举证
+    float aspect = self.frame.size.width / self.frame.size.height;
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 6.5, 0, 0, 0, 0, 1, 0);
+    Directionlight defaultLight;
+    defaultLight.color = GLKVector3Make(1, 1, 1);
+    defaultLight.direction = GLKVector3Make(1, -1, 0);
+    defaultLight.indensity = 1.0;
+    defaultLight.ambientIndensity = 0.1;
+    self.directionLight = defaultLight;
+    
+    Material material;
+    material.ambientColor = GLKVector3Make(1, 1, 1);
+    material.diffuseColor = GLKVector3Make(0.1, 0.1, 0.1);
+    material.specularColor = GLKVector3Make(1, 1, 1);
+    material.smoothness = 300;
+    self.material = material;
+    
+    NSString *objFilePath = [[NSBundle mainBundle] pathForResource:@"car" ofType:@"obj"];
+    NSString *vertex = [[NSBundle mainBundle] pathForResource:@"car" ofType:@".vsh"];
+    NSString *fragment = [[NSBundle mainBundle] pathForResource:@"car" ofType:@".fsh"];
+    GLContext *carContext = [GLContext contextWithVertexShaderPath:vertex fragmentShaderPath:fragment];
+    self.car = [[GLCar alloc] initWithGLContext:carContext objFile:objFilePath];
+    self.car.modelMatrix = GLKMatrix4MakeRotation(- M_PI / 2.0, 0, 1, 0);
+}
+
+- (void)drawCar
+{
+    if (!_car) {
+        [self createGLCar];
+    }
+    
+    static float elapsedTime = 0.0;
+    elapsedTime += 0.05;
+    
+    self.eyePosition = GLKVector3Make(60, 100, 200);
+    GLKVector3 lookAtPosition = GLKVector3Make(0, 0, 0);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
+    
+    self.car.modelMatrix = GLKMatrix4MakeRotation(- M_PI / 2.0 * elapsedTime / 4.0, 0, 1, 0);
+    
+    [_car.context active];
+    [_car.context setUniform1f:@"elapsedTime" value:(GLfloat)elapsedTime];
+    [_car.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+    [_car.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+    [_car.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+    [_car.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
+    [_car.context setUniform3fv:@"light.color" value:self.directionLight.color];
+    [_car.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
+    [_car.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+    [_car.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
+    [_car.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+    [_car.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
+    [_car.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
+    [_car draw:_car.context];
 }
 @end
 

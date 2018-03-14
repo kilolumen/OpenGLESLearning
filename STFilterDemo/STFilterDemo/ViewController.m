@@ -16,6 +16,7 @@
 #import "STMirrorFilter.h"
 #import "STSudokuFilter.h"
 #import "STFlashFilter.h"
+#import "STSoulFilter2.h"
 #define USING_BEAUTY_FILTER 1
 
 @interface ViewController ()
@@ -30,6 +31,7 @@
 @property (nonatomic, strong) STMirrorFilter *mirrorFilter;
 @property (nonatomic, strong) STSudokuFilter *sudokuFilter;
 @property (nonatomic, strong) STFlashFilter *flashFilter;
+@property (nonatomic, strong) STSoulFilter2 *soul;
 @end
 
 @implementation ViewController
@@ -94,8 +96,8 @@
 //    [_cropF addTarget: _beautyF];
 //    [_beautyF addTarget: _displayView];
     
-    [_camera addTarget:_flashFilter];
-    [_flashFilter addTarget: _displayView];
+    [_camera addTarget:_soul];
+    [_soul addTarget: _displayView];
 #else
     //相机->裁剪->素描  ， 预览效果正常，点击拍摄，取出来的图也是正常的
     [_camera addTarget: _cropF];
@@ -106,24 +108,27 @@
 
 - (void)initFilter{
     [SRTSenseTimeSDKWrapper_Instance createHandlesOfType: ST_INPUT_TYPE_VIDEO];
-    _beautyF = [[SRTBeautifyFilter alloc] init];
+//    _beautyF = [[SRTBeautifyFilter alloc] init];
+//    
+//    _mirrorFilter = [[STMirrorFilter alloc] init];
+//    
+//    _sudokuFilter = [[STSudokuFilter alloc] init];
+//    
+//    _flashFilter = [[STFlashFilter alloc] init];
     
-    _mirrorFilter = [[STMirrorFilter alloc] init];
-    
-    _sudokuFilter = [[STSudokuFilter alloc] init];
-    
-    _flashFilter = [[STFlashFilter alloc] init];
+    _soul = [[STSoulFilter2 alloc] init];
 }
 
 #pragma mark - Action
 - (void)takePicture{
 #ifdef USING_BEAUTY_FILTER
-    [_camera capturePhotoAsImageProcessedUpToFilter: _beautyF withCompletionHandler:^(UIImage *processedImage, NSError *error) {
-        UIImage *retImg = processedImage;//只要加了美颜滤镜，这个返回图像就是黑屏
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _previewImgView.image = retImg;
-        });
-    }];
+//    [_camera capturePhotoAsImageProcessedUpToFilter: _beautyF withCompletionHandler:^(UIImage *processedImage, NSError *error) {
+//        UIImage *retImg = processedImage;//只要加了美颜滤镜，这个返回图像就是黑屏
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            _previewImgView.image = retImg;
+//        });
+//    }];
+    _soul.souled = YES;
 #else
     [_camera capturePhotoAsImageProcessedUpToFilter: _sketchF withCompletionHandler:^(UIImage *processedImage, NSError *error) {
         UIImage *retImg = processedImage;//只要加了美颜滤镜，这个返回图像就是黑屏

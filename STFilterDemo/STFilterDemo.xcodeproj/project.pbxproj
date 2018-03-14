@@ -200,6 +200,7 @@
 		D342553C2056AB5300DFE2DA /* STMirrorFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D342553B2056AB5300DFE2DA /* STMirrorFilter.m */; };
 		D342553F2057985B00DFE2DA /* STSudokuFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D342553E2057985B00DFE2DA /* STSudokuFilter.m */; };
 		D342554220579FE600DFE2DA /* STFlashFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = D342554120579FE600DFE2DA /* STFlashFilter.m */; };
+		D34255482057C06100DFE2DA /* STSoulFilter2.m in Sources */ = {isa = PBXBuildFile; fileRef = D34255472057C06100DFE2DA /* STSoulFilter2.m */; };
 		D3B34FBE2048264C0091780A /* A6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3B34FBD2048264C0091780A /* A6.jpg */; };
 		D3B34FC0204827470091780A /* IMG_0666.JPG in Resources */ = {isa = PBXBuildFile; fileRef = D3B34FBF204827460091780A /* IMG_0666.JPG */; };
 		D3B34FC2204827AC0091780A /* IMG_470437EB7D70-1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D3B34FC1204827AC0091780A /* IMG_470437EB7D70-1.jpeg */; };
@@ -598,6 +599,8 @@
 		D342553E2057985B00DFE2DA /* STSudokuFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STSudokuFilter.m; sourceTree = "<group>"; };
 		D342554020579FE600DFE2DA /* STFlashFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFlashFilter.h; sourceTree = "<group>"; };
 		D342554120579FE600DFE2DA /* STFlashFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFlashFilter.m; sourceTree = "<group>"; };
+		D34255462057C06100DFE2DA /* STSoulFilter2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STSoulFilter2.h; sourceTree = "<group>"; };
+		D34255472057C06100DFE2DA /* STSoulFilter2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STSoulFilter2.m; sourceTree = "<group>"; };
 		D3B34FBD2048264C0091780A /* A6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = A6.jpg; sourceTree = "<group>"; };
 		D3B34FBF204827460091780A /* IMG_0666.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0666.JPG; sourceTree = "<group>"; };
 		D3B34FC1204827AC0091780A /* IMG_470437EB7D70-1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IMG_470437EB7D70-1.jpeg"; sourceTree = "<group>"; };
@@ -1033,6 +1036,8 @@
 				D342553E2057985B00DFE2DA /* STSudokuFilter.m */,
 				D342554020579FE600DFE2DA /* STFlashFilter.h */,
 				D342554120579FE600DFE2DA /* STFlashFilter.m */,
+				D34255462057C06100DFE2DA /* STSoulFilter2.h */,
+				D34255472057C06100DFE2DA /* STSoulFilter2.m */,
 			);
 			path = BeautifyFilter;
 			sourceTree = "<group>";
@@ -1288,6 +1293,7 @@
 				56407260202016FE0018A194 /* GPUImageHoughTransformLineDetector.m in Sources */,
 				56407254202016FE0018A194 /* GPUImageVoronoiConsumerFilter.m in Sources */,
 				56407210202016FE0018A194 /* GPUImageSolidColorGenerator.m in Sources */,
+				D34255482057C06100DFE2DA /* STSoulFilter2.m in Sources */,
 				56407274202016FE0018A194 /* GPUImageDilationFilter.m in Sources */,
 				5669CAC12020120900821FA6 /* ViewController.m in Sources */,
 				56407276202016FE0018A194 /* GPUImageNobleCornerDetectionFilter.m in Sources */,
