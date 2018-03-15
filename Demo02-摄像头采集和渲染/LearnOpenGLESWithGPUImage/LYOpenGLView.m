@@ -90,6 +90,7 @@ const GLfloat kColorConversion601FullRange[] = {
 	
 	GLuint _frameBufferHandle;
 	GLuint _colorBufferHandle;
+    GLuint _depthBufferHandle;
 	
     GLfloat *_preferredConversion;
     
@@ -108,6 +109,7 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, strong) GLCylinder *cylinder;
 @property (nonatomic, strong) GLTerrain *terrain;
 @property (nonatomic, strong) GLCar *car;
+@property (nonatomic, strong) GLBox *floor;
 @property (nonatomic, assign) GLKMatrix4 projectionMatrix;
 @property (nonatomic, assign) GLKMatrix4 cameraMatrix;
 @property (nonatomic, assign) PointLight light;
@@ -118,6 +120,11 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, assign) GLKMatrix4 planeProjectionMatrix;
 @property (nonatomic, assign) BOOL useNormalMap;
 
+
+//texture Projection
+@property (nonatomic, assign) GLKMatrix4 projectorMatrix;
+@property (nonatomic, strong) GLKTextureInfo *projectorMap;
+@property (nonatomic, assign) BOOL useProjector;
 
 - (void)setupBuffers;
 - (void)cleanUpTextures;
@@ -180,30 +187,51 @@ const GLfloat kColorConversion601FullRange[] = {
 			return;
 		}
 	}
+    
+    [self setupMatrixs];
 }
 
-- (void)createBox
+- (void)setupMatrixs
 {
     // 使用透视投影矩阵
     float aspect = self.frame.size.width / self.frame.size.height;
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 500.0);
-    
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
     self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 6.5, 0, 0, 0, 0, 1, 0);
-    
+}
+- (PointLight)setupLight
+{
     PointLight defaultLight;
     defaultLight.color = GLKVector3Make(1, 1, 1); // 白色的灯
     defaultLight.position = GLKVector3Make(30, 100, 0);
     defaultLight.indensity = 1.0;
     defaultLight.ambientIndensity = 0.1;
-    self.light = defaultLight;
-    
+    return defaultLight;
+}
+
+- (Directionlight)setupDirectionLight
+{
+    Directionlight defaultLight;
+    defaultLight.color = GLKVector3Make(1, 1, 1);
+    defaultLight.direction = GLKVector3Make(1, -1, 0);
+    defaultLight.indensity = 1.0;
+    defaultLight.ambientIndensity = 0.1;
+    return defaultLight;
+}
+
+- (Material)setupMaterial
+{
     Material material;
     material.ambientColor = GLKVector3Make(1, 1, 1);
     material.diffuseColor = GLKVector3Make(0.1, 0.1, 0.1);
     material.specularColor = GLKVector3Make(1, 1, 1);
     material.smoothness = 70;
-    self.material = material;
-    
+    return material;
+}
+
+- (GLBox *)createBoxWith:(GLKMatrix4)modelMatrix
+{
+    self.light = [self setupLight];
+    self.material = [self setupMaterial];
     self.useNormalMap = YES;
     UIImage *normalImage = [UIImage imageNamed:@"normal.png"];
     GLKTextureInfo *normalMap = [GLKTextureLoader textureWithCGImage:normalImage.CGImage options:nil error:nil];
@@ -217,14 +245,13 @@ const GLfloat kColorConversion601FullRange[] = {
     
    GLContext *boxContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
     
-    self.box = [GLBox objWithGLContext:boxContext objFile:objFilePath diffuseMap:diffuseMap normalMap:normalMap];
-    self.box.modelMatrix = GLKMatrix4MakeRotation(- M_PI / 2.0, 0, 1, 0);
+    GLBox * box = [GLBox objWithGLContext:boxContext objFile:objFilePath diffuseMap:diffuseMap normalMap:normalMap];
+    box.modelMatrix = modelMatrix;
+    return box;
 }
 
 - (void)createCylinder
 {
-    
-    
     GLKTextureInfo *metal1 = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"metal_01.png"].CGImage options:nil error:nil];
     GLKTextureInfo *metal2 = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"metal_02.jpg"].CGImage options:nil error:nil];
     GLKTextureInfo *metal3 = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"metal_03.png"].CGImage options:nil error:nil];
@@ -234,18 +261,18 @@ const GLfloat kColorConversion601FullRange[] = {
     
     GLContext *cylinderContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
     
-//    // 四边的圆柱体就是一个正方体
-//    GLCylinder * cylinder3 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:4 radius:0.41 height:0.3 texture:metal2];
-//    cylinder3.modelMatrix = GLKMatrix4MakeTranslation(0, -2.0, 0);
-//    [self.objects addObject:cylinder3];
+    // 四边的圆柱体就是一个正方体
+    GLCylinder * cylinder3 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:4 radius:0.41 height:0.3 texture:metal2];
+    cylinder3.modelMatrix = GLKMatrix4MakeTranslation(0, -2.0, 0);
+    [self.objects addObject:cylinder3];
     
     GLCylinder * cylinder2 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:16 radius:0.2 height:4.0 texture:metal3];
     [self.objects addObject:cylinder2];
     
-//    //4边的圆柱体就是一个正方体
-//    GLCylinder * cylinder1 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:4 radius:0.9 height:1.2 texture:metal1];
-//    cylinder1.modelMatrix = GLKMatrix4MakeTranslation(0, 2.0, 0);
-//    [self.objects addObject:cylinder1];
+    //4边的圆柱体就是一个正方体
+    GLCylinder * cylinder1 = [[GLCylinder alloc] initWithGLContext:cylinderContext sides:4 radius:0.9 height:1.2 texture:metal1];
+    cylinder1.modelMatrix = GLKMatrix4MakeTranslation(0, 2.0, 0);
+    [self.objects addObject:cylinder1];
 }
 
 #pragma mark - Utilities
@@ -265,6 +292,11 @@ const GLfloat kColorConversion601FullRange[] = {
 	glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
 
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorBufferHandle);
+    
+    glGenRenderbuffers(1, &_depthBufferHandle);
+    glBindRenderbuffer(GL_RENDERBUFFER, _depthBufferHandle);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, _backingWidth, _backingHeight);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _depthBufferHandle);
     
 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
 		NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
@@ -433,13 +465,15 @@ const GLfloat kColorConversion601FullRange[] = {
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     }
     
+    glDepthMask(GL_FALSE);
     [self drawPreviewPlane];
+    glDepthMask(GL_TRUE);
 //    [self drawBox];
 //    [self drawCylinder];
 //    [self drawCube];
 //    [self drawTerrain];
-    
-    [self drawCar];
+//    [self drawCar];
+    [self drawObjects];
     
 	glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferHandle);
     if ([EAGLContext currentContext] == _context) {
@@ -461,7 +495,7 @@ const GLfloat kColorConversion601FullRange[] = {
 {
     if (!_box) {
         
-        [self createBox];
+       self.box = [self createBoxWith:GLKMatrix4MakeRotation(- M_PI / 2.0, 0, 1, 0)];
     }
     static float elapsedTime = 0.0;
     elapsedTime += 0.1;
@@ -538,10 +572,6 @@ const GLfloat kColorConversion601FullRange[] = {
         
         [self createCube];
     }
-    // 使用透视投影矩阵
-    float aspect = self.frame.size.width / self.frame.size.height;
-    
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
     
     self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 3,//观察位置
                                              0, 0, 0,//看向原点
@@ -592,11 +622,6 @@ const GLfloat kColorConversion601FullRange[] = {
     if (!_terrain) {
         [self createTerrain];
     }
-    // 使用透视投影矩阵
-    float aspect = self.frame.size.width / self.frame.size.height;
-    
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
-    
     self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 3,//观察位置
                                              0, 0, 0,//看向原点
                                              0, 1, 0);//摄像机方向
@@ -622,24 +647,8 @@ const GLfloat kColorConversion601FullRange[] = {
 
 - (void)createGLCar
 {
-    //使用透视投影举证
-    float aspect = self.frame.size.width / self.frame.size.height;
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
-    self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 6.5, 0, 0, 0, 0, 1, 0);
-    Directionlight defaultLight;
-    defaultLight.color = GLKVector3Make(1, 1, 1);
-    defaultLight.direction = GLKVector3Make(1, -1, 0);
-    defaultLight.indensity = 1.0;
-    defaultLight.ambientIndensity = 0.1;
-    self.directionLight = defaultLight;
-    
-    Material material;
-    material.ambientColor = GLKVector3Make(1, 1, 1);
-    material.diffuseColor = GLKVector3Make(0.1, 0.1, 0.1);
-    material.specularColor = GLKVector3Make(1, 1, 1);
-    material.smoothness = 300;
-    self.material = material;
-    
+    self.directionLight = [self setupDirectionLight];
+    self.material = [self setupMaterial];
     NSString *objFilePath = [[NSBundle mainBundle] pathForResource:@"car" ofType:@"obj"];
     NSString *vertex = [[NSBundle mainBundle] pathForResource:@"car" ofType:@".vsh"];
     NSString *fragment = [[NSBundle mainBundle] pathForResource:@"car" ofType:@".fsh"];
@@ -668,15 +677,92 @@ const GLfloat kColorConversion601FullRange[] = {
     [_car.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
     [_car.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
     [_car.context setUniform3fv:@"eyePosition" value:self.eyePosition];
-    [_car.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
-    [_car.context setUniform3fv:@"light.color" value:self.directionLight.color];
-    [_car.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
-    [_car.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+    [_car.context setUniform3fv:@"direcionLight.direction" value:self.directionLight.direction];
+    [_car.context setUniform3fv:@"direcionLight.color" value:self.directionLight.color];
+    [_car.context setUniform1f:@"direcionLight.indensity" value:self.directionLight.indensity];
+    [_car.context setUniform1f:@"direcionLight.ambientIndensity" value:self.directionLight.ambientIndensity];
     [_car.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
     [_car.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
     [_car.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
     [_car.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
     [_car draw:_car.context];
+}
+
+- (GLBox *)createFloor
+{
+    UIImage *normalImage = [UIImage imageNamed:@"stoneFloor_NRM.png"];
+    GLKTextureInfo *normalMap = [GLKTextureLoader textureWithCGImage:normalImage.CGImage options:nil error:nil];
+    UIImage *diffuseImage = [UIImage imageNamed:@"stoneFloor.jpg"];
+    GLKTextureInfo *diffuseMap = [GLKTextureLoader textureWithCGImage:diffuseImage.CGImage options:nil error:nil];
+    
+    NSString *cubeObjFile = [[NSBundle mainBundle] pathForResource:@"cube" ofType:@"obj"];
+    
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"vertex2" ofType:@".glsl"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"fragment2" ofType:@".glsl"];
+    
+    GLContext *boxContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    GLBox *box = [GLBox objWithGLContext:boxContext objFile:cubeObjFile diffuseMap:diffuseMap normalMap:normalMap];
+    
+    box.modelMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(0, -0.1, 0), GLKMatrix4MakeScale(3, 0.2, 3 ));
+    return box;
+}
+
+- (void)setupTextureProjector
+{
+    self.directionLight = [self setupDirectionLight];
+    self.material = [self setupMaterial];
+    
+    self.useNormalMap = YES;
+    self.objects = [NSMutableArray array];
+    [self.objects addObject:[self createBoxWith:GLKMatrix4MakeTranslation(-1, 0.5, -1.3)]];
+    [self.objects addObject:[self createBoxWith:GLKMatrix4MakeTranslation(-1, 0.5, -1.3)]];
+    [self.objects addObject:[self createFloor]];
+    
+    GLKMatrix4 projectorProjectionMatrix = GLKMatrix4MakeOrtho(-1, 1, -1, 1, -100, 100);
+    GLKMatrix4 projectorCameraMatrix = GLKMatrix4MakeLookAt(0.4, 4, 0, 0, 0, 0, 0, 1, 0);
+    self.projectorMatrix = GLKMatrix4Multiply(projectorProjectionMatrix, projectorCameraMatrix);
+    UIImage *projectorImage = [UIImage imageNamed:@"squarepants.jpg"];
+    self.projectorMap = [GLKTextureLoader textureWithCGImage:projectorImage.CGImage options:nil error:nil];
+    self.useProjector = YES;
+}
+- (void)drawObjects
+{
+    if (!_objects) {
+        
+        [self setupTextureProjector];
+    }
+    static float elapsedTime = 0.0;
+    elapsedTime += 0.01;
+    self.eyePosition = GLKVector3Make(1, 4, 4);
+    GLKVector3 lookAtPosition = GLKVector3Make(0, 0, 0);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
+    // update projector matrix
+    GLKMatrix4 projectorProjectionMatrix = GLKMatrix4MakeOrtho(-2, 2, -2, 2, -100, 100);
+    GLKMatrix4 projectorCameraMatrix = GLKMatrix4MakeLookAt(0, 4, 0, 0, 0, 0, cos(elapsedTime), 0, sin(elapsedTime));
+    self.projectorMatrix = GLKMatrix4Multiply(projectorProjectionMatrix, projectorCameraMatrix);
+    [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
+        [obj.context active];
+        [obj.context setUniform1f:@"elapsedTime" value:elapsedTime];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        [obj.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+        [obj.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
+        [obj.context setUniform3fv:@"light.color" value:self.directionLight.color];
+        [obj.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
+        [obj.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+        [obj.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
+        [obj.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+        [obj.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
+        [obj.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
+        
+        [obj.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
+        
+        [obj.context setUniformMatrix4fv:@"projectorMatrix" value: self.projectorMatrix];
+        [obj.context bindTexture:self.projectorMap to:GL_TEXTURE2 uniformName:@"projectorMap"];
+        [obj.context setUniform1i:@"useProjector" value:self.useProjector];
+        
+        [obj draw:obj.context];
+    }];
 }
 @end
 

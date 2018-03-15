@@ -40,6 +40,9 @@
 		D3425550205900DB00DFE2DA /* car.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D342554F205900DB00DFE2DA /* car.vsh */; };
 		D3425554205901CC00DFE2DA /* car.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D3425553205901CC00DFE2DA /* car.fsh */; };
 		D342555620590F5000DFE2DA /* car.obj in Resources */ = {isa = PBXBuildFile; fileRef = D342555520590F5000DFE2DA /* car.obj */; };
+		D3443A4B205A4D5F006EB97E /* stoneFloor_NRM.png in Resources */ = {isa = PBXBuildFile; fileRef = D3443A49205A4D5E006EB97E /* stoneFloor_NRM.png */; };
+		D3443A4C205A4D5F006EB97E /* stoneFloor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3443A4A205A4D5F006EB97E /* stoneFloor.jpg */; };
+		D3443A4E205A4EC4006EB97E /* squarepants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3443A4D205A4EC4006EB97E /* squarepants.jpg */; };
 		FD6BA4521D12CE440080EB2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6BA4501D12CE440080EB2D /* Main.storyboard */; };
 		FD93DF7D1D4A29CC00E90AFB /* LYOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */; };
 		FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FD93DF801D4A2B0A00E90AFB /* Shader.fsh */; };
@@ -106,6 +109,9 @@
 		D342554F205900DB00DFE2DA /* car.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = car.vsh; sourceTree = "<group>"; };
 		D3425553205901CC00DFE2DA /* car.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = car.fsh; sourceTree = "<group>"; };
 		D342555520590F5000DFE2DA /* car.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = car.obj; sourceTree = "<group>"; };
+		D3443A49205A4D5E006EB97E /* stoneFloor_NRM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoneFloor_NRM.png; sourceTree = "<group>"; };
+		D3443A4A205A4D5F006EB97E /* stoneFloor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stoneFloor.jpg; sourceTree = "<group>"; };
+		D3443A4D205A4EC4006EB97E /* squarepants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squarepants.jpg; sourceTree = "<group>"; };
 		FD6BA4511D12CE440080EB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD93DF7B1D4A29CC00E90AFB /* LYOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYOpenGLView.h; sourceTree = "<group>"; };
 		FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYOpenGLView.m; sourceTree = "<group>"; };
@@ -180,6 +186,9 @@
 		D33A92DD204E95D9001D6749 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3443A49205A4D5E006EB97E /* stoneFloor_NRM.png */,
+				D3443A4D205A4EC4006EB97E /* squarepants.jpg */,
+				D3443A4A205A4D5F006EB97E /* stoneFloor.jpg */,
 				D342553720567F0200DFE2DA /* terrain_01.jpg */,
 				D342553420567EE400DFE2DA /* dirt_01.jpg */,
 				D342553320567EE400DFE2DA /* grass_01.jpg */,
@@ -365,6 +374,7 @@
 				D342553020567A5C00DFE2DA /* terrain.vsh in Resources */,
 				D34255292054D09500DFE2DA /* cube.vsh in Resources */,
 				FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */,
+				D3443A4E205A4EC4006EB97E /* squarepants.jpg in Resources */,
 				FDAAD2611CE1CD7A00C7B6AC /* LaunchScreen.storyboard in Resources */,
 				D33A92E3204E9661001D6749 /* cube.obj in Resources */,
 				D33A92E7204E967F001D6749 /* fragment2.glsl in Resources */,
@@ -375,10 +385,12 @@
 				FDAAD25E1CE1CD7A00C7B6AC /* Assets.xcassets in Resources */,
 				FD6BA4521D12CE440080EB2D /* Main.storyboard in Resources */,
 				D3425550205900DB00DFE2DA /* car.vsh in Resources */,
+				D3443A4B205A4D5F006EB97E /* stoneFloor_NRM.png in Resources */,
 				D342553220567A6800DFE2DA /* terrain.fsh in Resources */,
 				FD93DF831D4A2B0A00E90AFB /* Shader.vsh in Resources */,
 				D342553820567F0200DFE2DA /* terrain_01.jpg in Resources */,
 				D33A92FD20524F89001D6749 /* metal_02.jpg in Resources */,
+				D3443A4C205A4D5F006EB97E /* stoneFloor.jpg in Resources */,
 				D342552B2054D09F00DFE2DA /* cube.fsh in Resources */,
 				D33A930320524FEA001D6749 /* cylinder.fsh in Resources */,
 				D342553520567EE400DFE2DA /* grass_01.jpg in Resources */,

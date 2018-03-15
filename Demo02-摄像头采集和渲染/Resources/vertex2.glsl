@@ -24,4 +24,3 @@ void main(void) {
     fragBitangent = bitangent;
     gl_Position = mvp * position;
 }
-
