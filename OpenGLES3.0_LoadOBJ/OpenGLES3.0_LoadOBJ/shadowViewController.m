@@ -155,6 +155,7 @@ typedef struct {
     self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
     DirectionLight light = self.light;
     light.direction = GLKVector3Make(-sin(self.elapsedTime), -1, -cos(self.elapsedTime));
+    NSLog(@"elapsedTime is %f", self.elapsedTime);
     self.light = light;
     self.lightProjectionMatrix = GLKMatrix4MakeOrtho(-10, 10, -10, 10, -100, 100);
     self.lightCameraMatrix = GLKMatrix4MakeLookAt(-light.direction.x * 10, -light.direction.y * 10, -light.direction.z * 10, 0, 0, 0, 0, 1, 0);

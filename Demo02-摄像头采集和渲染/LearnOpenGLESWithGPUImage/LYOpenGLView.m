@@ -97,6 +97,11 @@ const GLfloat kColorConversion601FullRange[] = {
     GLuint _textrueY;
     GLuint _textureUV;
     GLKMatrix3 _matrix3;
+    
+    
+    //shadow
+    GLuint shadowMapFrameBuffer;
+    GLuint shadowDepthMap;
 }
 
 @property GLuint program;
@@ -125,6 +130,12 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, assign) GLKMatrix4 projectorMatrix;
 @property (nonatomic, strong) GLKTextureInfo *projectorMap;
 @property (nonatomic, assign) BOOL useProjector;
+
+//投影器矩阵
+@property (nonatomic, assign) GLKMatrix4 lightProjectinoMatrix;
+@property (nonatomic, assign) GLKMatrix4 lightCameraMatrix;
+@property (nonatomic, assign) CGSize shadowMapSize;
+@property (nonatomic, assign) GLContext *shadowMapContext;
 
 - (void)setupBuffers;
 - (void)cleanUpTextures;
@@ -715,7 +726,7 @@ const GLfloat kColorConversion601FullRange[] = {
     self.useNormalMap = YES;
     self.objects = [NSMutableArray array];
     [self.objects addObject:[self createBoxWith:GLKMatrix4MakeTranslation(-1, 0.5, -1.3)]];
-    [self.objects addObject:[self createBoxWith:GLKMatrix4MakeTranslation(-1, 0.5, -1.3)]];
+    [self.objects addObject:[self createBoxWith:GLKMatrix4MakeTranslation(1, 0.2, 1)]];
     [self.objects addObject:[self createFloor]];
     
     GLKMatrix4 projectorProjectionMatrix = GLKMatrix4MakeOrtho(-1, 1, -1, 1, -100, 100);
@@ -724,7 +735,39 @@ const GLfloat kColorConversion601FullRange[] = {
     UIImage *projectorImage = [UIImage imageNamed:@"squarepants.jpg"];
     self.projectorMap = [GLKTextureLoader textureWithCGImage:projectorImage.CGImage options:nil error:nil];
     self.useProjector = YES;
+    
+    
+    //shadow
+    self.lightProjectinoMatrix = GLKMatrix4MakeOrtho(-10, 10, -10, 10, -100, 100);//正交矩阵就是一个映射关系
+    self.lightCameraMatrix = GLKMatrix4MakeLookAt(-self.directionLight.direction.x * 10, -self.directionLight.direction.y * 10, -self.directionLight.direction.z * 10, 0, 0, 0, 0, 1, 0);
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"shadow" ofType:@".vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"shadow" ofType:@".fsh"];
+    self.shadowMapContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    [self createShadowMap];
 }
+
+- (void)createShadowMap
+{
+    self.shadowMapSize = CGSizeMake(1024, 1024);
+    glGenFramebuffers(1, &shadowMapFrameBuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, shadowMapFrameBuffer);
+    
+    //生成深度缓存区的纹理对象并绑定到framebuffer上
+    glGenTextures(1, &shadowDepthMap);
+    glBindTexture(GL_TEXTURE_2D, shadowDepthMap);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, self.shadowMapSize.width, self.shadowMapSize.height, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_INT, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_COMPONENT, GL_TEXTURE_2D, shadowDepthMap, 0);
+    GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    if (status != GL_FRAMEBUFFER_COMPLETE) {
+        // framebuffer生成失败
+    }
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
 - (void)drawObjects
 {
     if (!_objects) {
@@ -740,16 +783,18 @@ const GLfloat kColorConversion601FullRange[] = {
     GLKMatrix4 projectorProjectionMatrix = GLKMatrix4MakeOrtho(-2, 2, -2, 2, -100, 100);
     GLKMatrix4 projectorCameraMatrix = GLKMatrix4MakeLookAt(0, 4, 0, 0, 0, 0, cos(elapsedTime), 0, sin(elapsedTime));
     self.projectorMatrix = GLKMatrix4Multiply(projectorProjectionMatrix, projectorCameraMatrix);
+    
+    
     [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
         [obj.context active];
         [obj.context setUniform1f:@"elapsedTime" value:elapsedTime];
         [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
         [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
         [obj.context setUniform3fv:@"eyePosition" value:self.eyePosition];
-        [obj.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
-        [obj.context setUniform3fv:@"light.color" value:self.directionLight.color];
-        [obj.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
-        [obj.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+        [obj.context setUniform3fv:@"direcionLight.direction" value:self.directionLight.direction];
+        [obj.context setUniform3fv:@"direcionLight.color" value:self.directionLight.color];
+        [obj.context setUniform1f:@"direcionLight.indensity" value:self.directionLight.indensity];
+        [obj.context setUniform1f:@"direcionLight.ambientIndensity" value:self.directionLight.ambientIndensity];
         [obj.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
         [obj.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
         [obj.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
@@ -762,6 +807,7 @@ const GLfloat kColorConversion601FullRange[] = {
         [obj.context setUniform1i:@"useProjector" value:self.useProjector];
         
         [obj draw:obj.context];
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }];
 }
 @end

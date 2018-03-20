@@ -43,6 +43,8 @@
 		D3443A4B205A4D5F006EB97E /* stoneFloor_NRM.png in Resources */ = {isa = PBXBuildFile; fileRef = D3443A49205A4D5E006EB97E /* stoneFloor_NRM.png */; };
 		D3443A4C205A4D5F006EB97E /* stoneFloor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3443A4A205A4D5F006EB97E /* stoneFloor.jpg */; };
 		D3443A4E205A4EC4006EB97E /* squarepants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3443A4D205A4EC4006EB97E /* squarepants.jpg */; };
+		D34465962060B6E6004D3C22 /* shadow.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D34465952060B6E6004D3C22 /* shadow.vsh */; };
+		D34465982060B6FD004D3C22 /* shadow.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D34465972060B6FD004D3C22 /* shadow.fsh */; };
 		FD6BA4521D12CE440080EB2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6BA4501D12CE440080EB2D /* Main.storyboard */; };
 		FD93DF7D1D4A29CC00E90AFB /* LYOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */; };
 		FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FD93DF801D4A2B0A00E90AFB /* Shader.fsh */; };
@@ -112,6 +114,8 @@
 		D3443A49205A4D5E006EB97E /* stoneFloor_NRM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stoneFloor_NRM.png; sourceTree = "<group>"; };
 		D3443A4A205A4D5F006EB97E /* stoneFloor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stoneFloor.jpg; sourceTree = "<group>"; };
 		D3443A4D205A4EC4006EB97E /* squarepants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squarepants.jpg; sourceTree = "<group>"; };
+		D34465952060B6E6004D3C22 /* shadow.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shadow.vsh; sourceTree = "<group>"; };
+		D34465972060B6FD004D3C22 /* shadow.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shadow.fsh; sourceTree = "<group>"; };
 		FD6BA4511D12CE440080EB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD93DF7B1D4A29CC00E90AFB /* LYOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYOpenGLView.h; sourceTree = "<group>"; };
 		FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYOpenGLView.m; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				D342554F205900DB00DFE2DA /* car.vsh */,
 				D3425553205901CC00DFE2DA /* car.fsh */,
 				D342555520590F5000DFE2DA /* car.obj */,
+				D34465952060B6E6004D3C22 /* shadow.vsh */,
+				D34465972060B6FD004D3C22 /* shadow.fsh */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -364,12 +370,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D33A92E1204E9661001D6749 /* texture.jpg in Resources */,
+				D34465982060B6FD004D3C22 /* shadow.fsh in Resources */,
 				D33A92D5204E6149001D6749 /* rgbaShader.vsh in Resources */,
 				D31D33471FFBBC9F001CF731 /* 1.MOV in Resources */,
 				D33A92FE20524F89001D6749 /* metal_01.png in Resources */,
 				D33A92FF20524F89001D6749 /* metal_03.png in Resources */,
 				D342553620567EE400DFE2DA /* dirt_01.jpg in Resources */,
 				D342555620590F5000DFE2DA /* car.obj in Resources */,
+				D34465962060B6E6004D3C22 /* shadow.vsh in Resources */,
 				D3425554205901CC00DFE2DA /* car.fsh in Resources */,
 				D342553020567A5C00DFE2DA /* terrain.vsh in Resources */,
 				D34255292054D09500DFE2DA /* cube.vsh in Resources */,
