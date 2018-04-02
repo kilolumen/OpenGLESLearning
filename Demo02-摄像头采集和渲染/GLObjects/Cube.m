@@ -7,6 +7,7 @@
     GLuint vao;
 }
 @property (nonatomic, strong) GLKTextureInfo *diffuseTexture;
+@property (nonatomic, strong) GLKTextureInfo *normalTexture;
 @end
 
 @implementation Cube
@@ -141,8 +142,8 @@
 - (void)genTexture:(UIImage *)image
 {
     if (image) {
-        NSError *error;
-        self.diffuseTexture = [GLKTextureLoader textureWithCGImage:image.CGImage options:nil error:&error];
+        self.diffuseTexture = [GLKTextureLoader textureWithCGImage:image.CGImage options:nil error:nil];
+        self.normalTexture  = self.diffuseTexture;
     }
 }
 
@@ -164,12 +165,12 @@
 {
     glGenVertexArraysOES(1, &vao);
     glBindVertexArrayOES(vao);
-    
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexVbo);
     [self.context bindGeometryAttribs:NULL];
-    
     glBindVertexArrayOES(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 - (void)update:(NSTimeInterval)timeSinceLastUpdate
@@ -184,6 +185,7 @@
     GLKMatrix4 normalMatrix = GLKMatrix4InvertAndTranspose(self.modelMatrix, &canInvert);
     [glcontext setUniformMatrix4fv:@"normalMatrix" value:canInvert ? normalMatrix : GLKMatrix4Identity];
     [glcontext bindTexture:self.diffuseTexture to:GL_TEXTURE0 uniformName:@"diffuseMap"];
+    [glcontext bindTexture:self.normalTexture  to:GL_TEXTURE1 uniformName:@"normalMap"];
     [glcontext drawTrianglesWithIndicedVAO:vao vertexCount:36];
 }
 @end

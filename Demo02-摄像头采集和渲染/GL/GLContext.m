@@ -110,6 +110,7 @@
 - (void)drawGeometry:(GLGeometry *)geometry
 {
     glBindBuffer(GL_ARRAY_BUFFER, [geometry getVBO]);
+    
     [self bindGeometryAttribs:NULL];
 
     if (geometry.geometryType == GLGeometryTypeTriangleFan) {
@@ -119,6 +120,7 @@
     } else if (geometry.geometryType == GLGeometryTypeTriangleStrip) {
         glDrawArrays(GL_TRIANGLE_STRIP, 0, [geometry vertexCount]);
     }
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 #pragma mark - Uniform Setter
@@ -144,6 +146,11 @@
 {
     GLuint location = glGetUniformLocation(self.program, uniformName.UTF8String);
     glUniformMatrix3fv(location, 1, 0, value);
+}
+
+- (void)setUniform4fv:(NSString *)uniformName value:(GLKVector4)value {
+    GLuint location = glGetUniformLocation(self.program, uniformName.UTF8String);
+    glUniform4fv(location, 1, value.v);
 }
 
 - (void)setUniformMatrix4fv:(NSString *)uniformName value:(GLKMatrix4)value

@@ -17,7 +17,13 @@
 #import "Cube.h"
 #import "GLTerrain.h"
 #import "GLCar.h"
+#import "GLPlane.h"
+#import "PhysicsEngine.h"
+#import "GameObject.h"
+#import "SKYBox.h"
 // Uniform index.
+
+#define RANDOM_INT(__MIN__, __MAX__) ((__MIN__) + random() % ((__MAX__+ 1) - (__MIN__)))
 
 typedef struct {
     GLKVector3 position;
@@ -40,7 +46,19 @@ typedef struct {
     GLfloat smoothness;
 }Material;
 
+typedef enum : NSUInteger{
+    FogTypeLinear = 0,
+    FogTypeExp = 1,
+    FogTypeExpSquare  = 2,
+}FogType;
 
+typedef struct {
+    FogType fogType;
+    GLfloat fogStart;
+    GLfloat fogEnd;
+    GLfloat fogIndensity;
+    GLKVector3 fogColor;
+}Fog;
 
 enum
 {
@@ -106,6 +124,7 @@ const GLfloat kColorConversion601FullRange[] = {
 
 @property GLuint program;
 @property GLuint rgbaProgram;
+@property (nonatomic, strong) NSMutableArray<GLPlane *> *planes;
 @property (nonatomic, strong) NSMutableArray<GLObject *> *objects;
 @property (nonatomic, strong) Plane *previewPlane;
 @property (nonatomic, strong) GLBox *box;
@@ -125,6 +144,13 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, assign) GLKMatrix4 planeProjectionMatrix;
 @property (nonatomic, assign) BOOL useNormalMap;
 
+//skyBox
+@property (nonatomic, strong) SKYBox *skyBox;//天空盒
+@property (nonatomic, strong) GLKTextureInfo *cubeTexture;
+@property (nonatomic, assign) Fog fog;
+
+//plane
+@property (nonatomic, strong) GLPlane *plane;
 
 //texture Projection
 @property (nonatomic, assign) GLKMatrix4 projectorMatrix;
@@ -137,6 +163,12 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, assign) CGSize shadowMapSize;
 @property (nonatomic, assign) GLContext *shadowMapContext;
 
+@property (nonatomic, strong) NSMutableArray <GameObject *> *gameObjects;
+@property (nonatomic, strong) PhysicsEngine *physicsEngine;
+
+
+@property (nonatomic, assign) float elapsedTime;
+
 - (void)setupBuffers;
 - (void)cleanUpTextures;
 
@@ -147,6 +179,7 @@ const GLfloat kColorConversion601FullRange[] = {
 + (Class)layerClass
 {
 	return [CAEAGLLayer class];
+    
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -168,6 +201,12 @@ const GLfloat kColorConversion601FullRange[] = {
 		}
 		
 		_preferredConversion = kColorConversion709;
+        _elapsedTime = 0.0;
+        
+        self.useNormalMap = NO;
+        
+        [self createTerrain];
+        [self createSkyBox];
 	}
 	return self;
 }
@@ -206,7 +245,7 @@ const GLfloat kColorConversion601FullRange[] = {
 {
     // 使用透视投影矩阵
     float aspect = self.frame.size.width / self.frame.size.height;
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 1000.0);
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 10000.0);
     self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 6.5, 0, 0, 0, 0, 1, 0);
 }
 - (PointLight)setupLight
@@ -223,7 +262,7 @@ const GLfloat kColorConversion601FullRange[] = {
 {
     Directionlight defaultLight;
     defaultLight.color = GLKVector3Make(1, 1, 1);
-    defaultLight.direction = GLKVector3Make(1, -1, 0);
+    defaultLight.direction = GLKVector3Make(-1, -1, 0);
     defaultLight.indensity = 1.0;
     defaultLight.ambientIndensity = 0.1;
     return defaultLight;
@@ -233,9 +272,9 @@ const GLfloat kColorConversion601FullRange[] = {
 {
     Material material;
     material.ambientColor = GLKVector3Make(1, 1, 1);
-    material.diffuseColor = GLKVector3Make(0.1, 0.1, 0.1);
-    material.specularColor = GLKVector3Make(1, 1, 1);
-    material.smoothness = 70;
+    material.diffuseColor = GLKVector3Make(0.8, 0.1, 0.2);
+    material.specularColor = GLKVector3Make(0, 0, 0);
+    material.smoothness = 0;
     return material;
 }
 
@@ -325,7 +364,6 @@ const GLfloat kColorConversion601FullRange[] = {
 		CFRelease(_chromaTexture);
 		_chromaTexture = NULL;
 	}
-	
 	// Periodic texture cache flush every frame
 	CVOpenGLESTextureCacheFlush(_videoTextureCache, 0);
 }
@@ -476,16 +514,22 @@ const GLfloat kColorConversion601FullRange[] = {
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     }
     
-    glDepthMask(GL_FALSE);
-    [self drawPreviewPlane];
-    glDepthMask(GL_TRUE);
+    _elapsedTime += 0.01;
+    
+    [self update];
+    
+//    glDepthMask(GL_FALSE);
+//    [self drawPreviewPlane];
+//    glDepthMask(GL_TRUE);
 //    [self drawBox];
 //    [self drawCylinder];
 //    [self drawCube];
-//    [self drawTerrain];
 //    [self drawCar];
-    [self drawObjects];
-    
+//    [self drawObjects];
+//    [self drawPlane];
+    [self drawSkyBox];
+    [self drawTerrain];
+//    [self drawGameObjext];
 	glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferHandle);
     if ([EAGLContext currentContext] == _context) {
         [_context presentRenderbuffer:GL_RENDERBUFFER];
@@ -607,13 +651,16 @@ const GLfloat kColorConversion601FullRange[] = {
 }
 - (void)createTerrain
 {
+    
     NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"terrain" ofType:@".vsh"];
-    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"terrain" ofType:@".fsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"fog_terrain" ofType:@".fsh"];
     GLContext *terrainContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
     
-    GLKTextureInfo *grass = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"grass_01.jpg"].CGImage options:nil error:nil];
-    NSError *error;
-    GLKTextureInfo *dirt = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"dirt_01.jpg"].CGImage options:nil error:&error];
+    UIImage *grassImage = [UIImage imageNamed:@"grass_01.jpg"];
+    GLKTextureInfo *grass = [GLKTextureLoader textureWithCGImage:grassImage.CGImage options:nil error:nil];
+    
+    UIImage *dirtImage = [UIImage imageNamed:@"dirt_01.jpg"];
+    GLKTextureInfo *dirt = [GLKTextureLoader textureWithCGImage:dirtImage.CGImage options:nil error:nil];
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, grass.name);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -624,36 +671,29 @@ const GLfloat kColorConversion601FullRange[] = {
     
     
     UIImage *heightMap = [UIImage imageNamed:@"terrain_01.jpg"];
-    _terrain = [[GLTerrain alloc] initWithGLContext:terrainContext heightMap:heightMap size:CGSizeMake(100, 100) height:50 grass:grass dirt:dirt];
-    _terrain.modelMatrix = GLKMatrix4MakeTranslation(-50, -50, -50);
+    _terrain = [[GLTerrain alloc] initWithGLContext:terrainContext heightMap:heightMap size:CGSizeMake(500, 500) height:100 grass:grass dirt:dirt];
+    _terrain.modelMatrix = GLKMatrix4MakeTranslation(-250, 0, -250);
 }
 
 - (void)drawTerrain
 {
-    if (!_terrain) {
-        [self createTerrain];
-    }
-    self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 3,//观察位置
-                                             0, 0, 0,//看向原点
-                                             0, 1, 0);//摄像机方向
-    
-    // 设置平行光方向
-    GLKVector3 lightDirection = GLKVector3Make(1, -1, 0);
-    
-    static float elapsedTime = 0.0;
-    elapsedTime += 0.01;
-    
-    GLKVector3 eyePosition = GLKVector3Make(30 * sin(elapsedTime), 30, 30 * cos(elapsedTime));
-    self.cameraMatrix = GLKMatrix4MakeLookAt(eyePosition.x, eyePosition.y, eyePosition.z, 0, 0, 0, 0, 1, 0);
-    
     [_terrain.context active];
-    [_terrain.context setUniform1f:@"elapsedTime" value:(GLfloat)elapsedTime];
+    [self bindFog:_terrain.context];
+    [_terrain.context setUniform1f:@"elapsedTime" value:(GLfloat)self.elapsedTime];
     [_terrain.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
     [_terrain.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
-    
-    [_terrain.context setUniform3fv:@"lightDirection" value:lightDirection];
+    [_terrain.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+    [_terrain.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
+    [_terrain.context setUniform3fv:@"light.color" value:self.directionLight.color];
+    [_terrain.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
+    [_terrain.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+    [_terrain.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
+    [_terrain.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+    [_terrain.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
+    [_terrain.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
+    [_terrain.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
+    [_terrain.context bindCubeTexture:self.cubeTexture to:GL_TEXTURE4 uniformName:@"envMap"];
     [_terrain draw:_terrain.context];
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 - (void)createGLCar
@@ -809,6 +849,183 @@ const GLfloat kColorConversion601FullRange[] = {
         [obj draw:obj.context];
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }];
+}
+
+- (void)createPlane
+{
+    self.planes = [NSMutableArray new];
+    // 使用正交投影矩阵
+    self.projectionMatrix = GLKMatrix4MakeOrtho(-self.frame.size.width / 2, self.frame.size.width / 2, -self.frame.size.height / 2, self.frame.size.height, -10, 10);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(0, 0, 1, 0, 0, 0, 0, 1, 0);
+    
+    UIImage *diffuseImage = [UIImage imageNamed:@"plane2.png"];
+    GLKTextureInfo *diffuseMap = [GLKTextureLoader textureWithCGImage:diffuseImage.CGImage options:nil error:nil];
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"vertex2" ofType:@".glsl"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"plane" ofType:@".fsh"];
+    GLContext *planeContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    
+    for (int i = 0; i < 4; ++i) {
+        GLPlane * plane = [[GLPlane alloc] initWithGLContext:planeContext texture:diffuseMap.name];
+        int x = RANDOM_INT(0, (int)self.frame.size.width) - self.frame.size.width / 2;
+        int y = self.frame.size.height / 2;
+        plane.modelMatrix = GLKMatrix4Translate(plane.modelMatrix, x, -y + 50, 0);
+        plane.modelMatrix = GLKMatrix4Scale(plane.modelMatrix, 100, 100, 0);
+        [self.planes addObject:plane];
+    }
+}
+
+- (void)drawPlane
+{
+    if (!_planes) {
+        
+        [self createPlane];
+    }
+    static float elapsedTime = 0.0;
+    elapsedTime += 0.01;
+    
+    [self.planes enumerateObjectsUsingBlock:^(GLPlane * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.modelMatrix = GLKMatrix4Translate(obj.modelMatrix, 0, [self getRandomNumber:0 to:1000] / 100000.0, 0.0);
+        [obj.context active];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        [obj draw:obj.context];
+    }];
+}
+
+-(int)getRandomNumber:(int)from to:(int)to
+{
+    return (int)(from + (arc4random() % (to - from + 1)));
+}
+
+- (void)drawGameObjext{
+    
+    if (!_gameObjects) {
+        self.directionLight = [self setupDirectionLight];
+        self.material = [self setupMaterial];
+        self.useNormalMap = YES;
+        _gameObjects = [NSMutableArray new];
+        _physicsEngine = [PhysicsEngine new];
+        [self createPhysicsCube: GLKVector3Make(8, 0.2, 8) mass:0.0 position:GLKVector3Make(0, 0, 0)];
+        [self createPhysicsCube: GLKVector3Make(0.5, 0.5, 0.5) mass:1.0 position:GLKVector3Make(0, 5, 0)];
+    }
+    static float timeSinceLastUpdate = 0.0;
+    timeSinceLastUpdate += 1.0;
+    
+    [self.physicsEngine update:timeSinceLastUpdate];
+    self.eyePosition = GLKVector3Make(1, 2, 6);
+    GLKVector3 lookAtPosition = GLKVector3Make(0, 0, 0);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
+    
+    static float elapsedTime = 0.0;
+    elapsedTime += 0.1;
+    [self.gameObjects enumerateObjectsUsingBlock:^(GameObject *gameObj, NSUInteger idx, BOOL *stop) {
+        GLObject *obj = gameObj.geometry;
+        [obj.context active];
+        [obj.context setUniform1f:@"elapsedTime" value:(GLfloat)elapsedTime];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        [obj.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+        [obj.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
+        [obj.context setUniform3fv:@"light.color" value:self.directionLight.color];
+        [obj.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
+        [obj.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+        [obj.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
+        [obj.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+        [obj.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
+        [obj.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
+        [obj.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
+        [obj draw:obj.context];
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }];
+    
+    GLfloat center = ((float)(arc4random() % 50)/(float)50) * 2 - 1;
+    NSLog(@"sunjian center is %.2f", center);
+}
+
+- (void)createPhysicsCube:(GLKVector3)size mass:(float)mass position:(GLKVector3)position
+{
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"game" ofType:@".vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"game" ofType:@".fsh"];
+    GLContext *gameContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    
+    Cube *cube = [[Cube alloc] initWithGLContext:gameContext];
+    cube.modelMatrix = GLKMatrix4Multiply(GLKMatrix4MakeTranslation(position.x, position.y, position.z), GLKMatrix4MakeScale(size.x, size.y, size.z));
+    
+    RigidBody *rigidBody = [[RigidBody alloc] initAsBox:size];
+    rigidBody.mass = mass;
+    GameObject *gameObject = [[GameObject alloc] initWithGeometry:cube rigidBody:rigidBody];
+    
+    [self.physicsEngine addRigidBody:rigidBody];
+    [self.gameObjects addObject:gameObject];
+}
+
+- (void)createCubeTexture
+{
+    NSMutableArray *files = [NSMutableArray new];
+    for(int i = 0; i < 6; ++i){
+        NSString *fileName = [NSString stringWithFormat:@"cube-%d", i + 1];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"jpg"];
+        [files addObject:filePath];
+    }
+    self.cubeTexture = [GLKTextureLoader cubeMapWithContentsOfFiles:files options:nil error:nil];
+}
+
+- (void)setupFog
+{
+    Fog fog;
+    fog.fogColor = GLKVector3Make(1, 1, 1);
+    fog.fogStart = 0;
+    fog.fogEnd = 200;
+    fog.fogIndensity = 0.02;
+    fog.fogType = FogTypeExpSquare;
+    self.fog = fog;
+}
+
+- (void)createSkyBox
+{
+    
+    [self setupMatrixs];
+    self.directionLight = [self setupDirectionLight];
+    self.material = [self setupMaterial];
+    [self setupFog];
+    [self createCubeTexture];
+    
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"skyBox" ofType:@".vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"fog_skyBox" ofType:@".fsh"];
+    GLContext *skyGlContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    self.skyBox = [[SKYBox alloc] initWithGLContext:skyGlContext];
+    self.skyBox.modelMatrix = GLKMatrix4MakeScale(1000, 1000, 1000);
+}
+
+- (void)bindFog:(GLContext *)context
+{
+    [context setUniform1i:@"fog.fotType" value:self.fog.fogType];
+    [context setUniform1i:@"fog.fogStart" value:self.fog.fogStart];
+    [context setUniform1i:@"fog.fogEnd" value:self.fog.fogEnd];
+    [context setUniform1i:@"fog.fogIndensity" value:self.fog.fogIndensity];
+    [context setUniform3fv:@"fog.fogColor" value:self.fog.fogColor];
+}
+
+- (void)update
+{
+    self.eyePosition = GLKVector3Make(5 * sin(self.elapsedTime / 1.5), 20, 5 * cos(self.elapsedTime /  1.5));
+    GLKVector3 lookAtPosition = GLKVector3Make(0, 20, 0);
+    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
+}
+- (void)drawSkyBox
+{
+    [self.skyBox.context active];
+    [self bindFog:self.skyBox.context];
+    [self.skyBox.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+    [self.skyBox.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+    [self.skyBox.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+    [self.skyBox.context bindCubeTexture:self.cubeTexture to:GL_TEXTURE4 uniformName:@"envMap"];
+    [self.skyBox draw: self.skyBox.context];
+}
+
+#pragma mark - Touch Event
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self createPhysicsCube: GLKVector3Make(0.5, 0.5, 0.5) mass:1.0 position:GLKVector3Make(0, 4, 0)];
 }
 @end
 

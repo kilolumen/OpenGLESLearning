@@ -40,6 +40,7 @@ uniform mat4 modelMatrix;
 uniform sampler2D diffuseMap;
 uniform sampler2D normalMap;
 uniform bool useNormalMap;
+uniform samplerCube envMap;
 
 // projectors
 uniform mat4 projectorMatrix;
