@@ -233,6 +233,13 @@
 		D3811CF72070D7E5009B3B09 /* cube-1.tga in Resources */ = {isa = PBXBuildFile; fileRef = D3811CEB2070D7E5009B3B09 /* cube-1.tga */; };
 		D39548402071D97C006B6E1C /* fog_skyBox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D395483F2071D97C006B6E1C /* fog_skyBox.fsh */; };
 		D39548422071FFE9006B6E1C /* fog_terrain.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D39548412071FFE9006B6E1C /* fog_terrain.fsh */; };
+		D395484420723498006B6E1C /* billboard.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D395484320723498006B6E1C /* billboard.vsh */; };
+		D3954846207234A5006B6E1C /* billboard.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D3954845207234A5006B6E1C /* billboard.fsh */; };
+		D395484920724D4B006B6E1C /* Billboard.m in Sources */ = {isa = PBXBuildFile; fileRef = D395484820724D4B006B6E1C /* Billboard.m */; };
+		D395484D20725101006B6E1C /* tree.png in Resources */ = {isa = PBXBuildFile; fileRef = D395484C20725101006B6E1C /* tree.png */; };
+		D395485020726203006B6E1C /* ParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = D395484F20726203006B6E1C /* ParticleSystem.m */; };
+		D39548542072975F006B6E1C /* particle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D39548532072975F006B6E1C /* particle.fsh */; };
+		D39548562072980D006B6E1C /* particle.png in Resources */ = {isa = PBXBuildFile; fileRef = D39548552072980D006B6E1C /* particle.png */; };
 		D39E30302067EC330019331F /* MirrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D39E302F2067EC330019331F /* MirrorViewController.m */; };
 		D39E30322068DFB90019331F /* frag_mirror.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D39E30312068DFB90019331F /* frag_mirror.fsh */; };
 		D39E30352068E1D90019331F /* GLPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = D39E30342068E1D90019331F /* GLPlane.m */; };
@@ -738,6 +745,15 @@
 		D3811CEB2070D7E5009B3B09 /* cube-1.tga */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cube-1.tga"; sourceTree = "<group>"; };
 		D395483F2071D97C006B6E1C /* fog_skyBox.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = fog_skyBox.fsh; sourceTree = "<group>"; };
 		D39548412071FFE9006B6E1C /* fog_terrain.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = fog_terrain.fsh; sourceTree = "<group>"; };
+		D395484320723498006B6E1C /* billboard.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.vsh; sourceTree = "<group>"; };
+		D3954845207234A5006B6E1C /* billboard.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = billboard.fsh; sourceTree = "<group>"; };
+		D395484720724D4B006B6E1C /* Billboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Billboard.h; sourceTree = "<group>"; };
+		D395484820724D4B006B6E1C /* Billboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Billboard.m; sourceTree = "<group>"; };
+		D395484C20725101006B6E1C /* tree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tree.png; sourceTree = "<group>"; };
+		D395484E20726203006B6E1C /* ParticleSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParticleSystem.h; sourceTree = "<group>"; };
+		D395484F20726203006B6E1C /* ParticleSystem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParticleSystem.m; sourceTree = "<group>"; };
+		D39548532072975F006B6E1C /* particle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = particle.fsh; sourceTree = "<group>"; };
+		D39548552072980D006B6E1C /* particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particle.png; sourceTree = "<group>"; };
 		D39E302E2067EC330019331F /* MirrorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MirrorViewController.h; sourceTree = "<group>"; };
 		D39E302F2067EC330019331F /* MirrorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MirrorViewController.m; sourceTree = "<group>"; };
 		D39E30312068DFB90019331F /* frag_mirror.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = frag_mirror.fsh; sourceTree = "<group>"; };
@@ -820,6 +836,10 @@
 				D34466712063A566004D3C22 /* Camera.m */,
 				D3811CD92070D40D009B3B09 /* SKYBox.h */,
 				D3811CDA2070D40D009B3B09 /* SKYBox.m */,
+				D395484720724D4B006B6E1C /* Billboard.h */,
+				D395484820724D4B006B6E1C /* Billboard.m */,
+				D395484E20726203006B6E1C /* ParticleSystem.h */,
+				D395484F20726203006B6E1C /* ParticleSystem.m */,
 			);
 			path = GLObjects;
 			sourceTree = "<group>";
@@ -827,6 +847,8 @@
 		D33A92DD204E95D9001D6749 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D39548552072980D006B6E1C /* particle.png */,
+				D395484C20725101006B6E1C /* tree.png */,
 				D3811CE02070D7E3009B3B09 /* cube-1.jpg */,
 				D3811CEB2070D7E5009B3B09 /* cube-1.tga */,
 				D3811CE62070D7E4009B3B09 /* cube-2.jpg */,
@@ -878,6 +900,9 @@
 				D3811CDE2070D59A009B3B09 /* skyBox.fsh */,
 				D395483F2071D97C006B6E1C /* fog_skyBox.fsh */,
 				D39548412071FFE9006B6E1C /* fog_terrain.fsh */,
+				D395484320723498006B6E1C /* billboard.vsh */,
+				D3954845207234A5006B6E1C /* billboard.fsh */,
+				D39548532072975F006B6E1C /* particle.fsh */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1625,6 +1650,7 @@
 				D3425550205900DB00DFE2DA /* car.vsh in Resources */,
 				D3811CEE2070D7E5009B3B09 /* cube-4.jpg in Resources */,
 				D34466762063B051004D3C22 /* mirror.fsh in Resources */,
+				D395484420723498006B6E1C /* billboard.vsh in Resources */,
 				D3443A4B205A4D5F006EB97E /* stoneFloor_NRM.png in Resources */,
 				D342553220567A6800DFE2DA /* terrain.fsh in Resources */,
 				D328DC7A206A3FFE00FC2DAA /* plane2.png in Resources */,
@@ -1639,9 +1665,13 @@
 				D3443A4C205A4D5F006EB97E /* stoneFloor.jpg in Resources */,
 				D3811CDF2070D59A009B3B09 /* skyBox.fsh in Resources */,
 				D342552B2054D09F00DFE2DA /* cube.fsh in Resources */,
+				D395484D20725101006B6E1C /* tree.png in Resources */,
 				D3449312206CC887009833A2 /* premake4.lua in Resources */,
+				D3954846207234A5006B6E1C /* billboard.fsh in Resources */,
 				D33A930320524FEA001D6749 /* cylinder.fsh in Resources */,
 				D34493AC206CE0AD009833A2 /* game.vsh in Resources */,
+				D39548562072980D006B6E1C /* particle.png in Resources */,
+				D39548542072975F006B6E1C /* particle.fsh in Resources */,
 				D342553520567EE400DFE2DA /* grass_01.jpg in Resources */,
 				D3449344206CC887009833A2 /* CMakeLists.txt in Resources */,
 			);
@@ -1682,6 +1712,7 @@
 				D3449339206CC887009833A2 /* btGjkPairDetector.cpp in Sources */,
 				D3449313206CC887009833A2 /* btGearConstraint.cpp in Sources */,
 				D344931F206CC887009833A2 /* btPoint2PointConstraint.cpp in Sources */,
+				D395484920724D4B006B6E1C /* Billboard.m in Sources */,
 				FDAAD2591CE1CD7A00C7B6AC /* ViewController.m in Sources */,
 				D3449345206CC887009833A2 /* btBox2dBox2dCollisionAlgorithm.cpp in Sources */,
 				D3449392206CC887009833A2 /* btSoftRigidCollisionAlgorithm.cpp in Sources */,
@@ -1776,6 +1807,7 @@
 				D3449389206CC887009833A2 /* btEmptyShape.cpp in Sources */,
 				D344937D206CC887009833A2 /* btTriangleMesh.cpp in Sources */,
 				D3449315206CC887009833A2 /* btSequentialImpulseConstraintSolver.cpp in Sources */,
+				D395485020726203006B6E1C /* ParticleSystem.m in Sources */,
 				D3449390206CC887009833A2 /* btSoftSoftCollisionAlgorithm.cpp in Sources */,
 				D344937C206CC887009833A2 /* btConvexInternalShape.cpp in Sources */,
 				D3449319206CC887009833A2 /* btHingeConstraint.cpp in Sources */,

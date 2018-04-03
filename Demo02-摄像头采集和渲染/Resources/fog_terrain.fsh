@@ -160,6 +160,6 @@ void main(void) {
     
     // 最终颜色计算
     vec3 finalColor = diffuse + ambient + specular;
-    finalColor = colorWithFog(finalColor);
+//    finalColor = colorWithFog(finalColor);
     gl_FragColor = vec4(finalColor, 1.0);
 }

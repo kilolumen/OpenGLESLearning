@@ -21,6 +21,8 @@
 #import "PhysicsEngine.h"
 #import "GameObject.h"
 #import "SKYBox.h"
+#import "Billboard.h"
+#import "ParticleSystem.h"
 // Uniform index.
 
 #define RANDOM_INT(__MIN__, __MAX__) ((__MIN__) + random() % ((__MAX__+ 1) - (__MIN__)))
@@ -149,6 +151,8 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, strong) GLKTextureInfo *cubeTexture;
 @property (nonatomic, assign) Fog fog;
 
+@property (strong, nonatomic) GLContext *treeGlContext;
+
 //plane
 @property (nonatomic, strong) GLPlane *plane;
 
@@ -203,10 +207,15 @@ const GLfloat kColorConversion601FullRange[] = {
 		_preferredConversion = kColorConversion709;
         _elapsedTime = 0.0;
         
+        _objects = [NSMutableArray array];
+        
         self.useNormalMap = NO;
         
-        [self createTerrain];
-        [self createSkyBox];
+//        [self createTerrain];
+//        [self createSkyBox];
+//        [self createTrees];
+        
+        [self createParticles];
 	}
 	return self;
 }
@@ -245,7 +254,7 @@ const GLfloat kColorConversion601FullRange[] = {
 {
     // 使用透视投影矩阵
     float aspect = self.frame.size.width / self.frame.size.height;
-    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(90), aspect, 0.1, 10000.0);
+    self.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(45), aspect, 0.1, 10000.0);
     self.cameraMatrix = GLKMatrix4MakeLookAt(0, 1, 6.5, 0, 0, 0, 0, 1, 0);
 }
 - (PointLight)setupLight
@@ -527,9 +536,12 @@ const GLfloat kColorConversion601FullRange[] = {
 //    [self drawCar];
 //    [self drawObjects];
 //    [self drawPlane];
-    [self drawSkyBox];
-    [self drawTerrain];
+//    [self drawSkyBox];
+//    [self drawTerrain];
+//    [self drawTrees];
 //    [self drawGameObjext];
+    
+    [self drawParticles];
 	glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferHandle);
     if ([EAGLContext currentContext] == _context) {
         [_context presentRenderbuffer:GL_RENDERBUFFER];
@@ -1008,9 +1020,13 @@ const GLfloat kColorConversion601FullRange[] = {
 
 - (void)update
 {
-    self.eyePosition = GLKVector3Make(5 * sin(self.elapsedTime / 1.5), 20, 5 * cos(self.elapsedTime /  1.5));
-    GLKVector3 lookAtPosition = GLKVector3Make(0, 20, 0);
+    self.eyePosition = GLKVector3Make(0, 14, 17);;
+    GLKVector3 lookAtPosition = GLKVector3Make(0, 0, 0);
     self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
+    static float timeSinceLastUpdate = 0.016;
+    [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
+        [obj update:timeSinceLastUpdate];
+    }];
 }
 - (void)drawSkyBox
 {
@@ -1023,6 +1039,109 @@ const GLfloat kColorConversion601FullRange[] = {
     [self.skyBox draw: self.skyBox.context];
 }
 
+- (void)createTrees
+{
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"billboard" ofType:@".vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"billboard" ofType:@".fsh"];
+    self.treeGlContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    
+    for(int cycleTime = 0; cycleTime < 8; ++cycleTime) {
+        for(int angleSampleCount = 0; angleSampleCount < 9; ++angleSampleCount) {
+            float angle = rand() / (float)RAND_MAX * M_PI * 2.0;
+            float radius = rand() / (float)RAND_MAX * 70 + 40;
+            float xloc = cos(angle) * radius;
+            float zloc = sin(angle) * radius;
+            [self createTree:GLKVector3Make(xloc, 5, zloc)];
+        }
+    }
+}
+
+- (void)createTree:(GLKVector3)position
+{
+    GLKTextureInfo *grass = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"tree.png"].CGImage options:nil error:nil];
+    Billboard *tree = [[Billboard alloc] initWithGLContext:self.treeGlContext texture:grass];
+    [tree setBillboardCenterPosition:position];
+    [tree setBillboardSize:GLKVector2Make(6.0, 10.0)];
+    [tree setLockToYAxis:YES];
+    [self.objects addObject:tree];
+}
+
+- (void)drawTrees
+{
+    [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
+        [obj.context active];
+        [self bindFog:obj.context];
+        [obj.context setUniform1f:@"elapsedTime" value:(GLfloat)self.elapsedTime];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        [obj.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+        [obj.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
+        [obj.context setUniform3fv:@"light.color" value:self.directionLight.color];
+        [obj.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
+        [obj.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+        [obj.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
+        [obj.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+        [obj.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
+        [obj.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
+        
+        [obj.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
+        
+        [obj.context bindCubeTexture:self.cubeTexture to:GL_TEXTURE4 uniformName:@"envMap"];
+        
+        [obj draw:obj.context];
+    }];
+}
+
+- (void)createParticles
+{
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"billboard" ofType:@".vsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"particle" ofType:@".fsh"];
+    GLContext *particleContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
+    ParticleSystemConfig config;
+    config.birthRate = 0.3;
+    config.emissionBoxExtends = GLKVector3Make(0.6,0.6,0.6);
+    config.emissionBoxTransform = GLKMatrix4MakeTranslation(0, -4, 0);
+    config.startLife = 1;
+    config.endLife = 2;
+    config.startSpeed = GLKVector3Make(-1.6, 12.5, -1.6);
+    config.endSpeed = GLKVector3Make(1.6, 12.5, 1.6);
+    config.startSize = 1.9;
+    config.endSize = 2.6;
+    config.startColor = GLKVector3Make(0, 0, 0);
+    config.endColor = GLKVector3Make(0.6, 0.5, 0.6);
+    config.maxParticles = 600;
+    
+    GLKTextureInfo *qrcode = [GLKTextureLoader textureWithCGImage:[UIImage imageNamed:@"particle.png"].CGImage options:nil error:nil];
+    
+    ParticleSystem *particleSystem = [[ParticleSystem alloc] initWithGLContext:particleContext config:config particleTexture:qrcode];
+    [self.objects addObject:particleSystem];
+}
+
+- (void)drawParticles
+{
+    [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
+        [obj.context active];
+        [self bindFog:obj.context];
+        [obj.context setUniform1f:@"elapsedTime" value:(GLfloat)self.elapsedTime];
+        [obj.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
+        [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
+        [obj.context setUniform3fv:@"eyePosition" value:self.eyePosition];
+        [obj.context setUniform3fv:@"light.direction" value:self.directionLight.direction];
+        [obj.context setUniform3fv:@"light.color" value:self.directionLight.color];
+        [obj.context setUniform1f:@"light.indensity" value:self.directionLight.indensity];
+        [obj.context setUniform1f:@"light.ambientIndensity" value:self.directionLight.ambientIndensity];
+        [obj.context setUniform3fv:@"material.diffuseColor" value:self.material.diffuseColor];
+        [obj.context setUniform3fv:@"material.ambientColor" value:self.material.ambientColor];
+        [obj.context setUniform3fv:@"material.specularColor" value:self.material.specularColor];
+        [obj.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
+        
+        [obj.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
+        
+        [obj.context bindCubeTexture:self.cubeTexture to:GL_TEXTURE4 uniformName:@"envMap"];
+        
+        [obj draw:obj.context];
+    }];
+}
 #pragma mark - Touch Event
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self createPhysicsCube: GLKVector3Make(0.5, 0.5, 0.5) mass:1.0 position:GLKVector3Make(0, 4, 0)];
