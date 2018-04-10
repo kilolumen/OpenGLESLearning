@@ -212,10 +212,10 @@ const GLfloat kColorConversion601FullRange[] = {
         self.useNormalMap = NO;
         
 //        [self createTerrain];
-//        [self createSkyBox];
-//        [self createTrees];
+        [self createSkyBox];
+        [self createTrees];
         
-        [self createParticles];
+//        [self createParticles];
 	}
 	return self;
 }
@@ -536,12 +536,12 @@ const GLfloat kColorConversion601FullRange[] = {
 //    [self drawCar];
 //    [self drawObjects];
 //    [self drawPlane];
-//    [self drawSkyBox];
+    [self drawSkyBox];
 //    [self drawTerrain];
-//    [self drawTrees];
+    [self drawTrees];
 //    [self drawGameObjext];
     
-    [self drawParticles];
+//    [self drawParticles];
 	glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferHandle);
     if ([EAGLContext currentContext] == _context) {
         [_context presentRenderbuffer:GL_RENDERBUFFER];
@@ -1003,7 +1003,7 @@ const GLfloat kColorConversion601FullRange[] = {
     [self createCubeTexture];
     
     NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"skyBox" ofType:@".vsh"];
-    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"fog_skyBox" ofType:@".fsh"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"skyBox" ofType:@".fsh"];
     GLContext *skyGlContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
     self.skyBox = [[SKYBox alloc] initWithGLContext:skyGlContext];
     self.skyBox.modelMatrix = GLKMatrix4MakeScale(1000, 1000, 1000);
@@ -1020,10 +1020,10 @@ const GLfloat kColorConversion601FullRange[] = {
 
 - (void)update
 {
-    self.eyePosition = GLKVector3Make(0, 14, 17);;
-    GLKVector3 lookAtPosition = GLKVector3Make(0, 0, 0);
+    self.eyePosition = GLKVector3Make(0, 14, 0);;
+    GLKVector3 lookAtPosition = GLKVector3Make(5 * sin(self.elapsedTime / 1.5), 13, 5 * cos(self.elapsedTime /  1.5));
     self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
-    static float timeSinceLastUpdate = 0.016;
+    static float timeSinceLastUpdate = 0.01;
     [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
         [obj update:timeSinceLastUpdate];
     }];
