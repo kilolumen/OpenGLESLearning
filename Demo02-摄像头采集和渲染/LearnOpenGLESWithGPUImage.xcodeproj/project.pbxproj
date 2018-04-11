@@ -28,6 +28,11 @@
 		D33A92FF20524F89001D6749 /* metal_03.png in Resources */ = {isa = PBXBuildFile; fileRef = D33A92FC20524F89001D6749 /* metal_03.png */; };
 		D33A930120524FC6001D6749 /* cylinder.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D33A930020524FC6001D6749 /* cylinder.vsh */; };
 		D33A930320524FEA001D6749 /* cylinder.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D33A930220524FEA001D6749 /* cylinder.fsh */; };
+		D33EEF4E207DA039004400B5 /* GLSphere.m in Sources */ = {isa = PBXBuildFile; fileRef = D33EEF4D207DA039004400B5 /* GLSphere.m */; };
+		D33EEF51207DAA9E004400B5 /* OSShaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D33EEF50207DAA9E004400B5 /* OSShaderManager.m */; };
+		D33EEF54207DABAF004400B5 /* ShaderPanorama.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D33EEF52207DABAE004400B5 /* ShaderPanorama.fsh */; };
+		D33EEF55207DABAF004400B5 /* ShaderPanorama.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D33EEF53207DABAE004400B5 /* ShaderPanorama.vsh */; };
+		D33EEF58207DAF14004400B5 /* park.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D33EEF57207DAF13004400B5 /* park.jpg */; };
 		D34255272054BB9C00DFE2DA /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = D34255262054BB9C00DFE2DA /* Cube.m */; };
 		D34255292054D09500DFE2DA /* cube.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D34255282054D09500DFE2DA /* cube.vsh */; };
 		D342552B2054D09F00DFE2DA /* cube.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D342552A2054D09F00DFE2DA /* cube.fsh */; };
@@ -295,6 +300,14 @@
 		D33A92FC20524F89001D6749 /* metal_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal_03.png; sourceTree = "<group>"; };
 		D33A930020524FC6001D6749 /* cylinder.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.vsh; sourceTree = "<group>"; };
 		D33A930220524FEA001D6749 /* cylinder.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.fsh; sourceTree = "<group>"; };
+		D33EEF4C207DA039004400B5 /* GLSphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSphere.h; sourceTree = "<group>"; };
+		D33EEF4D207DA039004400B5 /* GLSphere.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSphere.m; sourceTree = "<group>"; };
+		D33EEF4F207DAA9D004400B5 /* OSShaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSShaderManager.h; sourceTree = "<group>"; };
+		D33EEF50207DAA9E004400B5 /* OSShaderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSShaderManager.m; sourceTree = "<group>"; };
+		D33EEF52207DABAE004400B5 /* ShaderPanorama.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShaderPanorama.fsh; sourceTree = "<group>"; };
+		D33EEF53207DABAE004400B5 /* ShaderPanorama.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShaderPanorama.vsh; sourceTree = "<group>"; };
+		D33EEF56207DAD8F004400B5 /* OSSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSphere.h; sourceTree = "<group>"; };
+		D33EEF57207DAF13004400B5 /* park.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = park.jpg; sourceTree = "<group>"; };
 		D34255252054BB9C00DFE2DA /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		D34255262054BB9C00DFE2DA /* Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
 		D34255282054D09500DFE2DA /* cube.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vsh; sourceTree = "<group>"; };
@@ -840,6 +853,11 @@
 				D395484820724D4B006B6E1C /* Billboard.m */,
 				D395484E20726203006B6E1C /* ParticleSystem.h */,
 				D395484F20726203006B6E1C /* ParticleSystem.m */,
+				D33EEF4C207DA039004400B5 /* GLSphere.h */,
+				D33EEF4D207DA039004400B5 /* GLSphere.m */,
+				D33EEF4F207DAA9D004400B5 /* OSShaderManager.h */,
+				D33EEF50207DAA9E004400B5 /* OSShaderManager.m */,
+				D33EEF56207DAD8F004400B5 /* OSSphere.h */,
 			);
 			path = GLObjects;
 			sourceTree = "<group>";
@@ -847,6 +865,7 @@
 		D33A92DD204E95D9001D6749 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D33EEF57207DAF13004400B5 /* park.jpg */,
 				D39548552072980D006B6E1C /* particle.png */,
 				D395484C20725101006B6E1C /* tree.png */,
 				D3811CE02070D7E3009B3B09 /* cube-1.jpg */,
@@ -903,6 +922,8 @@
 				D395484320723498006B6E1C /* billboard.vsh */,
 				D3954845207234A5006B6E1C /* billboard.fsh */,
 				D39548532072975F006B6E1C /* particle.fsh */,
+				D33EEF53207DABAE004400B5 /* ShaderPanorama.vsh */,
+				D33EEF52207DABAE004400B5 /* ShaderPanorama.fsh */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1626,6 +1647,7 @@
 				D344936B206CC887009833A2 /* premake4.lua in Resources */,
 				D34255292054D09500DFE2DA /* cube.vsh in Resources */,
 				FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */,
+				D33EEF54207DABAF004400B5 /* ShaderPanorama.fsh in Resources */,
 				D3443A4E205A4EC4006EB97E /* squarepants.jpg in Resources */,
 				D39E30362068E43A0019331F /* Main.storyboard in Resources */,
 				D34466742063B03F004D3C22 /* mirror.vsh in Resources */,
@@ -1633,6 +1655,7 @@
 				D3449398206CC887009833A2 /* premake4.lua in Resources */,
 				FDAAD2611CE1CD7A00C7B6AC /* LaunchScreen.storyboard in Resources */,
 				D3811CF12070D7E5009B3B09 /* cube-3.jpg in Resources */,
+				D33EEF58207DAF14004400B5 /* park.jpg in Resources */,
 				D34493AE206CE0B9009833A2 /* game.fsh in Resources */,
 				D39E303A2068EC710019331F /* plane.jpeg in Resources */,
 				D33A92E3204E9661001D6749 /* cube.obj in Resources */,
@@ -1667,6 +1690,7 @@
 				D342552B2054D09F00DFE2DA /* cube.fsh in Resources */,
 				D395484D20725101006B6E1C /* tree.png in Resources */,
 				D3449312206CC887009833A2 /* premake4.lua in Resources */,
+				D33EEF55207DABAF004400B5 /* ShaderPanorama.vsh in Resources */,
 				D3954846207234A5006B6E1C /* billboard.fsh in Resources */,
 				D33A930320524FEA001D6749 /* cylinder.fsh in Resources */,
 				D34493AC206CE0AD009833A2 /* game.vsh in Resources */,
@@ -1747,6 +1771,7 @@
 				D3449306206CC887009833A2 /* btMultiBodyDynamicsWorld.cpp in Sources */,
 				D344930A206CC887009833A2 /* btMultiBodyJointMotor.cpp in Sources */,
 				D33A92DC204E90BA001D6749 /* GLBox.m in Sources */,
+				D33EEF51207DAA9E004400B5 /* OSShaderManager.m in Sources */,
 				D344934B206CC887009833A2 /* btSimulationIslandManager.cpp in Sources */,
 				D344939A206CC887009833A2 /* btSoftBodyHelpers.cpp in Sources */,
 				D3449302206CC887009833A2 /* btRaycastVehicle.cpp in Sources */,
@@ -1774,6 +1799,7 @@
 				D3449358206CC887009833A2 /* btConvexConvexAlgorithm.cpp in Sources */,
 				D3449360206CC887009833A2 /* gim_tri_collision.cpp in Sources */,
 				D3449361206CC887009833A2 /* btGImpactQuantizedBvh.cpp in Sources */,
+				D33EEF4E207DA039004400B5 /* GLSphere.m in Sources */,
 				D344936F206CC887009833A2 /* btConvexShape.cpp in Sources */,
 				D3449373206CC887009833A2 /* btConeShape.cpp in Sources */,
 				D3449369206CC887009833A2 /* btGImpactShape.cpp in Sources */,

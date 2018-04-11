@@ -23,6 +23,8 @@
 #import "SKYBox.h"
 #import "Billboard.h"
 #import "ParticleSystem.h"
+#import <CoreMotion/CoreMotion.h>
+#import "GLSphere.h"
 // Uniform index.
 
 #define RANDOM_INT(__MIN__, __MAX__) ((__MIN__) + random() % ((__MAX__+ 1) - (__MIN__)))
@@ -122,6 +124,10 @@ const GLfloat kColorConversion601FullRange[] = {
     //shadow
     GLuint shadowMapFrameBuffer;
     GLuint shadowDepthMap;
+    
+    
+    BOOL _bStart;
+     CMQuaternion _rotationRate;
 }
 
 @property GLuint program;
@@ -137,6 +143,7 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, strong) GLCar *car;
 @property (nonatomic, strong) GLBox *floor;
 @property (nonatomic, assign) GLKMatrix4 projectionMatrix;
+@property (nonatomic, assign) GLKVector3 lookAtPosition;
 @property (nonatomic, assign) GLKMatrix4 cameraMatrix;
 @property (nonatomic, assign) PointLight light;
 @property (nonatomic, assign) Directionlight directionLight;
@@ -170,8 +177,12 @@ const GLfloat kColorConversion601FullRange[] = {
 @property (nonatomic, strong) NSMutableArray <GameObject *> *gameObjects;
 @property (nonatomic, strong) PhysicsEngine *physicsEngine;
 
+@property (strong, nonatomic) CMMotionManager *motionManager;
 
 @property (nonatomic, assign) float elapsedTime;
+
+@property (nonatomic, strong) GLSphere *sphere;
+
 
 - (void)setupBuffers;
 - (void)cleanUpTextures;
@@ -216,8 +227,36 @@ const GLfloat kColorConversion601FullRange[] = {
         [self createTrees];
         
 //        [self createParticles];
+        
+        
+        
+        //add a button
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 20, 50, 50)];
+        [self addSubview:btn];
+        btn.backgroundColor = [UIColor redColor];
+        [btn setTitle:@"开始" forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(begin:) forControlEvents:UIControlEventTouchUpInside];
+        _bStart = YES;
 	}
 	return self;
+}
+
+-(void)stopMotionManager{
+    [self.motionManager stopDeviceMotionUpdates];
+}
+
+- (void)begin:(UIButton *)btn
+{
+    btn.selected = !btn.selected;
+    if (btn.selected) {
+        [self startMotionManager];
+        _bStart = YES;
+        [btn setTitle:@"stop" forState:UIControlStateNormal];
+    }else{
+        [self stopMotionManager];
+        _bStart = NO;
+        [btn setTitle:@"begin" forState:UIControlStateNormal];
+    }
 }
 
 - (void)createPlaneTexture:(GLuint)textureY textureUV:(GLuint)textureUV matrix3:(GLfloat *)matrix3
@@ -527,9 +566,9 @@ const GLfloat kColorConversion601FullRange[] = {
     
     [self update];
     
-//    glDepthMask(GL_FALSE);
-//    [self drawPreviewPlane];
-//    glDepthMask(GL_TRUE);
+    glDepthMask(GL_FALSE);
+    [self drawPreviewPlane];
+    glDepthMask(GL_TRUE);
 //    [self drawBox];
 //    [self drawCylinder];
 //    [self drawCube];
@@ -548,6 +587,22 @@ const GLfloat kColorConversion601FullRange[] = {
     }
 }
 
+-(void)startMotionManager{
+    self.motionManager = [[CMMotionManager alloc]init];
+    self.motionManager.deviceMotionUpdateInterval = 1.0 / 60.0;
+    self.motionManager.gyroUpdateInterval = 1.0f / 60;
+    self.motionManager.showsDeviceMovementDisplay = YES;
+    [self.motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXArbitraryCorrectedZVertical];    [self.motionManager startGyroUpdatesToQueue: [[NSOperationQueue alloc]init] withHandler:^(CMGyroData * _Nullable gyroData, NSError * _Nullable error) {
+            
+            [self calculateModelViewProjectMatrixWithDeviceMotion:self.motionManager.deviceMotion];
+    }];
+}
+
+-(void)calculateModelViewProjectMatrixWithDeviceMotion:(CMDeviceMotion*)deviceMotion{
+    if (deviceMotion != nil) {
+        _rotationRate = deviceMotion.attitude.quaternion;    }
+}
+
 - (void)drawPreviewPlane
 {
     if (!_previewPlane) {
@@ -556,7 +611,6 @@ const GLfloat kColorConversion601FullRange[] = {
     }
     [_previewPlane.context active];
     [_previewPlane draw:_previewPlane.context];
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 - (void)drawBox
 {
@@ -585,7 +639,6 @@ const GLfloat kColorConversion601FullRange[] = {
     [self.box.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
     [self.box.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
     [self.box draw:self.box.context];
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 - (void)drawCylinder
@@ -612,7 +665,6 @@ const GLfloat kColorConversion601FullRange[] = {
         [obj.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
         [obj.context setUniform3fv:@"lightDirection" value:lightDirection];
         [obj draw:obj.context];
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }];
 }
 
@@ -859,7 +911,6 @@ const GLfloat kColorConversion601FullRange[] = {
         [obj.context setUniform1i:@"useProjector" value:self.useProjector];
         
         [obj draw:obj.context];
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }];
 }
 
@@ -947,7 +998,6 @@ const GLfloat kColorConversion601FullRange[] = {
         [obj.context setUniform1f:@"material.smoothness" value:self.material.smoothness];
         [obj.context setUniform1i:@"useNormalMap" value:self.useNormalMap];
         [obj draw:obj.context];
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }];
     
     GLfloat center = ((float)(arc4random() % 50)/(float)50) * 2 - 1;
@@ -1006,7 +1056,7 @@ const GLfloat kColorConversion601FullRange[] = {
     NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"skyBox" ofType:@".fsh"];
     GLContext *skyGlContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
     self.skyBox = [[SKYBox alloc] initWithGLContext:skyGlContext];
-    self.skyBox.modelMatrix = GLKMatrix4MakeScale(1000, 1000, 1000);
+    self.skyBox.modelMatrix = GLKMatrix4MakeScale(10000, 10000, 10000);
 }
 
 - (void)bindFog:(GLContext *)context
@@ -1020,9 +1070,18 @@ const GLfloat kColorConversion601FullRange[] = {
 
 - (void)update
 {
-    self.eyePosition = GLKVector3Make(0, 14, 0);;
-    GLKVector3 lookAtPosition = GLKVector3Make(5 * sin(self.elapsedTime / 1.5), 13, 5 * cos(self.elapsedTime /  1.5));
-    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, lookAtPosition.x, lookAtPosition.y, lookAtPosition.z, 0, 1, 0);
+    self.eyePosition = GLKVector3Make(0, 0, 0);
+    
+    if (!_bStart) {
+        
+        self.lookAtPosition = GLKVector3Make(5* sin(self.elapsedTime / 1.5), 13, 5 * cos(self.elapsedTime /  1.5));
+    }else{
+        
+        self.lookAtPosition = GLKVector3Make(_rotationRate.x, _rotationRate.y, _rotationRate.z);
+    }
+    
+    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, _lookAtPosition.x, _lookAtPosition.y, _lookAtPosition.z, 0, 1, 0);
+
     static float timeSinceLastUpdate = 0.01;
     [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
         [obj update:timeSinceLastUpdate];
@@ -1051,7 +1110,8 @@ const GLfloat kColorConversion601FullRange[] = {
             float radius = rand() / (float)RAND_MAX * 70 + 40;
             float xloc = cos(angle) * radius;
             float zloc = sin(angle) * radius;
-            [self createTree:GLKVector3Make(xloc, 5, zloc)];
+            float y = rand() / (float)RAND_MAX * 100;
+            [self createTree:GLKVector3Make(xloc, y, zloc)];
         }
     }
 }
