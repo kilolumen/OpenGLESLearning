@@ -96,6 +96,12 @@
     // 启用着色器
     [self.shaderManager useProgram];
     
+    glBindTexture(GL_TEXTURE0, _textureBuffer);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    
     glUniform1i(_textureBuffer, 0);
     
 }
@@ -118,7 +124,6 @@
     // 加载顶点坐标
     glGenBuffers(1, &_vertexBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
-    
     glBufferData(GL_ARRAY_BUFFER, numVertices*strideNum*sizeof(GLfloat), _vertices, GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(GLKVertexAttribPosition);
@@ -155,6 +160,9 @@
 
 - (void)draw
 {
+    [self.shaderManager useProgram];
+    glUniform1i(GL_TEXTURE_2D, 0);
+    glUniformMatrix4fv(_modelViewProjectionMatrixIndex, 1, GL_FALSE, _modelViewProjectionMatrix.m);
     glDrawElements(GL_TRIANGLES, _numIndices, GL_UNSIGNED_SHORT, 0);
 }
 @end

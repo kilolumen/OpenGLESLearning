@@ -228,7 +228,7 @@ const GLfloat kColorConversion601FullRange[] = {
         
 //        [self createParticles];
         
-        
+//        self.sphere = [[GLSphere alloc] init];
         
         //add a button
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 20, 50, 50)];
@@ -236,7 +236,7 @@ const GLfloat kColorConversion601FullRange[] = {
         btn.backgroundColor = [UIColor redColor];
         [btn setTitle:@"开始" forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(begin:) forControlEvents:UIControlEventTouchUpInside];
-        _bStart = YES;
+        [self begin:btn];
 	}
 	return self;
 }
@@ -566,9 +566,9 @@ const GLfloat kColorConversion601FullRange[] = {
     
     [self update];
     
-    glDepthMask(GL_FALSE);
-    [self drawPreviewPlane];
-    glDepthMask(GL_TRUE);
+//    glDepthMask(GL_FALSE);
+//    [self drawPreviewPlane];
+//    glDepthMask(GL_TRUE);
 //    [self drawBox];
 //    [self drawCylinder];
 //    [self drawCube];
@@ -581,6 +581,9 @@ const GLfloat kColorConversion601FullRange[] = {
 //    [self drawGameObjext];
     
 //    [self drawParticles];
+    
+//    [self.sphere draw];
+    
 	glBindRenderbuffer(GL_RENDERBUFFER, _colorBufferHandle);
     if ([EAGLContext currentContext] == _context) {
         [_context presentRenderbuffer:GL_RENDERBUFFER];
@@ -1049,14 +1052,13 @@ const GLfloat kColorConversion601FullRange[] = {
     [self setupMatrixs];
     self.directionLight = [self setupDirectionLight];
     self.material = [self setupMaterial];
-    [self setupFog];
     [self createCubeTexture];
     
     NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"skyBox" ofType:@".vsh"];
     NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"skyBox" ofType:@".fsh"];
     GLContext *skyGlContext = [GLContext contextWithVertexShaderPath:vertexShaderPath fragmentShaderPath:fragmentShaderPath];
     self.skyBox = [[SKYBox alloc] initWithGLContext:skyGlContext];
-    self.skyBox.modelMatrix = GLKMatrix4MakeScale(10000, 10000, 10000);
+    self.skyBox.modelMatrix = GLKMatrix4MakeScale(1000.0, 1000.0, 1000.0);
 }
 
 - (void)bindFog:(GLContext *)context
@@ -1080,8 +1082,18 @@ const GLfloat kColorConversion601FullRange[] = {
         self.lookAtPosition = GLKVector3Make(_rotationRate.x, _rotationRate.y, _rotationRate.z);
     }
     
-    self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, _lookAtPosition.x, _lookAtPosition.y, _lookAtPosition.z, 0, 1, 0);
+//       self.cameraMatrix = GLKMatrix4MakeLookAt(self.eyePosition.x, self.eyePosition.y, self.eyePosition.z, _lookAtPosition.x, _lookAtPosition.y, _lookAtPosition.z, 0, 1, 0);
+    
+    GLKQuaternion glkQu = GLKQuaternionMake(-_rotationRate.x, -_rotationRate.y, -_rotationRate.z, _rotationRate.w);
+    
+    GLKMatrix4 rotation = GLKMatrix4MakeWithQuaternion(glkQu);
+    
+    [self setupMatrixs];
+    
+    self.projectionMatrix = GLKMatrix4Multiply(self.projectionMatrix, rotation);
 
+    self.projectionMatrix = GLKMatrix4RotateX(self.projectionMatrix, M_PI_2);
+    
     static float timeSinceLastUpdate = 0.01;
     [self.objects enumerateObjectsUsingBlock:^(GLObject *obj, NSUInteger idx, BOOL *stop) {
         [obj update:timeSinceLastUpdate];
@@ -1090,10 +1102,7 @@ const GLfloat kColorConversion601FullRange[] = {
 - (void)drawSkyBox
 {
     [self.skyBox.context active];
-    [self bindFog:self.skyBox.context];
     [self.skyBox.context setUniformMatrix4fv:@"projectionMatrix" value:self.projectionMatrix];
-    [self.skyBox.context setUniformMatrix4fv:@"cameraMatrix" value:self.cameraMatrix];
-    [self.skyBox.context setUniform3fv:@"eyePosition" value:self.eyePosition];
     [self.skyBox.context bindCubeTexture:self.cubeTexture to:GL_TEXTURE4 uniformName:@"envMap"];
     [self.skyBox draw: self.skyBox.context];
 }
@@ -1111,7 +1120,7 @@ const GLfloat kColorConversion601FullRange[] = {
             float xloc = cos(angle) * radius;
             float zloc = sin(angle) * radius;
             float y = rand() / (float)RAND_MAX * 100;
-            [self createTree:GLKVector3Make(xloc, y, zloc)];
+            [self createTree:GLKVector3Make(xloc, 0, zloc)];
         }
     }
 }
