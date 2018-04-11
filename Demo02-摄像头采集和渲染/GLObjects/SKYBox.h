@@ -6,8 +6,8 @@
 //  Copyright © 2018年 林伟池. All rights reserved.
 //
 
-#import "Cube.h"
+#import "GLObject.h"
 
-@interface SKYBox : Cube
+@interface SKYBox : GLObject
 
 @end
