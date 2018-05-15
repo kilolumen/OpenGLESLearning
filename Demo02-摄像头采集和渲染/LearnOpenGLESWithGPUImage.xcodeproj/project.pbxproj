@@ -28,11 +28,18 @@
 		D33A92FF20524F89001D6749 /* metal_03.png in Resources */ = {isa = PBXBuildFile; fileRef = D33A92FC20524F89001D6749 /* metal_03.png */; };
 		D33A930120524FC6001D6749 /* cylinder.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D33A930020524FC6001D6749 /* cylinder.vsh */; };
 		D33A930320524FEA001D6749 /* cylinder.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D33A930220524FEA001D6749 /* cylinder.fsh */; };
+		D33AB22920A4265600D2F8AC /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D33AB22820A4265600D2F8AC /* GLBaseViewController.m */; };
+		D33AB22D20A42BAB00D2F8AC /* vertex.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D33AB22C20A42BAB00D2F8AC /* vertex.vsh */; };
+		D33AB22F20A42C5300D2F8AC /* fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D33AB22E20A42C5300D2F8AC /* fragment.glsl */; };
 		D33EEF4E207DA039004400B5 /* GLSphere.m in Sources */ = {isa = PBXBuildFile; fileRef = D33EEF4D207DA039004400B5 /* GLSphere.m */; };
 		D33EEF51207DAA9E004400B5 /* OSShaderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D33EEF50207DAA9E004400B5 /* OSShaderManager.m */; };
 		D33EEF54207DABAF004400B5 /* ShaderPanorama.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D33EEF52207DABAE004400B5 /* ShaderPanorama.fsh */; };
 		D33EEF55207DABAF004400B5 /* ShaderPanorama.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D33EEF53207DABAE004400B5 /* ShaderPanorama.vsh */; };
 		D33EEF58207DAF14004400B5 /* park.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D33EEF57207DAF13004400B5 /* park.jpg */; };
+		D341D25F20A2DE7B00AAE82C /* ARKitOpenGLRenderController.m in Sources */ = {isa = PBXBuildFile; fileRef = D341D25E20A2DE7B00AAE82C /* ARKitOpenGLRenderController.m */; };
+		D341D26220A2E18700AAE82C /* VideoPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = D341D26120A2E18700AAE82C /* VideoPlane.m */; };
+		D341D26420A2F24B00AAE82C /* frag_video.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D341D26320A2F24B00AAE82C /* frag_video.fsh */; };
+		D341D26620A2F5ED00AAE82C /* vertex3.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D341D26520A2F5ED00AAE82C /* vertex3.vsh */; };
 		D34255272054BB9C00DFE2DA /* Cube.m in Sources */ = {isa = PBXBuildFile; fileRef = D34255262054BB9C00DFE2DA /* Cube.m */; };
 		D34255292054D09500DFE2DA /* cube.vsh in Resources */ = {isa = PBXBuildFile; fileRef = D34255282054D09500DFE2DA /* cube.vsh */; };
 		D342552B2054D09F00DFE2DA /* cube.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D342552A2054D09F00DFE2DA /* cube.fsh */; };
@@ -251,6 +258,9 @@
 		D39E30362068E43A0019331F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6BA4501D12CE440080EB2D /* Main.storyboard */; };
 		D39E303A2068EC710019331F /* plane.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = D39E30392068EC710019331F /* plane.jpeg */; };
 		D39E303C2068F13A0019331F /* plane.fsh in Resources */ = {isa = PBXBuildFile; fileRef = D39E303B2068F13A0019331F /* plane.fsh */; };
+		D3BFA28120A67F42008547AA /* ARViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BFA28020A67F42008547AA /* ARViewController.m */; };
+		D3BFA28420A67FF5008547AA /* FeaturePointCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = D3BFA28320A67FF5008547AA /* FeaturePointCloud.m */; };
+		D3BFA28620A68B08008547AA /* frag_point_cloud.glsl in Resources */ = {isa = PBXBuildFile; fileRef = D3BFA28520A68B08008547AA /* frag_point_cloud.glsl */; };
 		FD93DF7D1D4A29CC00E90AFB /* LYOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */; };
 		FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = FD93DF801D4A2B0A00E90AFB /* Shader.fsh */; };
 		FD93DF831D4A2B0A00E90AFB /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = FD93DF811D4A2B0A00E90AFB /* Shader.vsh */; };
@@ -300,6 +310,10 @@
 		D33A92FC20524F89001D6749 /* metal_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metal_03.png; sourceTree = "<group>"; };
 		D33A930020524FC6001D6749 /* cylinder.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.vsh; sourceTree = "<group>"; };
 		D33A930220524FEA001D6749 /* cylinder.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cylinder.fsh; sourceTree = "<group>"; };
+		D33AB22720A4265600D2F8AC /* GLBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBaseViewController.h; sourceTree = "<group>"; };
+		D33AB22820A4265600D2F8AC /* GLBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLBaseViewController.m; sourceTree = "<group>"; };
+		D33AB22C20A42BAB00D2F8AC /* vertex.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = vertex.vsh; sourceTree = "<group>"; };
+		D33AB22E20A42C5300D2F8AC /* fragment.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment.glsl; sourceTree = "<group>"; };
 		D33EEF4C207DA039004400B5 /* GLSphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLSphere.h; sourceTree = "<group>"; };
 		D33EEF4D207DA039004400B5 /* GLSphere.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLSphere.m; sourceTree = "<group>"; };
 		D33EEF4F207DAA9D004400B5 /* OSShaderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSShaderManager.h; sourceTree = "<group>"; };
@@ -308,6 +322,12 @@
 		D33EEF53207DABAE004400B5 /* ShaderPanorama.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShaderPanorama.vsh; sourceTree = "<group>"; };
 		D33EEF56207DAD8F004400B5 /* OSSphere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSphere.h; sourceTree = "<group>"; };
 		D33EEF57207DAF13004400B5 /* park.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = park.jpg; sourceTree = "<group>"; };
+		D341D25D20A2DE7B00AAE82C /* ARKitOpenGLRenderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARKitOpenGLRenderController.h; sourceTree = "<group>"; };
+		D341D25E20A2DE7B00AAE82C /* ARKitOpenGLRenderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARKitOpenGLRenderController.m; sourceTree = "<group>"; };
+		D341D26020A2E18700AAE82C /* VideoPlane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoPlane.h; sourceTree = "<group>"; };
+		D341D26120A2E18700AAE82C /* VideoPlane.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoPlane.m; sourceTree = "<group>"; };
+		D341D26320A2F24B00AAE82C /* frag_video.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = frag_video.fsh; sourceTree = "<group>"; };
+		D341D26520A2F5ED00AAE82C /* vertex3.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = vertex3.vsh; sourceTree = "<group>"; };
 		D34255252054BB9C00DFE2DA /* Cube.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cube.h; sourceTree = "<group>"; };
 		D34255262054BB9C00DFE2DA /* Cube.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cube.m; sourceTree = "<group>"; };
 		D34255282054D09500DFE2DA /* cube.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = cube.vsh; sourceTree = "<group>"; };
@@ -774,6 +794,11 @@
 		D39E30342068E1D90019331F /* GLPlane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPlane.m; sourceTree = "<group>"; };
 		D39E30392068EC710019331F /* plane.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = plane.jpeg; sourceTree = "<group>"; };
 		D39E303B2068F13A0019331F /* plane.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = plane.fsh; sourceTree = "<group>"; };
+		D3BFA27F20A67F42008547AA /* ARViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARViewController.h; sourceTree = "<group>"; };
+		D3BFA28020A67F42008547AA /* ARViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARViewController.m; sourceTree = "<group>"; };
+		D3BFA28220A67FF5008547AA /* FeaturePointCloud.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeaturePointCloud.h; sourceTree = "<group>"; };
+		D3BFA28320A67FF5008547AA /* FeaturePointCloud.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeaturePointCloud.m; sourceTree = "<group>"; };
+		D3BFA28520A68B08008547AA /* frag_point_cloud.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = "frag_point\U0010_cloud.glsl"; sourceTree = "<group>"; };
 		FD6BA4511D12CE440080EB2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD93DF7B1D4A29CC00E90AFB /* LYOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYOpenGLView.h; sourceTree = "<group>"; };
 		FD93DF7C1D4A29CC00E90AFB /* LYOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYOpenGLView.m; sourceTree = "<group>"; };
@@ -858,6 +883,10 @@
 				D33EEF4F207DAA9D004400B5 /* OSShaderManager.h */,
 				D33EEF50207DAA9E004400B5 /* OSShaderManager.m */,
 				D33EEF56207DAD8F004400B5 /* OSSphere.h */,
+				D341D26020A2E18700AAE82C /* VideoPlane.h */,
+				D341D26120A2E18700AAE82C /* VideoPlane.m */,
+				D3BFA28220A67FF5008547AA /* FeaturePointCloud.h */,
+				D3BFA28320A67FF5008547AA /* FeaturePointCloud.m */,
 			);
 			path = GLObjects;
 			sourceTree = "<group>";
@@ -896,8 +925,11 @@
 				D33A92E0204E9661001D6749 /* cube.obj */,
 				D33A92DF204E9661001D6749 /* normal.png */,
 				D33A92DE204E9661001D6749 /* texture.jpg */,
+				D33AB22C20A42BAB00D2F8AC /* vertex.vsh */,
 				D33A92E4204E9671001D6749 /* vertex2.glsl */,
+				D341D26520A2F5ED00AAE82C /* vertex3.vsh */,
 				D33A92E6204E967F001D6749 /* fragment2.glsl */,
+				D33AB22E20A42C5300D2F8AC /* fragment.glsl */,
 				D33A930020524FC6001D6749 /* cylinder.vsh */,
 				D33A930220524FEA001D6749 /* cylinder.fsh */,
 				D34255282054D09500DFE2DA /* cube.vsh */,
@@ -924,6 +956,8 @@
 				D39548532072975F006B6E1C /* particle.fsh */,
 				D33EEF53207DABAE004400B5 /* ShaderPanorama.vsh */,
 				D33EEF52207DABAE004400B5 /* ShaderPanorama.fsh */,
+				D341D26320A2F24B00AAE82C /* frag_video.fsh */,
+				D3BFA28520A68B08008547AA /* frag_point_cloud.glsl */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1514,6 +1548,12 @@
 				FDAAD2581CE1CD7A00C7B6AC /* ViewController.m */,
 				D39E302E2067EC330019331F /* MirrorViewController.h */,
 				D39E302F2067EC330019331F /* MirrorViewController.m */,
+				D341D25D20A2DE7B00AAE82C /* ARKitOpenGLRenderController.h */,
+				D341D25E20A2DE7B00AAE82C /* ARKitOpenGLRenderController.m */,
+				D3BFA27F20A67F42008547AA /* ARViewController.h */,
+				D3BFA28020A67F42008547AA /* ARViewController.m */,
+				D33AB22720A4265600D2F8AC /* GLBaseViewController.h */,
+				D33AB22820A4265600D2F8AC /* GLBaseViewController.m */,
 				FDAAD25D1CE1CD7A00C7B6AC /* Assets.xcassets */,
 				FDAAD25F1CE1CD7A00C7B6AC /* LaunchScreen.storyboard */,
 				FDAAD2621CE1CD7A00C7B6AC /* Info.plist */,
@@ -1633,6 +1673,7 @@
 				D33A92FF20524F89001D6749 /* metal_03.png in Resources */,
 				D3811CEC2070D7E5009B3B09 /* cube-1.jpg in Resources */,
 				D3811CDD2070D58E009B3B09 /* skyBox.vsh in Resources */,
+				D33AB22D20A42BAB00D2F8AC /* vertex.vsh in Resources */,
 				D328DC68206927E500FC2DAA /* logo.png in Resources */,
 				D342553620567EE400DFE2DA /* dirt_01.jpg in Resources */,
 				D3449301206CC887009833A2 /* CMakeLists.txt in Resources */,
@@ -1645,6 +1686,7 @@
 				D342553020567A5C00DFE2DA /* terrain.vsh in Resources */,
 				D3811CF52070D7E5009B3B09 /* cube-6.jpg in Resources */,
 				D344936B206CC887009833A2 /* premake4.lua in Resources */,
+				D3BFA28620A68B08008547AA /* frag_point_cloud.glsl in Resources */,
 				D34255292054D09500DFE2DA /* cube.vsh in Resources */,
 				FD93DF821D4A2B0A00E90AFB /* Shader.fsh in Resources */,
 				D33EEF54207DABAF004400B5 /* ShaderPanorama.fsh in Resources */,
@@ -1675,15 +1717,18 @@
 				D34466762063B051004D3C22 /* mirror.fsh in Resources */,
 				D395484420723498006B6E1C /* billboard.vsh in Resources */,
 				D3443A4B205A4D5F006EB97E /* stoneFloor_NRM.png in Resources */,
+				D341D26620A2F5ED00AAE82C /* vertex3.vsh in Resources */,
 				D342553220567A6800DFE2DA /* terrain.fsh in Resources */,
 				D328DC7A206A3FFE00FC2DAA /* plane2.png in Resources */,
 				D3811CF22070D7E5009B3B09 /* cube-2.jpg in Resources */,
 				D3811CF72070D7E5009B3B09 /* cube-1.tga in Resources */,
+				D33AB22F20A42C5300D2F8AC /* fragment.glsl in Resources */,
 				FD93DF831D4A2B0A00E90AFB /* Shader.vsh in Resources */,
 				D342553820567F0200DFE2DA /* terrain_01.jpg in Resources */,
 				D39E303C2068F13A0019331F /* plane.fsh in Resources */,
 				D344932C206CC887009833A2 /* premake4.lua in Resources */,
 				D33A92FD20524F89001D6749 /* metal_02.jpg in Resources */,
+				D341D26420A2F24B00AAE82C /* frag_video.fsh in Resources */,
 				D3811CF62070D7E5009B3B09 /* cube-6.tga in Resources */,
 				D3443A4C205A4D5F006EB97E /* stoneFloor.jpg in Resources */,
 				D3811CDF2070D59A009B3B09 /* skyBox.fsh in Resources */,
@@ -1808,7 +1853,9 @@
 				D3449350206CC887009833A2 /* btActivatingCollisionAlgorithm.cpp in Sources */,
 				D3449347206CC887009833A2 /* btUnionFind.cpp in Sources */,
 				D344931A206CC887009833A2 /* btGeneric6DofConstraint.cpp in Sources */,
+				D3BFA28420A67FF5008547AA /* FeaturePointCloud.m in Sources */,
 				FDAAD2531CE1CD7A00C7B6AC /* main.m in Sources */,
+				D341D25F20A2DE7B00AAE82C /* ARKitOpenGLRenderController.m in Sources */,
 				D3449338206CC887009833A2 /* btMinkowskiPenetrationDepthSolver.cpp in Sources */,
 				D3449366206CC887009833A2 /* btGenericPoolAllocator.cpp in Sources */,
 				D344938D206CC887009833A2 /* btHeightfieldTerrainShape.cpp in Sources */,
@@ -1828,9 +1875,11 @@
 				D3449349206CC887009833A2 /* btGhostObject.cpp in Sources */,
 				D3449377206CC887009833A2 /* btCollisionShape.cpp in Sources */,
 				D344937E206CC887009833A2 /* btTriangleMeshShape.cpp in Sources */,
+				D341D26220A2E18700AAE82C /* VideoPlane.m in Sources */,
 				D344932F206CC887009833A2 /* btQuantizedBvh.cpp in Sources */,
 				D3449367206CC887009833A2 /* btGImpactBvh.cpp in Sources */,
 				D3449389206CC887009833A2 /* btEmptyShape.cpp in Sources */,
+				D33AB22920A4265600D2F8AC /* GLBaseViewController.m in Sources */,
 				D344937D206CC887009833A2 /* btTriangleMesh.cpp in Sources */,
 				D3449315206CC887009833A2 /* btSequentialImpulseConstraintSolver.cpp in Sources */,
 				D395485020726203006B6E1C /* ParticleSystem.m in Sources */,
@@ -1857,6 +1906,7 @@
 				D3449330206CC887009833A2 /* btDbvt.cpp in Sources */,
 				D344932A206CC887009833A2 /* btPolarDecomposition.cpp in Sources */,
 				D34466722063A566004D3C22 /* Camera.m in Sources */,
+				D3BFA28120A67F42008547AA /* ARViewController.m in Sources */,
 				D3449329206CC887009833A2 /* btGeometryUtil.cpp in Sources */,
 				D34493A6206CC9D8009833A2 /* BulletUtils.mm in Sources */,
 				D3449356206CC887009833A2 /* btConvexPlaneCollisionAlgorithm.cpp in Sources */,
@@ -2026,7 +2076,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = "../framework/**";
 				INFOPLIST_FILE = LearnOpenGLESWithGPUImage/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sensetime.LearnOpenGLESWithGPUImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2046,7 +2096,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				HEADER_SEARCH_PATHS = "../framework/**";
 				INFOPLIST_FILE = LearnOpenGLESWithGPUImage/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = sensetime.LearnOpenGLESWithGPUImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";

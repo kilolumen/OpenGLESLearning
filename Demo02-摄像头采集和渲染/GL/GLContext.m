@@ -197,6 +197,7 @@ bool createProgram(const char *vertexShader,
 {
     GLuint program, vertex, fragment;
     
+    //create shader program
     program = glCreateProgram();
     
     const GLchar *vssource = (GLchar *)vertexShader;
@@ -204,6 +205,7 @@ bool createProgram(const char *vertexShader,
     
     if (!compileShader(&vertex, GL_VERTEX_SHADER, vssource)) {
         printf("Failed to compile vertex shader");
+        return false;
     }
     
     if (!compileShader(&fragment, GL_FRAGMENT_SHADER, fssource)) {
